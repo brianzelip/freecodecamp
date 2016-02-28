@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <link href="https://npmcdn.com/basscss@7.1.1/css/basscss.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/animatecss/3.5.1/animate.min.css">
+    <title>TITLE</title>
+    <meta name="description" content="">
+    <meta name="author" content="Brian Zelip">
+    <meta name="keywords" content="">
+    <style>
+      img { width: 50px; }
+      @media (min-width:40em) {
+        img { width: 100px; }
+      }
+      td { vertical-align: middle; }
+      th,
+      td { text-align: center; }
+      .pt3 { padding-top: 2rem; }
+      .h0 { font-size: 3.5rem; }
+      .pointer { cursor: pointer; }
+
+    </style>
+  </head>
+
+  <body>
+
+    <header class="center orange py3">
+    <h1 class="mt2 h0">David Bowie's<br>Live Album Discography</h1>
+    <div>
+      <i class="animated rotateIn fa fa-star-half-o fa-2x"></i> <i class="animated rotateIn fa fa-star-half-o fa-2x"></i> <i class="animated rotateIn fa fa-star-half-o fa-2x"></i> <i class="animated rotateIn fa fa-star-half-o fa-2x"></i> <i class="animated rotateIn fa fa-star-half-o fa-2x"></i>
+    </div>
+  </header>
+
+  <div class="container p3">
+    <div class="clearfix">
+
+      <main class="overflow-scroll">
+        <table class="table-light overflow-hidden bg-white border rounded" id="albumData">
+          <thead>
+            <tr class="bg-darken-1">
+              <th>Album Title</th>
+              <th class="pointer"><i class="fa fa-arrows-v"></i> Release Date</th>
+              <th>Cover Art</th>
+              <th>More Info</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="italic">David Live</td>
+              <td>1974 10 29</td>
+              <td>
+                <img src="https://upload.wikimedia.org/wikipedia/en/4/4f/Davidlive.jpg" alt="David Live album cover"/>
+              </td>
+              <td><a targ="_blank" href="https://en.wikipedia.org/wiki/David_Live" class="btn btn-primary">Wikipedia</a></td>
+            </tr>
+            <tr>
+              <td class="italic">Stage</td>
+              <td>1978 08 08</td>
+              <td>
+                <img src="https://upload.wikimedia.org/wikipedia/en/e/e1/Stage_album_cover.jpg" alt="Stage album cover" />
+              </td>
+              <td><a targ="_blank" href="https://en.wikipedia.org/wiki/Stage_%28David_Bowie_album%29" class="btn btn-primary">Wikipedia</a></td>
+            </tr>
+            <tr>
+              <td class="italic">Ziggy Stardust: The Motion Picture</td>
+              <td>1983 10 01</td>
+              <td>
+                <img src="https://upload.wikimedia.org/wikipedia/en/1/17/Dbzstmp.jpg" alt=" album cover">
+              </td>
+              <td><a targ="_blank" href="https://en.wikipedia.org/wiki/Ziggy_Stardust:_The_Motion_Picture" class="btn btn-primary">Wikipedia</a></td>
+            </tr>
+            <tr>
+              <td class="italic">Tin Machine Live: Oy Vey, Baby</td>
+              <td>1992 07 02</td>
+              <td>
+                <img src="https://upload.wikimedia.org/wikipedia/en/9/9c/Tin-machine_oy.jpg" alt=" album cover">
+              </td>
+              <td><a targ="_blank" href="https://en.wikipedia.org/wiki/Tin_Machine_Live:_Oy_Vey,_Baby" class="btn btn-primary">Wikipedia</a></td>
+            </tr>
+            <tr>
+              <td class="italic">Santa Monica '72[A]</td>
+              <td>1994 04 25</td>
+              <td>
+                <img src="https://upload.wikimedia.org/wikipedia/en/d/de/Santa_Monica_72.JPG" alt=" album cover">
+              </td>
+              <td><a targ="_blank" href="https://en.wikipedia.org/wiki/Santa_Monica_'72" class="btn btn-primary">Wikipedia</a></td>
+            </tr>
+            <tr>
+              <td class="italic">Live Santa Monica '72</td>
+              <td>2008 06 30</td>
+              <td>
+                <img src="https://upload.wikimedia.org/wikipedia/en/5/5c/Santa_Monica_-_David_Bowie.jpg" alt=" album cover">
+              </td>
+              <td><a targ="_blank" href="https://en.wikipedia.org/wiki/Live_Santa_Monica_'72" class="btn btn-primary">Wikipedia</a></td>
+            </tr>
+            <tr>
+              <td class="italic">Glass Spider Live</td>
+              <td>2008 10 23</td>
+              <td>
+                <img src="https://upload.wikimedia.org/wikipedia/en/c/c2/Glass_Spider_Live_-_David_Bowie.jpg" alt=" album cover">
+              </td>
+              <td><a targ="_blank" href="https://en.wikipedia.org/wiki/Glass_Spider_Live" class="btn btn-primary">Wikipedia</a></td>
+            </tr>
+            <tr>
+              <td class="italic">VH1 Storytellers</td>
+              <td>2009 07 06</td>
+              <td>
+                <img src="https://upload.wikimedia.org/wikipedia/en/b/ba/Bowie_storytellers.jpg" alt=" album cover">
+              </td>
+              <td><a targ="_blank" href="https://en.wikipedia.org/wiki/VH1_Storytellers_%28David_Bowie_album%29" class="btn btn-primary">Wikipedia</a></td>
+            </tr>
+            <tr>
+              <td class="italic">A Reality Tour</td>
+              <td>2010 01 26</td>
+              <td>
+                <img src="https://upload.wikimedia.org/wikipedia/en/5/59/BowieRealityTourCD.png" alt=" album cover">
+              </td>
+              <td><a targ="_blank" href="https://en.wikipedia.org/wiki/A_Reality_Tour_%28album%29" class="btn btn-primary">Wikipedia</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </main>
+
+      <footer class="pt3">
+        <h2 class="m0 h4 center">Made with <a href="http://basscss.com">Basscss</a> by <a href="https://github.com/brianzelip">Brian Zelip</a> for a <a href="http://www.freecodecamp.com/challenges/build-a-tribute-page">Free Code Camp</a> challenge.</h2>
+      </footer>
+
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/g/jquery@2.2.0,tablesorter@2.17.4"></script>
+  <script>
+
+    $(document).ready(function() 
+      { 
+        $("#albumData").tablesorter({
+          headers: {
+            0: {
+              sorter: false
+            },
+            2: {
+              sorter: false
+            },
+            3: {
+              sorter: false
+            }
+          }
+        });
+      } 
+    ); 
+  </script>
+
+  </body>
+
+</html>

@@ -1,0 +1,123 @@
+<header class="center orange py3">
+  <h1 class="mt2 h0">David Bowie's<br>Live Album Discography</h1>
+  <div>
+    <i class="animated rotateIn fa fa-star-half-o fa-2x"></i> <i class="animated rotateIn fa fa-star-half-o fa-2x"></i> <i class="animated rotateIn fa fa-star-half-o fa-2x"></i> <i class="animated rotateIn fa fa-star-half-o fa-2x"></i> <i class="animated rotateIn fa fa-star-half-o fa-2x"></i>
+  </div>
+</header>
+
+<div class="container p3">
+  <div class="clearfix">
+
+    <main class="overflow-scroll">
+      <table class="table-light overflow-hidden bg-white border rounded" id="albumData">
+        <thead>
+          <tr class="bg-darken-1">
+            <th>Album Title</th>
+            <th>Release Date</th>
+            <th>Cover Art</th>
+            <th>More Info</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="italic">David Live</td>
+            <td>29 October 1974</td>
+            <td>
+              <img src="https://upload.wikimedia.org/wikipedia/en/4/4f/Davidlive.jpg" alt="David Live album cover"/>
+            </td>
+            <td><a targ="_blank" href="https://en.wikipedia.org/wiki/David_Live" class="btn btn-primary">Wikipedia</a></td>
+          </tr>
+          <tr>
+            <td class="italic">Stage</td>
+            <td>	8 September 1978</td>
+            <td>
+              <img src="https://upload.wikimedia.org/wikipedia/en/e/e1/Stage_album_cover.jpg" alt="Stage album cover" />
+            </td>
+            <td><a targ="_blank" href="https://en.wikipedia.org/wiki/Stage_%28David_Bowie_album%29" class="btn btn-primary">Wikipedia</a></td>
+          </tr>
+          <tr>
+            <td class="italic">Ziggy Stardust: The Motion Picture</td>
+            <td>October 1983</td>
+            <td>
+              <img src="https://upload.wikimedia.org/wikipedia/en/1/17/Dbzstmp.jpg" alt=" album cover">
+            </td>
+            <td><a targ="_blank" href="https://en.wikipedia.org/wiki/Ziggy_Stardust:_The_Motion_Picture" class="btn btn-primary">Wikipedia</a></td>
+          </tr>
+          <tr>
+            <td class="italic">Tin Machine Live: Oy Vey, Baby</td>
+            <td>2 July 1992</td>
+            <td>
+              <img src="https://upload.wikimedia.org/wikipedia/en/9/9c/Tin-machine_oy.jpg" alt=" album cover">
+            </td>
+            <td><a targ="_blank" href="https://en.wikipedia.org/wiki/Tin_Machine_Live:_Oy_Vey,_Baby" class="btn btn-primary">Wikipedia</a></td>
+          </tr>
+          <tr>
+            <td class="italic">Santa Monica '72[A]</td>
+            <td>25 April 1994</td>
+            <td>
+              <img src="https://upload.wikimedia.org/wikipedia/en/d/de/Santa_Monica_72.JPG" alt=" album cover">
+            </td>
+            <td><a targ="_blank" href="https://en.wikipedia.org/wiki/Santa_Monica_'72" class="btn btn-primary">Wikipedia</a></td>
+          </tr>
+          <tr>
+            <td class="italic">Live Santa Monica '72</td>
+            <td>30 June 2008</td>
+            <td>
+              <img src="https://upload.wikimedia.org/wikipedia/en/5/5c/Santa_Monica_-_David_Bowie.jpg" alt=" album cover">
+            </td>
+            <td><a targ="_blank" href="https://en.wikipedia.org/wiki/Live_Santa_Monica_'72" class="btn btn-primary">Wikipedia</a></td>
+          </tr>
+          <tr>
+            <td class="italic">Glass Spider Live</td>
+            <td>23 October 2008</td>
+            <td>
+              <img src="https://upload.wikimedia.org/wikipedia/en/c/c2/Glass_Spider_Live_-_David_Bowie.jpg" alt=" album cover">
+            </td>
+            <td><a targ="_blank" href="https://en.wikipedia.org/wiki/Glass_Spider_Live" class="btn btn-primary">Wikipedia</a></td>
+          </tr>
+          <tr>
+            <td class="italic">VH1 Storytellers</td>
+            <td>6 July 2009</td>
+            <td>
+              <img src="https://upload.wikimedia.org/wikipedia/en/b/ba/Bowie_storytellers.jpg" alt=" album cover">
+            </td>
+            <td><a targ="_blank" href="https://en.wikipedia.org/wiki/VH1_Storytellers_%28David_Bowie_album%29" class="btn btn-primary">Wikipedia</a></td>
+          </tr>
+          <tr>
+            <td class="italic">A Reality Tour</td>
+            <td>26 January 2010</td>
+            <td>
+              <img src="https://upload.wikimedia.org/wikipedia/en/5/59/BowieRealityTourCD.png" alt=" album cover">
+            </td>
+            <td><a targ="_blank" href="https://en.wikipedia.org/wiki/A_Reality_Tour_%28album%29" class="btn btn-primary">Wikipedia</a></td>
+          </tr>
+        </tbody>
+      </table>
+    </main>
+
+    <footer class="pt3">
+      <h2 class="m0 h4 center">Made with <a href="http://basscss.com">Basscss</a> by <a href="https://github.com/brianzelip">Brian Zelip</a> for a <a href="http://www.freecodecamp.com/challenges/build-a-tribute-page">Free Code Camp</a> challenge.</h2>
+    </footer>
+
+  </div>
+</div>
+
+<script>
+  $(document).ready(function() 
+    { 
+      $("#albumData").tablesorter({
+        headers: {
+          0: {
+            sorter: false
+          },
+          2: {
+            sorter: false
+          },
+          3: {
+            sorter: false
+          }
+        }
+      });
+    } 
+  ); 
+</script>
