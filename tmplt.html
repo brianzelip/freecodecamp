@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>native templating demo</title>
+    <meta name="description" content="Native templating demo based on the blog post by Jon Suh, https://jonsuh.com/blog/javascript-templating-without-a-library/">
+    <meta name="author" content="Brian Zelip">
+    <meta name="keywords" content="sandbox, javascript, templating">
+  </head>
+
+  <body>
+
+    <ul id="list">
+      <!--Generated list items will go here-->
+    </ul>
+
+    <script id="template-list-item" type="text/template">
+      <li>
+        <a href="{{url}}">{{name}}</a>, {{city}}, {{state}}
+      </li>
+    </script>
+
+    <script>
+      // Object we’re working with
+      var dataObject = {
+        0: {"id":5,"name":"Basecamp","city":"Chicago","state":"IL","url":"https://basecamp.com/"},
+        1: {"id":17,"name":"Google","city":"Mountain View","state":"CA","url":"http://google.com/"}
+      };
+      // Cache of the template
+      var template = document.getElementById("template-list-item");
+      // Get the contents of the template
+      var templateHtml = template.innerHTML;
+      // Final HTML variable as empty string
+      var listHtml = "";
+
+      // Loop through dataObject, replace placeholder tags
+      // with actual data, and generate final HTML
+      for (var key in dataObject) {
+        listHtml += templateHtml.replace(/{{id}}/g, dataObject[key].id)
+                                .replace(/{{name}}/g, dataObject[key].name)
+                                .replace(/{{city}}/g, dataObject[key].city)
+                                .replace(/{{state}}/g, dataObject[key].state)
+                                .replace(/{{url}}/g, dataObject[key].url);
+      };
+
+      // Replace the HTML of #list with final HTML
+      document.getElementById("list").innerHTML = listHtml;
+    </script>
+
+  </body>
+
+</html>
