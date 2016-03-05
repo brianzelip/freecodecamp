@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://npmcdn.com/basscss@7.1.1/css/basscss.min.css">
     <title>Personal Portfolio Demo via FreeCodeCamp.com</title>
     <meta name="description" content="">
@@ -100,7 +101,7 @@
       <div class="top-0 right-0 left-0 fixed p3 white bg-black">
         <div class="flex justify-between items-center">
           <div>
-            <h1 class="m0"><span class="red">z</span>o<span class="green">o</span><span class="red">l</span>o<span class="green">o</span></h1>
+            <a href="#" class="btn p0"><h1 class="m0"><span class="red">z</span><span class="white">o</span><span class="green">o</span><span class="red">l</span><span class="white">o</span><span class="green">o</span></h1></a>
           </div>
           <div>
             <a href="#about" class="btn underline">about</a>
@@ -145,7 +146,7 @@
                   </div>
                   <div class="border mtn1 p2">
                     <h1 class="mt0">Web Color Speak</h1>
-                    <p class="bold">Translate any web color value.</p>
+                    <p class="bold">Translate any web <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/color_value">color value</a>.</p>
                     <p>This web app was built using javascript and lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi nulla magni debitis sint omnis itaque.</p>
                     <nav>
                       <ul class="list-reset m0">
@@ -204,13 +205,31 @@
     <section id="contact">
       <div class="bg-red">
         <div class="vh100 flex justify-center items-center">
-          <div class="col-10 sm-col-8 md-col-6 p2 border bg-lighten-4">
-            <h1 class="mt0">Contact</h1>
-
+          <div class="col-10 md-col-7 flex justify-around">
+            <a href="#" class="btn flex flex-column justify-center items-center white">
+              <i class="fa fa-5x fa-twitter"></i>
+              <p class="m0 h3">Twitter</p>
+            </a>
+            <a href="#" class="btn flex flex-column justify-center items-center white">
+              <i class="fa fa-5x fa-github"></i>
+              <p class="m0 h3">GitHub</p>
+            </a>
+            <a href="#" class="btn flex flex-column justify-center items-center white">
+              <i class="fa fa-5x fa-envelope-o"></i>
+              <p class="m0 h3">Email</p>
+            </a>
+            <a href="#" class="btn flex flex-column justify-center items-center white">
+              <i class="fa fa-5x fa-map-marker"></i>
+              <p class="m0 h3">Location</p>
+            </a>
           </div>
         </div>
       </div>
     </section>
+
+    <footer class="py3 bg-yellow">
+      <p class="m0 p0 center olive">&copy; 2016 zooloo &middot; made with &hearts; in space</p>
+    </footer>
 
   </body>
 
