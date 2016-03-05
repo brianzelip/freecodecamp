@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>TITLE</title>
+    <meta name="description" content="">
+    <meta name="author" content="Brian Zelip">
+    <meta name="keywords" content="">
+    <style>
+      html,
+      body { 
+        min-height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+
+      .vh100 { min-height: 100vh; }
+
+      .h0 { font-size: 6rem; }
+
+      .mtn1 { margin-top: -.5rem; }
+
+      .mtn2 { margin-top: -1rem; }
+
+      .circle { border-radius: 50%; }
+
+      .bg-gray { background-color: #ddd; }
+
+      .border-thick { border: 1rem solid white; }
+
+      /* Basscss Flexbox */
+      .flex { display: flex; }
+
+      @media (min-width: 40em) {
+        .sm-flex { display: flex; }
+      }
+
+      @media (min-width: 52em) {
+        .md-flex { display: flex; }
+      }
+
+      @media (min-width: 64em) {
+        .lg-flex { display: flex; }
+      }
+
+      .flex-column  { flex-direction: column; }
+      .flex-wrap    { flex-wrap: wrap; }
+
+      .items-start    { align-items: flex-start; }
+      .items-end      { align-items: flex-end; }
+      .items-center   { align-items: center; }
+      .items-baseline { align-items: baseline; }
+      .items-stretch  { align-items: stretch; }
+
+      .self-start    { align-self: flex-start; }
+      .self-end      { align-self: flex-end; }
+      .self-center   { align-self: center; }
+      .self-baseline { align-self: baseline; }
+      .self-stretch  { align-self: stretch; }
+
+      .justify-start   { justify-content: flex-start; }
+      .justify-end     { justify-content: flex-end; }
+      .justify-center  { justify-content: center; }
+      .justify-between { justify-content: space-between; }
+      .justify-around  { justify-content: space-around; }
+
+      .content-start   { align-content: flex-start; }
+      .content-end     { align-content: flex-end; }
+      .content-center  { align-content: center; }
+      .content-between { align-content: space-between; }
+      .content-around  { align-content: space-around; }
+      .content-stretch { align-content: stretch; }
+
+      /* 1. Fix for Chrome 44 bug. https://code.google.com/p/chromium/issues/detail?id=506893 */
+      .flex-auto {
+        flex: 1 1 auto;
+        min-width: 0; /* 1 */
+        min-height: 0; /* 1 */
+      }
+      .flex-none { flex: none; }
+
+      .order-0 { order: 0; }
+      .order-1 { order: 1; }
+      .order-2 { order: 2; }
+      .order-3 { order: 3; }
+      .order-last { order: 99999; }
+
+      /* Basscss Background Images */
+      .bg-cover   { background-size: cover; }
+      .bg-contain { background-size: contain; }
+      .bg-center  { background-position: center; }
+      .bg-top     { background-position: top; }
+      .bg-right   { background-position: right; }
+      .bg-bottom  { background-position: bottom; }
+      .bg-left    { background-position: left; }
+    </style>
+  </head>
+
+  <body>
+
+    <main class="vh100 bg-gray flex justify-center items-center">
+      <img src="img/biopic.jpg" alt="biopic avatar" class="circle border-thick">
+    </main>
+
+  </body>
+
+</html>
