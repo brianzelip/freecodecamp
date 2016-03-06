@@ -26,6 +26,10 @@
       .box-shadow { box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.22); }
 
       .hover-box-shadow:hover { box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.22); }
+      
+      @media (min-width: 40em) {
+        .sm-underline { text-decoration: underline !important; }
+      }
 
       /* Basscss Flexbox */
       .flex { display: flex; }
@@ -100,6 +104,76 @@
         padding-left: .5rem;
         padding-right: .5rem;
       }
+
+      /* Basscss Responsive Padding */
+      @media (min-width: 40em) {
+        .sm-p0  { padding:        0; }
+        .sm-pt0 { padding-top:    0; }
+        .sm-pr0 { padding-right:  0; }
+        .sm-pb0 { padding-bottom: 0; }
+        .sm-pl0 { padding-left:   0; }
+        .sm-px0 { padding-left:   0; padding-right:  0; }
+        .sm-py0 { padding-top:    0; padding-bottom: 0; }
+        .sm-p1  { padding:        .5rem; }
+        .sm-pt1 { padding-top:    .5rem; }
+        .sm-pr1 { padding-right:  .5rem; }
+        .sm-pb1 { padding-bottom: .5rem; }
+        .sm-pl1 { padding-left:   .5rem; }
+        .sm-px1 { padding-left:   .5rem; padding-right:  .5rem; }
+        .sm-py1 { padding-top:    .5rem; padding-bottom: .5rem; }
+        .sm-p2  { padding:        1rem; }
+        .sm-pt2 { padding-top:    1rem; }
+        .sm-pr2 { padding-right:  1rem; }
+        .sm-pb2 { padding-bottom: 1rem; }
+        .sm-pl2 { padding-left:   1rem; }
+        .sm-px2 { padding-left:   1rem; padding-right:  1rem; }
+        .sm-py2 { padding-top:    1rem; padding-bottom: 1rem; }
+        .sm-p3  { padding:        2rem; }
+        .sm-pt3 { padding-top:    2rem; }
+        .sm-pr3 { padding-right:  2rem; }
+        .sm-pb3 { padding-bottom: 2rem; }
+        .sm-pl3 { padding-left:   2rem; }
+        .sm-px3 { padding-left:   2rem; padding-right:  2rem; }
+        .sm-py3 { padding-top:    2rem; padding-bottom: 2rem; }
+        .sm-p4  { padding:        4rem; }
+        .sm-pt4 { padding-top:    4rem; }
+        .sm-pr4 { padding-right:  4rem; }
+        .sm-pb4 { padding-bottom: 4rem; }
+        .sm-pl4 { padding-left:   4rem; }
+        .sm-px4 { padding-left:   4rem; padding-right:  4rem; }
+        .sm-py4 { padding-top:    4rem; padding-bottom: 4rem; }
+      }
+
+
+
+
+      /* BZ custom header nav buttons */
+      .btn-nav {
+        font-family: inherit;
+        font-size: inherit;
+        font-weight: 700;
+        cursor: pointer;
+        display: inline-block;
+        line-height: 1.125rem;
+        padding: .5rem .2rem;
+        margin: 0;
+        height: auto;
+        border: 1px solid transparent;
+        vertical-align: middle;
+        -webkit-appearance: none;
+        color: inherit;
+        background-color: transparent;
+      }
+      .btn-nav, .btn-nav:hover {
+        text-decoration: none;
+      }
+      .btn-nav:focus {
+        outline: none;
+        border-color: rgba(0, 0, 0, .125);
+        box-shadow: 0 0 0 3px rgba(0, 0, 0, .25);
+      }
+
+
       @media (min-width: 40em) {
         .sm-btn {
           font-family: inherit;
@@ -136,15 +210,15 @@
   <body>
 
     <nav>
-      <div class="top-0 right-0 left-0 fixed p3 white bg-black">
+      <div class="top-0 right-0 left-0 fixed p2 sm-p3 white bg-black">
         <div class="flex justify-between items-center">
           <div>
             <a href="#" class="btn p0"><h1 class="m0"><span class="red">z</span><span class="white">o</span><span class="green">o</span><span class="red">l</span><span class="white">o</span><span class="green">o</span></h1></a>
           </div>
           <div>
-            <a href="#about" class="underline btn white">about</a>
-            <a href="#works" class="btn underline white">works</a>
-            <a href="#contact" class="btn underline white">contact</a>
+            <a href="#about" class="btn-nav white">about</a>
+            <a href="#works" class="btn-nav white">works</a>
+            <a href="#contact" class="btn-nav white">contact</a>
           </div>
         </div>
       </div>
