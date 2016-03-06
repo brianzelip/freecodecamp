@@ -17,11 +17,25 @@
 
       .vh100 { min-height: 100vh; }
 
-      .h0 { font-size: 6rem; }
+      .h0 { font-size: 4rem; }
+
+      @media (min-width: 40em) {
+        .h0 { font-size: 6rem; }
+      }
 
       .mtn1 { margin-top: -.5rem; }
 
       .mtn2 { margin-top: -1rem; }
+
+      .mrn1 { margin-right: -.5rem; }
+
+      .mrn2 { margin-right: -1rem; }
+
+      @media (min-width: 40em) {
+        .sm-mrn2 { margin-right: -1rem; }
+      }
+
+      .mrn3 { margin-right: -2rem; }
 
       .box-shadow { box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.22); }
 
@@ -48,6 +62,13 @@
 
       .flex-column  { flex-direction: column; }
       .flex-wrap    { flex-wrap: wrap; }
+
+      .flex-row { flex-direction: row; }
+      @media (min-width: 40em) {
+        .sm-flex-row  { flex-direction: row; }
+      }
+
+
 
       .items-start    { align-items: flex-start; }
       .items-end      { align-items: flex-end; }
@@ -144,9 +165,6 @@
         .sm-py4 { padding-top:    4rem; padding-bottom: 4rem; }
       }
 
-
-
-
       /* BZ custom header nav buttons */
       .btn-nav {
         font-family: inherit;
@@ -159,12 +177,13 @@
         margin: 0;
         height: auto;
         border: 1px solid transparent;
+        text-decoration: underline;
         vertical-align: middle;
         -webkit-appearance: none;
         color: inherit;
         background-color: transparent;
       }
-      .btn-nav, .btn-nav:hover {
+       .btn-nav:hover {
         text-decoration: none;
       }
       .btn-nav:focus {
@@ -172,46 +191,17 @@
         border-color: rgba(0, 0, 0, .125);
         box-shadow: 0 0 0 3px rgba(0, 0, 0, .25);
       }
-
-
       @media (min-width: 40em) {
-        .sm-btn {
-          font-family: inherit;
-          font-size: inherit;
-          font-weight: 700;
-          cursor: pointer;
-          display: inline-block;
-          line-height: 1.125rem;
-          padding: .5rem 1rem;
-          margin: 0;
-          height: auto;
-          border: 1px solid transparent;
-          vertical-align: middle;
-          -webkit-appearance: none;
-          color: inherit;
-          background-color: transparent;
-        }
-        .sm-btn, .sm-btn:hover {
-          text-decoration: none;
-        }
-        .sm-btn:focus {
-          outline: none;
-          border-color: rgba(0, 0, 0, .125);
-          box-shadow: 0 0 0 3px rgba(0, 0, 0, .25);
-        }
-        ::-moz-focus-inner {
-          border: 0;
-          padding: 0;
-        }
+        .btn-nav { padding: .5rem 1rem; }
       }
     </style>
   </head>
 
   <body>
 
-    <nav>
+    <header>
       <div class="top-0 right-0 left-0 fixed p2 sm-p3 white bg-black">
-        <div class="flex justify-between items-center">
+        <nav class="flex justify-between items-center">
           <div>
             <a href="#" class="btn p0"><h1 class="m0"><span class="red">z</span><span class="white">o</span><span class="green">o</span><span class="red">l</span><span class="white">o</span><span class="green">o</span></h1></a>
           </div>
@@ -220,9 +210,9 @@
             <a href="#works" class="btn-nav white">works</a>
             <a href="#contact" class="btn-nav white">contact</a>
           </div>
-        </div>
+        </nav>
       </div>
-    </nav>
+    </header>
 
     <section>
       <div class="vh100 bg-cover white bg-gray" style="background-image: url(http://hdwallpapersfit.com/wp-content/uploads/2015/01/hubble-images-large-wallpaper.jpg)">
@@ -249,8 +239,8 @@
       <div class="">
         <div class="vh100 flex justify-center items-center">
           <div class="col-10 md-col-9 p2">
-            <h1 class="m0 center">works</h1>
-            <div class="flex justify-between mxn2">
+            <h1 class="mb3 center">Works</h1>
+            <div class="md-flex justify-between mxn2">
               <div class="flex-auto p2">
                 <article class="rounded hover-box-shadow">
                   <div>
@@ -317,7 +307,7 @@
     <section id="contact">
       <div class="bg-red">
         <div class="vh100 flex justify-center items-center">
-          <div class="col-10 md-col-7 flex justify-around">
+          <div style="height: 100%;" class="col-10 flex flex-column sm-flex-row justify-around">
             <a href="#" class="btn flex flex-column justify-center items-center white">
               <i class="fa fa-5x fa-twitter"></i>
               <p class="m0 h3">Twitter</p>
@@ -340,7 +330,7 @@
     </section>
 
     <footer class="py3 bg-yellow">
-      <p class="m0 p0 center olive h3">&copy; 2016 zooloo &middot; made (with my head) in the <span class="h1">⛅</span></p>
+      <p class="m0 px1 center olive h3">&copy; 2016 zooloo &middot; made (with my head) in the <span class="h1">⛅</span></p>
     </footer>
 
   </body>
