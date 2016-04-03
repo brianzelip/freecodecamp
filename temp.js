@@ -1,0 +1,2 @@
+switch (count):
+  case1;
