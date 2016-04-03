@@ -127,3 +127,32 @@ function lookUp(firstName, prop){
 lookUp("Kristian", "lastName");
 
 ```
+
+
+**Here is the solution provided in the waypoint linked above**
+
+```
+Code Solution:
+
+for (var x = 0; x < contacts.length; x++){
+    if (contacts[x].firstName === firstName) {
+        if (contacts[x][prop]) {
+            return contacts[x][prop];
+        } else {
+            return "No such property";
+        }
+    }
+}
+return "No such contact";
+
+Code Explanation:
+
+    The for loop runs, starting at the first object in the contacts list
+    If the firstName parameter passed into the function matches the value of the "firstName" key in the first object, the if statement passes
+    Then, if the prop parameter passed into the function is present in that object, the value of the prop is returned
+        If the second if statement fails, "No such property" is returned
+    If the first if statement fails, the for loop continues on to the next object in the contact list
+    If the firstName parameter isn't matched by the final contact object, the for loop exits and "No such contact" is returned
+
+```
+
