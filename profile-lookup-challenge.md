@@ -1,6 +1,10 @@
 ## [Profile Lookup](https://www.freecodecamp.com/challenges/profile-lookup) challenge
 
 
+The [waypoint hints](https://github.com/FreeCodeCamp/FreeCodeCamp/wiki/Checkpoint-Profile-Lookup) were very helpful in this case.
+Particularly the nested `if` statement, and the keeping the `return "No such contact"` out of the `for` loop.
+
+
 **My browser dev console & scratchpad solution**
 
 ```js
