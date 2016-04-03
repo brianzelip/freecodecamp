@@ -1,6 +1,7 @@
 ## [Profile Lookup](https://www.freecodecamp.com/challenges/profile-lookup) challenge
 
-## My browser dev console & scratchpad solution
+
+**My browser dev console & scratchpad solution**
 
 ```js
 /*
@@ -66,7 +67,8 @@ lookUp("Kristian", "girlFriend");
 ```
 
 
-### My submitted solution (less feedback than above)
+
+**My submitted solution (less feedback than above)**
 
 ```js
 //Setup
