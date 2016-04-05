@@ -110,3 +110,56 @@ titleCase("I'm a little tea pot");
 
 ```
 
+
+**Return Largest Numbers in Arrays**
+
+```js
+function largestOfFour(arr) {
+  // You can do this!
+  var y; // this is the variable in the for loop that will take the returned length of the new array created from the first and largest value in each of arr's sub arrays.
+  var newArray = []; // this is the new array to be created from the first and largest values in each of arr's sub arrays.
+  for (i=0; i<arr.length; i++) {
+    arr[i].sort(function(a,b) {
+      return b - a;
+    });
+    y = newArray.push(arr[i][0]);
+  }
+  return newArray;
+}
+
+largestOfFour([[4, 5, 1, 3], [13, 27, 18, 26], [32, 35, 37, 39], [1000, 1001, 857, 1]]);
+
+```
+
+
+function confirmEnding(str, target) {
+  // "Never give up and good luck will find you."
+  // -- Falcor
+  if (target === str.charAt(str.length-1)) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+confirmEnding("Bastian", "n");
+
+
+/*
+
+a solution that only works when the target string is one letter
+
+function confirmEnding(str, target) {
+  // "Never give up and good luck will find you."
+  // -- Falcor
+  if (target === str.charAt(str.length-1)) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+confirmEnding("Bastian", "n");
+
+
+*/
