@@ -94,3 +94,19 @@ findLongestWord("What if we try a super-long word such as otorhinolaryngology");
 
 ```
 
+**Capitalize the first letter of every word in a string and lower case all other letters**
+
+```js
+function titleCase(str) {
+  var loweredAndSplit = str.toLowerCase().split(' ');
+  for (i=0; i<loweredAndSplit.length; i++) {
+    loweredAndSplit[i] = loweredAndSplit[i][0].toUpperCase() + loweredAndSplit[i].slice(1);
+    // THANKS !SO! http://stackoverflow.com/questions/1026069/capitalize-the-first-letter-of-string-in-javascript#1026087
+  }
+  return loweredAndSplit.join(' ');
+}
+
+titleCase("I'm a little tea pot");
+
+```
+
