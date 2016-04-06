@@ -137,8 +137,7 @@ largestOfFour([[4, 5, 1, 3], [13, 27, 18, 26], [32, 35, 37, 39], [1000, 1001, 85
 
 ```js
 function confirmEnding(str, target) {
-  var x = -(target.length); // setup the char index from which the substring is created from str to compare to the target
-  if (target === str.substr(x)) {
+  if (target === str.substr(-target.length)) {
     return true;
   } else {
     return false;
