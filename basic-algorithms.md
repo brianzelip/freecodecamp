@@ -132,10 +132,13 @@ largestOfFour([[4, 5, 1, 3], [13, 27, 18, 26], [32, 35, 37, 39], [1000, 1001, 85
 ```
 
 
+**Check if an input string matches the ending of another input string**
+(confirm the ending challenge)
+
+```js
 function confirmEnding(str, target) {
-  // "Never give up and good luck will find you."
-  // -- Falcor
-  if (target === str.charAt(str.length-1)) {
+  var x = -(target.length); // setup the char index from which the substring is created from str to compare to the target
+  if (target === str.substr(x)) {
     return true;
   } else {
     return false;
@@ -144,22 +147,78 @@ function confirmEnding(str, target) {
 
 confirmEnding("Bastian", "n");
 
+```
 
-/*
 
-a solution that only works when the target string is one letter
+**Repeat an input string an input number of times**
 
-function confirmEnding(str, target) {
-  // "Never give up and good luck will find you."
-  // -- Falcor
-  if (target === str.charAt(str.length-1)) {
-    return true;
+```js
+function repeatStringNumTimes(str, num) {
+  // repeat after me
+  var emptyStr = '';
+  if (num < 0) {
+    return emptyStr;
   } else {
-    return false;
+    return str.repeat(num);
   }
 }
 
-confirmEnding("Bastian", "n");
+repeatStringNumTimes("abc", 3);
+```
+
+**Truncate a given string if the string is longer than a given max string length**
+
+```js
+function truncateString(str, num) {
+  // the next 2 lines were the first iteration of code I got to solve one of the rules, it lead me to the general solution
+  //var x = str.substr(0,num-3);
+  //return x.concat('...');
+  if (str.length > num) {
+    if (num <= 3) {
+      return str.substr(0,num).concat('...');
+    } else {
+      return str.substr(0,num-3).concat('...');
+    }
+  } else {
+    return str;
+  }
+}
+
+truncateString("A-tisket a-tasket A green and yellow basket", 11);
+```
 
 
-*/
+**Write a function that splits an array (first argument) into groups the length of size (second argument) and returns them as a two-dimensional array**
+
+```js
+function chunkArrayInGroups(arr, size) {
+  /* references:
+      http://stackoverflow.com/questions/31838834/free-code-camp-bonfire-chunky-monkey
+      https://github.com/FreeCodeCamp/FreeCodeCamp/wiki/Algorithm-Chunky-Monkey
+  */
+  var newArr = [];
+  var y;
+  for (i=0; i<arr.length; i+=size) {
+    y = newArr.push(arr.slice(i,size+i));
+  }
+  return newArr;
+}
+
+chunkArrayInGroups([0, 1, 2, 3, 4, 5, 6, 7, 8], 4);
+```
+
+
+**Return the remaining elements of an array after chopping off n elements from the head**
+
+```js
+function slasher(arr, howMany) {
+  // thanks to https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/splice
+  var removeHowManyFromHead = [];
+  removeHowManyFromHead = arr.splice(0,howMany);
+  return arr;
+}
+
+slasher([1, 2, 3], 2);
+```
+
+
