@@ -222,54 +222,39 @@ slasher([1, 2, 3], 2);
 
 
 **Mutations**
+
+
 ```js
 function mutation(arr) {
-  var test = arr[1].toLowerCase();
-  var target = arr[0].toLowerCase();
-  for (i=0;i<test.length;i++) {
-    if (target.indexOf(test[i]) < 0)
-      return false;
-  }
-  return true;
-}
-mutation(["helLlo", "heY"]);
-
-
-/*
-function mutation(arr) {
-  for (i=0;i<arr.length; i++) {
+  for (i=0; i<arr.length; i++) {
     arr[i] = arr[i].toLowerCase();
   }
-  //console.log("Check if lowercase is working: " + arr);
-
-  for (x=0;x<arr[1].length;x++) {
+  for (x=0; x<arr[1].length; x++) {
     if (arr[0].indexOf(arr[1][x]) < 0) {
       return false;
     }
-    return true;
-  }
-  
+  }// no else statement is made, this for loop only serves to return false if a character in arr[1] is not found in arr[0].
+  return true;// if the function makes it this far that means that every character in arr[1] is found in arr[0], ie SHIT IS TRUE
 }
+ 
+mutation(["hello", "heY"]);
 
-mutation(["helLlo", "heY"]);
+/*
+More checks:
+
+mutation(["hello", "hey"]) should return false.
+mutation(["hello", "Hello"]) should return true.
+mutation(["zyxwvutsrqponmlkjihgfedcba", "qrstu"]) should return true.
+mutation(["Mary", "Army"]) should return true.
+mutation(["Mary", "Aarmy"]) should return true.
+mutation(["Alien", "line"]) should return true.
+mutation(["floor", "for"]) should return true.
+mutation(["hello", "neo"]) should return false.
 */
 
 
+```
 
-/*
-function mutation(arr) {
-  //lowercase every char in each string
-  for (i=0;i<arr.length;i++) {
-    arr[i] = arr[i].toLowerCase();
-  }
-  // check if each char in arr[1] is in arr[0]
-  for (x=0; x<arr[1].length; x++) {
-    if (arr[0].indexOf(arr[1][x]) !== -1) {
-      return false;
-    } else
-    return true;
-  }
-}
 
-mutation(["hello", "he"]);
-*/```
+
+****
