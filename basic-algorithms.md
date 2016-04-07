@@ -257,4 +257,27 @@ mutation(["hello", "neo"]) should return false.
 
 
 
-****
+**False bouncer**
+
+
+```js
+function bouncer(arr) {
+  // Don't show a false ID to this bouncer.
+  var falsey = [false, null, 0, undefined, NaN, ''];
+  i=0;
+  while (i<arr.length) {
+    i++;
+    f = 0;
+    while (f<falsey.length) {
+      if (arr[i] === falsey[f]) {
+        return falsey[f];
+      }
+      f++;
+    }
+  }
+  
+  filtered = arr.filter(bouncer);
+}
+
+bouncer([7, "ate", false, '',9]);
+```
