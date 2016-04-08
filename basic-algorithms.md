@@ -20,7 +20,7 @@ function factorialize(num) {
     facArray.push(i);
   }
   console.log(facArray);
-  
+
   for (x = 0; x < facArray.length; x++) {
     product = product * facArray[x];
   }
@@ -43,7 +43,7 @@ function palindrome(str) {
   // Good luck!
   var strAlphaNumify = str.replace(/[\W_]/gi,'');
   var strLowerify = strAlphaNumify.toLowerCase();
-  
+
   if (strLowerify === strLowerify.split('').reverse().join('')) {
     return true;
   } else {
@@ -63,7 +63,7 @@ palindrome("nope") should return false.
 palindrome("almostomla") should return false.
 palindrome("My age is 0, 0 si ega ym.") should return true.
 palindrome("1 eye for of 1 eye.") should return false.
-palindrome("0_0 (: /-\ :) 0-0") should return true. 
+palindrome("0_0 (: /-\ :) 0-0") should return true.
 */
 
 
@@ -77,17 +77,17 @@ function findLongestWord(str) {
 
   var arrayOfStrings = str.split(' ');
   var arrayOfLetterCounts = [];
-  
+
   for (i = 0; i < arrayOfStrings.length; i++) {
     arrayOfLetterCounts.push(arrayOfStrings[i].length);
   }
-  
+
   arrayOfLetterCounts.sort(function(a,b){
     return b-a;
   });
-  
+
   return arrayOfLetterCounts[0];
-  
+
 }
 
 findLongestWord("What if we try a super-long word such as otorhinolaryngology");
@@ -236,7 +236,7 @@ function mutation(arr) {
   }// no else statement is made, this for loop only serves to return false if a character in arr[1] is not found in arr[0].
   return true;// if the function makes it this far that means that every character in arr[1] is found in arr[0], ie SHIT IS TRUE
 }
- 
+
 mutation(["hello", "heY"]);
 
 /*
@@ -281,11 +281,37 @@ bouncer([7, "ate", "", false, 9]);
 //    http://stackoverflow.com/questions/26899092/javascript-array-manipulation-to-delete-odd-array-elements#26899108
 //    http://www.diveintojavascript.com/core-javascript-reference/the-array-object/array-filter
 //    https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/isNaN
-//    
+
 ```
 
-****
+*Here is another expression of the same solution above to the Falsy Bouncer challenge*
 
 ```js
+function bouncer(arr) {
 
+  var fileteredArr = [];
+  fileteredArr = arr.filter(function checkFalsyValues(value) {
+    return Boolean(value);
+  });
+
+  return fileteredArr;
+}
+
+bouncer([7, "ate", "", false, 9]);
+
+```
+
+**Seek and Destroy**
+
+the following text is the start to a solution
+
+```js
+function destroyer(arr) {
+
+  var args = Array.prototype.slice.call(arguments);
+  return args.splice(0, 1);
+  //return args;  
+}
+
+destroyer([1, 2, 3, 1, 2, 3], 2, 3);
 ```
