@@ -256,28 +256,36 @@ mutation(["hello", "neo"]) should return false.
 ```
 
 
+**Remove elements with a falsy value from an array**
 
-**False bouncer**
-
+"Falsy bouncer" challenge
 
 ```js
 function bouncer(arr) {
-  // Don't show a false ID to this bouncer.
-  var falsey = [false, null, 0, undefined, NaN, ''];
-  i=0;
-  while (i<arr.length) {
-    i++;
-    f = 0;
-    while (f<falsey.length) {
-      if (arr[i] === falsey[f]) {
-        return falsey[f];
-      }
-      f++;
-    }
-  }
-  
-  filtered = arr.filter(bouncer);
+  var filteredArr = [];
+  filteredArr = arr.filter(removeFalsyValues);
+  return filteredArr;
 }
 
-bouncer([7, "ate", false, '',9]);
+function removeFalsyValues(value) {
+  return Boolean(value);
+}
+
+bouncer([7, "ate", "", false, 9]);
+
+// big thanks to Coding Tutorials 360
+// https://www.youtube.com/watch?v=Xu5zy0EZB5M
+
+// ps - i don't understand exactly why the Boolean and filter methods work together for this solution
+// some how the following links didn't help reach a solution:
+//    http://stackoverflow.com/questions/26899092/javascript-array-manipulation-to-delete-odd-array-elements#26899108
+//    http://www.diveintojavascript.com/core-javascript-reference/the-array-object/array-filter
+//    https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/isNaN
+//    
+```
+
+****
+
+```js
+
 ```
