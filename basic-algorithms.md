@@ -20,7 +20,7 @@ function factorialize(num) {
     facArray.push(i);
   }
   console.log(facArray);
-  
+
   for (x = 0; x < facArray.length; x++) {
     product = product * facArray[x];
   }
@@ -43,7 +43,7 @@ function palindrome(str) {
   // Good luck!
   var strAlphaNumify = str.replace(/[\W_]/gi,'');
   var strLowerify = strAlphaNumify.toLowerCase();
-  
+
   if (strLowerify === strLowerify.split('').reverse().join('')) {
     return true;
   } else {
@@ -63,7 +63,7 @@ palindrome("nope") should return false.
 palindrome("almostomla") should return false.
 palindrome("My age is 0, 0 si ega ym.") should return true.
 palindrome("1 eye for of 1 eye.") should return false.
-palindrome("0_0 (: /-\ :) 0-0") should return true. 
+palindrome("0_0 (: /-\ :) 0-0") should return true.
 */
 
 
@@ -77,17 +77,17 @@ function findLongestWord(str) {
 
   var arrayOfStrings = str.split(' ');
   var arrayOfLetterCounts = [];
-  
+
   for (i = 0; i < arrayOfStrings.length; i++) {
     arrayOfLetterCounts.push(arrayOfStrings[i].length);
   }
-  
+
   arrayOfLetterCounts.sort(function(a,b){
     return b-a;
   });
-  
+
   return arrayOfLetterCounts[0];
-  
+
 }
 
 findLongestWord("What if we try a super-long word such as otorhinolaryngology");
@@ -236,7 +236,7 @@ function mutation(arr) {
   }// no else statement is made, this for loop only serves to return false if a character in arr[1] is not found in arr[0].
   return true;// if the function makes it this far that means that every character in arr[1] is found in arr[0], ie SHIT IS TRUE
 }
- 
+
 mutation(["hello", "heY"]);
 
 /*
@@ -284,7 +284,166 @@ bouncer([7, "ate", "", false, 9]);
 //    
 ```
 
+**Filter an array if it contains elements found in another array**
+
+this was the Seek and Destroy challenge.
+
+```js
+function destroyer(arr) {
+
+  var passedArray = arr;//gets the first legitimate thing passed the destroyer function, which is an array in this case
+  var passedFilter = Array.prototype.slice.call(arguments, 1);
+
+  var filteredArray = passedArray.filter(function(el){
+    if (passedFilter.indexOf(el) === -1) {
+      return true;
+    }
+    return false;
+  });
+
+  return filteredArray;
+}
+
+destroyer([1, 2, 3, 1, 2, 3], 2, 3);
+
+/*
+Helpful links:
+https://www.youtube.com/watch?v=q_MXH_Ponpg
+https://www.youtube.com/watch?v=QSVGOeCxin0
+http://adripofjavascript.com/blog/drips/filtering-arrays-with-array-filter.html
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/indexOf
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/arguments
+
+and the big !SO post that I found which was from 5 years ago but which included a month-old response from another Free Code Camper who provided a solution that I was able to read and understand what is happening:
+http://stackoverflow.com/questions/7353917/filter-array-using-another-arrays-elements
+*/
+
+//A previous attempt at this solution included:
+function destroyer(input) {
+  // Remove all the values
+  var inputAsArray = Array.prototype.slice.call(arguments);// create a true array out of the input passed to the destroyer function
+  var arrayToSearch = inputAsArray.slice(0,1);// create new array containing the array to be searched
+  var arrayOfArgs = inputAsArray.slice(1,inputAsArray.length);// create new array with the elements to search for in the array to be searched
+
+  /*
+  The above 3 arrays could've been written in only 2 lines of code creating only 2 variables like so:
+
+  var arrayToSearch = Array.prototype.slice.call(arguments).slice(0,1);
+  var arrayOfArgs = Array.prototype.slice.call(arguments).slice(1,Array.prototype.slice.call(arguments).length);
+  */
+
+  var output = arrayToSearch.filter(function(el) {
+    if (arrayOfArgs.indexOf(el) > -1) {
+      return false;
+    }
+    return true;
+  });
+
+  return output;
+}
+
+destroyer([1, 2, 3, 1, 2, 3], 2, 3);
+
+```
+
+
+**Return the index position of given number inserted into and then sorted array**
+
+The Where Do I Belong challenge
+
+```js
+function getIndexToIns(arr, num) {
+  // Find my place in this sorted array.
+  arr.push(num);
+  arr = arr.sort(function(a,b){
+    return a-b;
+  });
+
+  var index;//set up the answer; index gets passed value from the indexOf statement
+
+  for (i=0; i<arr.length; i++) {
+    if (arr[i] === num) {
+      index = arr.indexOf(arr[i]);
+    }
+ }
+
+  //return "the index is: " + index + " and the arr is: " + arr;
+  return index;
+}
+
+getIndexToIns([5, 3, 20, 3], 5);
+
+/*
+more tests:
+getIndexToIns([10, 20, 30, 40, 50], 35) should return 3.
+getIndexToIns([10, 20, 30, 40, 50], 30) should return 2.
+getIndexToIns([40, 60], 50) should return 1.
+getIndexToIns([3, 10, 5], 3) should return 0.
+getIndexToIns([5, 3, 20, 3], 5) should return 2.
+getIndexToIns([2, 20, 10], 19) should return 2.
+getIndexToIns([2, 5, 10], 15) should return 3.
+*/
+
+/*
+References:
+
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort
+The one trick here is about Unicode code point order
+
+    Description
+    Edit
+
+    If compareFunction is not supplied, elements are sorted by converting them to strings and comparing strings in Unicode code point order. For example, "Cherry" comes before "banana". In a numeric sort, 9 comes before 80, but because numbers are converted to strings, "80" comes before "9" in Unicode order.
+
+    var fruit = ['cherries', 'apples', 'bananas'];
+    fruit.sort(); // ['apples', 'bananas', 'cherries']
+
+    var scores = [1, 10, 2, 21];
+    scores.sort(); // [1, 10, 2, 21]
+    // Watch out that 10 comes before 2,
+    // because '10' comes before '2' in Unicode code point order.
+
+*/
+
+```
+
+
+**Shift cipher, or Caesars Cipher - shift the values of the provided letters by 13 places**
+
+```js
+function rot13(str) { // LBH QVQ VG!
+  var newStr = '';
+  for (i=0; i<str.length; i++) {
+    if (str.charCodeAt(i) > 64 && str.charCodeAt(i) < 78) {
+      newStr = newStr + String.fromCharCode(str.charCodeAt(i) + 13);
+    } else if (str.charCodeAt(i) >= 78 && str.charCodeAt(i) < 91) {
+      newStr = newStr + String.fromCharCode(str.charCodeAt(i) - 13);
+    } else {
+      newStr = newStr + str[i];
+    }
+  }
+  return newStr;
+}
+
+// Change the inputs below to test
+rot13("SERR PBQR PNZC");
+
+/*
+References:
+
+https://en.wikipedia.org/wiki/ROT13
+http://unicode-table.com/en/
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/fromCharCode
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/charCodeAt
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/length
+*/
+
+```
+
+
 ****
+
 
 ```js
 
