@@ -1,0 +1,87 @@
+{
+  "_args": [
+    [
+      "css-properties",
+      "/Users/brianzelip/WebProjects/FreeCodeCamp/random-quotes/data/webscrape"
+    ]
+  ],
+  "_from": "css-properties@*",
+  "_id": "css-properties@2.0.2",
+  "_inCache": true,
+  "_installable": true,
+  "_location": "/css-properties",
+  "_nodeVersion": "4.1.1",
+  "_npmUser": {
+    "email": "johnotander@gmail.com",
+    "name": "johno"
+  },
+  "_npmVersion": "3.3.8",
+  "_phantomChildren": {},
+  "_requested": {
+    "name": "css-properties",
+    "raw": "css-properties",
+    "rawSpec": "",
+    "scope": null,
+    "spec": "*",
+    "type": "range"
+  },
+  "_requiredBy": [
+    "#DEV:/"
+  ],
+  "_resolved": "https://registry.npmjs.org/css-properties/-/css-properties-2.0.2.tgz",
+  "_shasum": "6907cbda59933d7bc4654a8026ad05f646b9f822",
+  "_shrinkwrap": null,
+  "_spec": "css-properties",
+  "_where": "/Users/brianzelip/WebProjects/FreeCodeCamp/random-quotes/data/webscrape",
+  "author": {
+    "name": "John Otander"
+  },
+  "bugs": {
+    "url": "https://github.com/johnotander/css-properties/issues"
+  },
+  "dependencies": {},
+  "description": "Get list of all available CSS properties",
+  "devDependencies": {
+    "ava": "*",
+    "cheerio": "^0.19.0",
+    "each-async": "^1.1.1",
+    "got": "^5.0.0",
+    "single-trailing-newline": "^1.0.0"
+  },
+  "directories": {},
+  "dist": {
+    "shasum": "6907cbda59933d7bc4654a8026ad05f646b9f822",
+    "tarball": "http://registry.npmjs.org/css-properties/-/css-properties-2.0.2.tgz"
+  },
+  "files": [
+    "index.js",
+    "w3c-css-properties.json"
+  ],
+  "gitHead": "c44b3782a821c7c76c5aea10f52f46d237b41359",
+  "homepage": "https://github.com/johnotander/css-properties#readme",
+  "keywords": [
+    "css",
+    "properties",
+    "property",
+    "w3c"
+  ],
+  "license": "MIT",
+  "maintainers": [
+    {
+      "name": "johno",
+      "email": "johnotander@gmail.com"
+    }
+  ],
+  "name": "css-properties",
+  "optionalDependencies": {},
+  "readme": "ERROR: No README data found!",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/johnotander/css-properties.git"
+  },
+  "scripts": {
+    "build": "node build",
+    "test": "ava"
+  },
+  "version": "2.0.2"
+}
