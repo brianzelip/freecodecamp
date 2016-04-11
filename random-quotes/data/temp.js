@@ -19,7 +19,31 @@ function combineArrays(quotes,authors) {
     quoteMeetsAuthor = [];
   }
   console.log(quotesAndAuthors);
-  return quotesAndAuthors;
+  //return quotesAndAuthors;
+
+  console.log(quotesAndAuthors.length);
+
+
+  // set up the random number generation to pick the quote
+  var ranNum = 0;
+  function pickRandomQuote(min, max) {
+    //console.log("the random set up console log for quotesAndAuthors.length is: " + quotesAndAuthors.length);
+    console.log("min = " + min + " and max = " + max);
+    console.log(Math.floor(Math.random() * (max - min + 1)) + min);
+    ranNum = Math.floor(Math.random() * (max - min + 1)) + min;
+    console.log(ranNum);
+  }
+  pickRandomQuote(0,quotesAndAuthors.length - 1);
+
+  // get quote/author array at index(ranNum)
+  var selectedQuote = [];
+  function getQuote(randomValue) {
+    selectedQuote = quotesAndAuthors[randomValue];
+    console.log("The selected quote is: " + selectedQuote[0] + " and the author is: " + selectedQuote[1]);
+  }
+
+  getQuote(ranNum);
+
 }
 
 combineArrays(quotesArr, authorsArr);
