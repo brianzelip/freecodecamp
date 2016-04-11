@@ -5,6 +5,8 @@ var authorsArr = ["Coco Chanel","Walt Disney","Steve Jobs","Dieter Rams","Charle
 var quoteMeetsAuthor = [];
 var quotesAndAuthors = [];
 
+
+
 function combineArrays(quotes,authors) {
   if (quotes.length != authors.length) {
     console.log("Danger Will Robinson!");
@@ -12,12 +14,13 @@ function combineArrays(quotes,authors) {
   }
 
   for (i=0; i<quotes.length; i++) {
-    quoteMeetsAuthor.push(quotes[i].concat(authors[i]));
-    quotesAndAuthors = quotesAndAuthors.concat(quoteMeetsAuthor);
+    quoteMeetsAuthor.push(quotes[i]);
+    quoteMeetsAuthor.push(authors[i]);
+    quotesAndAuthors.push(quoteMeetsAuthor);
     quoteMeetsAuthor = [];
   }
   console.log(quotesAndAuthors);
-  //return quotesAndAuthors;
+  return quotesAndAuthors;
 }
 
 combineArrays(quotesArr, authorsArr);
