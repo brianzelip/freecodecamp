@@ -11,12 +11,15 @@
     <meta name="author" content="Brian Zelip">
     <meta name="keywords" content="">
     <style>
+      .space-between {
+        justify-content: space-between;
+      }
       .font-xxl {
         font-size: 3rem;
         font-weight: bold;
       }
       .font-xl {
-        font-size: 1.5rem;
+        font-size: 1.75rem;
         font-weight: bold;
       }
     </style>
@@ -71,6 +74,9 @@
           getQuote(ranNum);
           $("#quote").html(selectedQuote[0]);
           $("#author").html(selectedQuote[1]);
+          $("#newQuote").on("click", function(){
+            combineArrays(quotesArr, authorsArr);
+          });
         }
 
         combineArrays(quotesArr, authorsArr);
@@ -79,16 +85,16 @@
 
     <main class="p3">
       <section class="container">
-        <div style="min-height: 300px; border: 10px solid black" class="p2">
+        <div style="min-height: 300px; border: 10px solid black" class="p2 flex flex-column space-between">
           <h1 class="m0 font-xxl" id="quote">please update ur browser or ur browser settings to enable javascript; nothing malicious happening here :)</h1>
-          <h2 class="font-xl" id="author">please update ur browser or ur browser settings to enable javascript; nothing malicious happening here :)</h2>
+          <h2 class="font-xl mb0" id="author">please update ur browser or ur browser settings to enable javascript; nothing malicious happening here :)</h2>
         </div>
       </section>
 
       <section class="container">
-        <div style="border: 10px solid transparent" class="y2">
+        <div style="border: 10px solid transparent" class="py2">
           <button class="btn btn-primary bg-black">Tweet Quote</button>
-          <button class="btn btn-primary bg-black">New Quote</button>
+          <button class="btn btn-primary bg-black" id="newQuote">New Quote</button>
         </div>
       </section>
     </main>
