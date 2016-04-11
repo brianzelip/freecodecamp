@@ -9,7 +9,7 @@ var quotesAndAuthors = [];
 function combineArrays(quotes,authors) {
   if (quotes.length != authors.length) {
     console.log("Danger Will Robinson!");
-    //return "Danger Will Robinson!";
+    return "Danger Will Robinson!";
   }
 
   for (i=0; i<quotes.length; i++) {
@@ -18,10 +18,10 @@ function combineArrays(quotes,authors) {
     quotesAndAuthors.push(quoteMeetsAuthor);
     quoteMeetsAuthor = [];
   }
-  console.log(quotesAndAuthors);
+  console.log("The quotesAndAuthors array is: " + quotesAndAuthors);
   //return quotesAndAuthors;
 
-  console.log(quotesAndAuthors.length);
+  console.log("The length of quotesAndAuthors is: " + quotesAndAuthors.length);
 
 
   // set up the random number generation to pick the quote
@@ -29,9 +29,8 @@ function combineArrays(quotes,authors) {
   function pickRandomQuote(min, max) {
     //console.log("the random set up console log for quotesAndAuthors.length is: " + quotesAndAuthors.length);
     console.log("min = " + min + " and max = " + max);
-    console.log(Math.floor(Math.random() * (max - min + 1)) + min);
     ranNum = Math.floor(Math.random() * (max - min + 1)) + min;
-    console.log(ranNum);
+    console.log("The generated random number was: " + ranNum);
   }
   pickRandomQuote(0,quotesAndAuthors.length - 1);
 
@@ -39,7 +38,7 @@ function combineArrays(quotes,authors) {
   var selectedQuote = [];
   function getQuote(randomValue) {
     selectedQuote = quotesAndAuthors[randomValue];
-    console.log("The selected quote is: " + selectedQuote[0] + " and the author is: " + selectedQuote[1]);
+    console.log("The selected quote at index " + randomValue + " is: >>>" + selectedQuote[0].toUpperCase() + "<<< and the author is: >>>" + selectedQuote[1].toUpperCase() + "<<<");
   }
 
   getQuote(ranNum);
