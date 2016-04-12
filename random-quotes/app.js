@@ -40,9 +40,16 @@ $(function(){
       //console.log("The selected quote at index " + randomValue + " is: >>>" + selectedQuote[0].toUpperCase() + "<<< and the author is: >>>" + selectedQuote[1].toUpperCase() + "<<<");
     }
 
+    // set twitter variable
+    var tweetHREFprefix = "https://twitter.com/intent/tweet?via=bzelip&text=";
+    var tweetHREFsuffix = selectedQuote[0].replace(/\s/gi, "%20");
+    var tweetHREFfull = tweetHREFprefix.concat(tweetHREFsuffix);
+
+
     getQuote(ranNum);
     $("#quote").html(selectedQuote[0]);
     $("#author").html(selectedQuote[1]);
+    $("#tweet").attr("href", tweetHREFfull);
     $("#newQuote").on("click", function(){
       combineArrays(quotesArr, authorsArr);
     });
