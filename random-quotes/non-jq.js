@@ -69,19 +69,23 @@ function combineArrays(quotes,authors) {
   }
   truncateQuote(selectedQuote[0], 126);
 
-  // change jquery shit below here
-  //document.getElementById("quote").insertAdjacentHTML(afterbegin,"hello");
-
+  // write the dynamic data created above to the DOM in vanilla JS, not jquery
   document.getElementById("quote").innerHTML = selectedQuote[0];
   document.getElementById("author").innerHTML = selectedQuote[1];
+  document.getElementById("tweet").setAttribute("href", tweetHREFprefix + "'" +  encodeURI(tweetQuote).replace(/%5B/g, '[').replace(/%5D/g, ']') + "'");
+  document.getElementById("newQuote").addEventListener("click", function(){
+    combineArrays(quotesArr, authorsArr);
+  });
 
-  /*
+  /* The above vanilla js for writing to the DOM is represented as jquery as the following:
+
   $("#quote").html(selectedQuote[0]);
   $("#author").html(selectedQuote[1]);
   $("#tweet").attr("href", tweetHREFprefix + "'" +  encodeURI(tweetQuote).replace(/%5B/g, '[').replace(/%5D/g, ']') + "'");
   $("#newQuote").on("click", function(){
     combineArrays(quotesArr, authorsArr);
   });*/
+  return true;
 }
 
 combineArrays(quotesArr, authorsArr);
