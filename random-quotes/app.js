@@ -39,16 +39,40 @@ $(function(){
       selectedQuote = quotesAndAuthors[randomValue];
       //console.log("The selected quote at index " + randomValue + " is: >>>" + selectedQuote[0].toUpperCase() + "<<< and the author is: >>>" + selectedQuote[1].toUpperCase() + "<<<");
     }
-
-    // THIS CODE GOT THE PROOF OF CONCEPT WORKING
-    var tweetHREFprefix = 'https://twitter.com/intent/tweet?via=bzelip&text=';
-    //var tweetHREFsuffix = encodeURI(selectedQuote[0]).replace(/%5B/g, '[').replace(/%5D/g, ']');
-    //var tweetHREFfull = tweetHREFprefix.concat(tweetHREFsuffix);
-
     getQuote(ranNum);
+
+    // set twitter data
+    var tweetHREFprefix = 'https://twitter.com/intent/tweet?via=bzelip&via=FreeCodeCamp&text=';
+      /*
+      The reference for the encodeURI usage below is !mdn,
+      https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/encodeURI
+
+      here is the code:
+      encodeURI(selectedQuote[0]).replace(/%5B/g, '[').replace(/%5D/g, ']');
+      */
+
+    // Truncate quote for tweet if quote.length > xxx characters
+    var tweetQuote = '';
+    function truncateQuote(str, num) {
+      // the next 2 lines were the first iteration of code I got to solve one of the rules, it lead me to the general solution
+      //var x = str.substr(0,num-3);
+      //return x.concat('...');
+      if (str.length > num) {
+        if (num <= 3) {
+          tweetQuote = str.substr(0,num).concat('...');
+        } else {
+          tweetQuote = str.substr(0,num-3).concat('...');
+        }
+      } else {
+        tweetQuote = str;
+      }
+      return tweetQuote;
+    }
+    truncateQuote(selectedQuote[0], 126);
+
     $("#quote").html(selectedQuote[0]);
     $("#author").html(selectedQuote[1]);
-    $("#tweet").attr("href", tweetHREFprefix + encodeURI(selectedQuote[0]).replace(/%5B/g, '[').replace(/%5D/g, ']'));
+    $("#tweet").attr("href", tweetHREFprefix + "'" +  encodeURI(tweetQuote).replace(/%5B/g, '[').replace(/%5D/g, ']') + "'");
     $("#newQuote").on("click", function(){
       combineArrays(quotesArr, authorsArr);
     });
