@@ -22,6 +22,16 @@
         font-size: 1.75rem;
         font-weight: bold;
       }
+      @media(min-width: 40rem) {
+        .md-font-xxl {
+          font-size: 3rem;
+          font-weight: bold;
+        }
+        .md-font-xl {
+          font-size: 1.75rem;
+          font-weight: bold;
+        }
+      }
     </style>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
     <script src="app.js"></script>
@@ -32,15 +42,15 @@
     <main class="p3">
       <section class="container">
         <div style="border: 10px solid transparent" class="py2">
-          <a id="tweet" href="https://twitter.com/intent/tweet?via=bzelip&text=Hello%20world" class="btn btn-primary bg-black twitter-share-button" data-via="bzelip">Tweet Quote</a>
+          <a id="tweet" href="https://twitter.com/intent/tweet" class="btn btn-primary bg-black twitter-share-button" data-via="bzelip">Tweet Quote</a>
           <button class="btn btn-primary bg-black" id="newQuote">New Quote</button>
         </div>
       </section>
 
       <section class="container">
         <div style="min-height: 300px; border: 10px solid black" class="p2 flex flex-column space-between">
-          <h1 class="m0 font-xxl" id="quote">please update ur browser or ur browser settings to enable javascript; nothing malicious happening here :)</h1>
-          <h2 class="font-xl mb0" id="author">please update ur browser or ur browser settings to enable javascript; nothing malicious happening here :)</h2>
+          <h1 class="mt0 mb2 font-xl md-font-xxl  overflow hidden" id="quote">please update ur browser or ur browser settings to enable javascript; nothing malicious happening here :)</h1>
+          <h2 class="h3 md-font-xl mb0" id="author">please update ur browser or ur browser settings to enable javascript; nothing malicious happening here :)</h2>
         </div>
       </section>
     </main>
