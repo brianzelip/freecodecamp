@@ -22,7 +22,7 @@
         font-size: 1.75rem;
         font-weight: bold;
       }
-      @media(min-width: 40rem) {
+      @media(min-width: 36rem) {
         .md-font-xxl {
           font-size: 3rem;
           font-weight: bold;
@@ -32,6 +32,12 @@
           font-weight: bold;
         }
       }
+      .border-5 { border: 5px solid black; }
+      .border-5-transp { border: 5px solid transparent; }
+      @media(min-width: 36rem) {
+        .md-border-10 { border: 10px solid black; }
+        .md-border-10-transp { border: 10px solid transparent; }
+      }
     </style>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
     <script src="app.js"></script>
@@ -39,21 +45,28 @@
 
   <body>
 
-    <main class="p3">
-      <section class="container">
-        <div style="border: 10px solid transparent" class="py2">
+    <div class="p3">
+      <header class="container">
+        <div class="py2 border-5-transp md-border-10-transp">
           <a id="tweet" href="https://twitter.com/intent/tweet" class="btn btn-primary bg-black twitter-share-button" data-via="bzelip">Tweet Quote</a>
           <button class="btn btn-primary bg-black" id="newQuote">New Quote</button>
         </div>
-      </section>
+      </header>
 
-      <section class="container">
-        <div style="min-height: 300px; border: 10px solid black" class="p2 flex flex-column space-between">
+      <main class="container">
+        <div style="min-height: 300px;" class="p2 flex flex-column space-between border-5 md-border-10">
           <h1 class="mt0 mb2 font-xl md-font-xxl  overflow hidden" id="quote">please update ur browser or ur browser settings to enable javascript; nothing malicious happening here :)</h1>
           <h2 class="h3 md-font-xl mb0" id="author">please update ur browser or ur browser settings to enable javascript; nothing malicious happening here :)</h2>
         </div>
-      </section>
-    </main>
+      </main>
+
+      <footer class="container">
+        <div class="p2 clearfix border-5-transp md-border-10-transp">
+          <p class="right h3 m0">Design quote generator by <a class="black" href="https://twitter.com/bzelip">@bzelip</a>. ✌️ <a href="https://FreeCodeCamp.com" class="black">Free Code Camp</a>!</p>
+        </div>
+      </footer>
+
+    </div>
 
   </body>
 
