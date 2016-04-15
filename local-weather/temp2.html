@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <link rel="stylesheet" href="https://npmcdn.com/basscss@7.1.1/css/basscss.min.css">
+    <title>TITLE</title>
+    <meta name="description" content="">
+    <meta name="author" content="Brian Zelip">
+    <meta name="keywords" content="">
+  </head>
+
+  <body>
+
+    <div id="content"></div>
+
+    <script>
+      function geoShit() {
+
+        var content = document.getElementById("content");
+
+        if (!navigator.geolocation){
+          alert("FUCK! NO GEO YO!");
+          return;
+        }
+
+        function success(position) {
+          var lat  = position.coords.latitude;
+          var long = position.coords.longitude;
+
+          content.innerHTML = "<p>hello motherfuckers!!!</p>";
+
+          var img = new Image();
+          img.src = "https://maps.googleapis.com/maps/api/staticmap?center=" + lat + "," + long + "&zoom=13&size=300x300&sensor=false";
+
+          content.appendChild(img);
+        };
+
+        function error() {
+          content.innerHTML = "Unable to retrieve your location";
+        };
+
+        content.innerHTML = "<p>Locating…</p>";
+
+        navigator.geolocation.getCurrentPosition(success, error);
+      }
+
+      geoShit();
+
+    </script>
+
+  </body>
+
+</html>
