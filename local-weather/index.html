@@ -14,18 +14,54 @@
       html,
       body,
       .vh100 { min-height: 100vh; }
+
+
+      .filter {
+        position: relative;
+        -webkit-filter: contrast(39%) brightness(110%) blur(5px);
+        filter: contrast(39%) brightness(110%) blur(5px);
+      }
+      .filter::before {
+        content: "";
+        display: block;
+        height: 100%;
+        width: 100%;
+        top: 0;
+        left: 0;
+        position: absolute;
+        pointer-events: none;
+        mix-blend-mode: overlay;
+        background: -webkit-radial-gradient(50% 50%, circle closest-corner, rgba(168, 223, 193, 0.4) 1, rgba(183, 196, 200, 0.2));
+        background: radial-gradient(50% 50%, circle closest-corner, rgba(168, 223, 193, 0.4) 1, rgba(183, 196, 200, 0.2));
+      }
     </style>
   </head>
 
   <body style="background-color: rgba(0,0,0,.075);" class="p2">
 
-    <div class="container">
+    <div class="container clearfix">
       <div class="col-6 mx-auto">
         <div class="border rounded p2 bg-white" id="content">
           hello
         </div>
       </div>
     </div>
+
+    <div class="container clearfix">
+      <div class="col-6 mx-auto">
+        <div class="border rounded p2 bg-white">
+          <figure class="filter">
+            <img src="img/rolling-hills.jpg">
+          </figure>
+        </div>
+      </div>
+    </div>
+
+    <!--
+    css filter resources
+    http://www.cssfilters.co/
+
+    -->
 
     <script src="app.js"></script>
 
