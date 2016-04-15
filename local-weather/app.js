@@ -1,32 +1,31 @@
-if (navigator.geolocation) {
-  navigator.geolocation.getCurrentPosition(function(position) {
-    var text = "latitude: " + position.coords.latitude + "<br>longitude: " + position.coords.longitude;
-    lat = position.coords.latitude;
-    long = position.coords.longitude;
-    //document.getElementById("data").innerHTML = text;
-  });
+function geoShit() {
 
-  // open weather map api, http://openweathermap.org/current#geo
-  var opnApiURL = 'http://api.openweathermap.org/data/2.5/forecast/city?id=524901&APPID=';
-  var opnApiKey = '38c2076ad830abfaa076a00e9319c7cb';
-  var opnApiCall = opnApiURL.concat(opnApiKey);
+  var content = document.getElementById("content");
 
-  // forecast.io api, https://developer.forecast.io/docs/v2
-  var fcsApiURL = 'https://api.forecast.io/forecast/';
-  var fcsApiKey = 'e8fd3809a962abc2ec4c3a4dba4d2cf8';
-  var fcsApiCall = fcsApiURL.concat(fcsApiKey + '/' + lat + ',' + long);
+  if (!navigator.geolocation){
+    alert("FUCK! NO GEO YO!");
+    return;
+  }
 
-  console.log(fcsApiCall);
-  var el = document.getElementById("text");
-  el.innerHTML = "<p>hello motherfuckers!!!</p>";
-  
+  function success(position) {
+    var lat  = position.coords.latitude;
+    var long = position.coords.longitude;
+
+    content.innerHTML = "<p>hello motherfuckers!!!</p>";
+
+    var img = new Image();
+    img.src = "https://maps.googleapis.com/maps/api/staticmap?center=" + lat + "," + long + "&zoom=13&size=300x300&sensor=false";
+
+    content.appendChild(img);
+  };
+
+  function error() {
+    content.innerHTML = "Unable to retrieve your location";
+  };
+
+  content.innerHTML = "<p>Locating…</p>";
+
+  navigator.geolocation.getCurrentPosition(success, error);
 }
-/*
-if ("geolocation" in navigator) {
-  console.log("yes geolocation is available in the console");
-} else {
-  console.log("geolocation IS NOT available");
-}
 
-console.log(position.coords.latitude);
-*/
+geoShit();
