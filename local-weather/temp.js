@@ -29,6 +29,10 @@ appButton.onclick = function() {
     weather.innerHTML = openWeatherData.weather[0].description;
     icon.innerHTML = '<i class="wi wi-owm-' + openWeatherData.weather[0].id + '"></i>';
 
+    var currentTime = new Date();
+    time.innerHTML = currentTime.toLocaleTimeString();
+    console.log(currentTime);
+
   };
 
   function geo_error() {
@@ -45,10 +49,17 @@ appButton.onclick = function() {
 /*
 REFERENCES
 
+"EventHandlers.onclick": "https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onclick",
 "XMLHttpRequest": "http://stackoverflow.com/a/22790025/2145103",
 "parseFloat": "http://stackoverflow.com/a/6134070/2145103",
 "kelvin_conversions": "http://www.metric-conversions.org/temperature/kelvin-to-celsius.htm?val=200",
 "JSON.stringify()": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify",
+"time": [
+  "http://stackoverflow.com/questions/847185/convert-a-unix-timestamp-to-time-in-javascript#847196",
+  "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleTimeString"
+],
+"weather_icons": "https://erikflowers.github.io/weather-icons/",
+
 
 
 */
