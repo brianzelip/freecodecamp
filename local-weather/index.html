@@ -5,34 +5,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <link rel="stylesheet" href="weather-icons.min.css">
     <link rel="stylesheet" href="https://npmcdn.com/basscss@7.1.1/css/basscss.min.css">
     <title>getLocalWeather</title>
     <meta name="description" content="">
     <meta name="author" content="Brian Zelip">
     <meta name="keywords" content="sandbox, FreeCodeCamp, geolocation, javascript">
     <style>
-      html,
-      body,
       .vh100 { min-height: 100vh; }
-
-
-      .filter {
-        position: relative;
-        -webkit-filter: contrast(39%) brightness(110%) blur(5px);
-        filter: contrast(39%) brightness(110%) blur(5px);
-      }
-      .filter::before {
-        content: "";
-        display: block;
-        height: 100%;
-        width: 100%;
-        top: 0;
-        left: 0;
-        position: absolute;
-        pointer-events: none;
-        mix-blend-mode: overlay;
-        background: -webkit-radial-gradient(50% 50%, circle closest-corner, rgba(168, 223, 193, 0.4) 1, rgba(183, 196, 200, 0.2));
-        background: radial-gradient(50% 50%, circle closest-corner, rgba(168, 223, 193, 0.4) 1, rgba(183, 196, 200, 0.2));
+      .mh600 { min-height: 600px; }
       }
     </style>
   </head>
@@ -41,29 +22,24 @@
 
     <div class="container clearfix">
       <div class="col-6 mx-auto">
-        <div class="border rounded p2 bg-white" id="content">
-          hello
+        <div class="p2 mh600 border rounded bg-white">
+
+          <section class="clearfix mt3 mb3 center">
+            <a href="#" id="appButton" class="btn btn-primary">Get Local Weather</a>
+          </section>
+
+          <section class="clearfix center">
+            <p id="city" class="h1 bold"></p>
+            <p id="temp" class="h1"></p>
+            <p id="weather" class="h1"></p>
+            <p id="icon" class="h1"></p>
+          </section>
+
         </div>
       </div>
     </div>
 
-    <div class="container clearfix">
-      <div class="col-6 mx-auto">
-        <div class="border rounded p2 bg-white">
-          <figure class="filter">
-            <img src="img/rolling-hills.jpg">
-          </figure>
-        </div>
-      </div>
-    </div>
-
-    <!--
-    css filter resources
-    http://www.cssfilters.co/
-
-    -->
-
-    <script src="app.js"></script>
+    <script src="temp.js"></script>
 
   </body>
 
