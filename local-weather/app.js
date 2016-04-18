@@ -31,7 +31,7 @@ appButton.onclick = function() {
     temp.innerHTML = fahrenheit + "&deg;<sup class='h3'>F</sup><sup class='h4 inline-block p1 border'>get Celsius</sup>";
 
     // SEE https://www.google.com/search?tbm=isch&q=weather%20app%20ui&tbs=imgo:1#imgrc=_
-
+    // SEE ALSO http://stackoverflow.com/questions/36370772/how-can-i-use-toggleclass-to-switch-between-fahrenheit-and-celsius-on-my-p
 
 
     weather.innerHTML = openWeatherData.weather[0].description;
