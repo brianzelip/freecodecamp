@@ -32,7 +32,7 @@ appButton.onclick = function() {
 
     // SEE https://www.google.com/search?tbm=isch&q=weather%20app%20ui&tbs=imgo:1#imgrc=_
     // SEE ALSO http://stackoverflow.com/questions/36370772/how-can-i-use-toggleclass-to-switch-between-fahrenheit-and-celsius-on-my-p
-
+    // SEE ALSO https://proto.io/freebies/onoff/
 
     weather.innerHTML = openWeatherData.weather[0].description;
 
