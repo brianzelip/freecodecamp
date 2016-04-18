@@ -37,7 +37,7 @@ appButton.onclick = function() {
     var currentLocalTime = Math.round(new Date().getTime()/1000.0);
     var currentTime = new Date();
 
-    if (currentLocalTime > openWeatherData.sys.sunrise && currentLocalTime > openWeatherData.sys.sunset) {
+    if (currentLocalTime > openWeatherData.sys.sunrise && currentLocalTime < openWeatherData.sys.sunset) {
       icon.innerHTML = '<i class="wi wi-owm-day-' + openWeatherData.weather[0].id + '"></i>';
     } else {
       icon.innerHTML = '<i class="wi wi-owm-night-' + openWeatherData.weather[0].id + '"></i>';
