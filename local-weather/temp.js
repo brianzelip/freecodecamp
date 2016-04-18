@@ -7,9 +7,9 @@ appButton.onclick = function() {
 
   function geo_success(position) {
 
+    // get data from OpenWeatherMap's API
     var weatherKey = '27beec18e172ad70ec7ca74b22e31896';
     var weatherAPI = 'http://api.openweathermap.org/data/2.5/weather?lat=' + position.coords.latitude + '&lon=' + position.coords.longitude + '&APPID=' + weatherKey;
-    console.log(weatherAPI);
 
     function Get(URL){
       var Httpreq = new XMLHttpRequest(); // a new request
@@ -18,6 +18,7 @@ appButton.onclick = function() {
       return Httpreq.responseText;
     };
 
+    // create variables for values to be injected into DOM
     var openWeatherData = JSON.parse(Get(weatherAPI));
     var celsius = parseFloat(openWeatherData.main.temp - 273.15).toFixed(1);
     var fahrenheit = parseFloat((openWeatherData.main.temp - 273.15)* 1.8
@@ -27,11 +28,15 @@ appButton.onclick = function() {
     city.innerHTML = openWeatherData.name;
     //need an if statement here or something to allow toggle between F and C
     temp.innerHTML = fahrenheit;
+
+    //.tempToggle.onclick = function()
+
     weather.innerHTML = openWeatherData.weather[0].description;
 
     // compare local time with weather data for proper icon (day or night)
     var currentLocalTime = Math.round(new Date().getTime()/1000.0);
     var currentTime = new Date();
+
     if (currentLocalTime > openWeatherData.sys.sunrise && currentLocalTime > openWeatherData.sys.sunset) {
       icon.innerHTML = '<i class="wi wi-owm-day-' + openWeatherData.weather[0].id + '"></i>';
     } else {
