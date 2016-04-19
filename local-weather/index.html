@@ -14,8 +14,18 @@
     <style>
       .vh100 { min-height: 100vh; }
       .mh600 { min-height: 600px; }
-      .h0 { font-size: 4rem; }
-      #icon { font-size: 10rem; }
+      .h0 { font-size: 3rem; }
+      @media(min-width: 36em) {
+        .h0 { font-size: 4rem; }
+      }
+      #icon { font-size: 8rem; }
+      @media(min-width: 36em) {
+        #icon { font-size: 10rem; }
+      }
+      @media(min-width: 36em) {
+        .sm-mt3 { margin-top: 2rem; }
+        .sm-mb3 { margin-bottom: 2rem; }
+      }
       .justify-center { justify-content: center; }
       .space-around { justify-content: space-around; }
       .space-between { justify-content: space-between; }
@@ -30,12 +40,12 @@
       <div class="md-col-6 mx-auto">
         <div class="p2 border rounded bg-white">
 
-          <section class="clearfix mt3 mb3 center">
+          <section class="clearfix mt2 mb2 sm-mt3 sm-mb3 center">
             <a href="#" id="appButton" class="btn btn-primary">Get Local Weather</a>
           </section>
 
           <section class="clearfix center">
-            <p id="city" class="h0 bold mb2 line-height-1">&nbsp;</p>
+            <p id="city" class="h0 bold mb2 line-height-1 overflow-hidden">&nbsp;</p>
             <p id="weather" class="h1 mb2 line-height-1">&nbsp;</p>
             <div class="flex flex-center justify-center mb2">
               <p id="icon" class="m0 line-height-1 px1">&nbsp;</p>
