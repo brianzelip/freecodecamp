@@ -14,11 +14,11 @@
     <style>
       .vh100 { min-height: 100vh; }
       .mh600 { min-height: 600px; }
-      .h0 { font-size: 3rem; }
+      .h0 { font-size: 2.5rem; }
       @media(min-width: 36em) {
         .h0 { font-size: 4rem; }
       }
-      #icon { font-size: 8rem; }
+      #icon { font-size: 7rem; }
       @media(min-width: 36em) {
         #icon { font-size: 10rem; }
       }
@@ -52,41 +52,63 @@
         padding-left: 0;
         padding-right: 0;
       }
+      .pt3 { padding-top: 2rem; }
+      .pb1 { padding-bottom: .5rem; }
       .dotted { border-style: dotted; }
+      .bg-image {
+        /*background-image: url(img/lorangerie-2.jpg);*/
+        background-color: #08c;
+        position: fixed;
+        background-size: cover;
+        background-position: center;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        padding: 1rem;
+      }
+      .dim { background: rgba(0, 0, 0, 0.2); }
+      .blue-dim { color: rgb(0,108,163); }
+      .border-white { border-color: white; }
+      .blue { color: #08c; }
     </style>
   </head>
 
   <body style="background-color: rgba(0,0,0,.075);" class="p2">
 
-    <div class="container clearfix">
-      <div class="md-col-6 mx-auto">
-        <div class="p2 border rounded bg-white">
+    <div class="bg-image">
 
-          <section class="clearfix mt2 mb2 sm-mt3 sm-mb3 center">
-            <a href="#" id="appButton" class="btn btn-primary bg-black">Get Local Weather</a>
-          </section>
+      <div class="container clearfix mt4">
+        <div class="md-col-6 mx-auto">
+          <div class="p2 rounded dim">
 
-          <section class="clearfix center">
-            <p id="city" class="h0 bold mb2 sm-mb3 line-height-1 overflow-hidden">&nbsp;</p>
+            <section class="clearfix mt2 mb2 sm-mt3 sm-mb3 center">
+              <a href="#" id="appButton" class="btn btn-primary bg-white blue-dim">Get Local Weather</a>
+            </section>
 
-            <!--<p id="weather" class="h1 mb2 line-height-1">&nbsp;</p>-->
+            <section class="clearfix center white">
+              <p id="city" class="h0 bold mb2 sm-mb3 line-height-1 overflow-hidden">&nbsp;</p>
 
-            <div class="flex flex-center justify-center mb2 sm-mb3">
+              <!--<p id="weather" class="h1 mb2 line-height-1">&nbsp;</p>-->
 
-              <p id="icon" class="m0 line-height-1 px1">&nbsp;</p>
+              <div class="flex flex-center justify-center mb2 sm-mb3 pt3 pb1">
 
-              <div class="flex flex-column flex-start justify-center space-around sm-px1">
-                <p id="temp" class="h0 m0 line-height-1 sm-px1" style="border: 1px solid transparent;">&nbsp;</p>
-                <a id="tempToggleButton" class="gray btn btn-sm left-align"></a>
+                <p id="icon" class="m0 line-height-1 px1">&nbsp;</p>
+
+                <div class="flex flex-column flex-start justify-center space-around sm-px1">
+                  <p id="temp" class="h0 m0 line-height-1 sm-px1" style="border: 1px solid transparent;">&nbsp;</p>
+                  <a id="tempToggleButton" class="white btn btn-sm left-align"></a>
+                </div>
+
               </div>
 
-            </div>
+              <p id="time" class="h1 mb2 line-height-1">&nbsp;</p>
+            </section>
 
-            <p id="time" class="h1 mb2 line-height-1">&nbsp;</p>
-          </section>
-
+          </div>
         </div>
       </div>
+
     </div>
 
     <script src="app.js"></script>

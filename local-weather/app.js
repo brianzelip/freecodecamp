@@ -88,7 +88,11 @@ appButton.onclick = function() {
     ],
     "toggle state function MAIN SOLUTION": "http://stackoverflow.com/a/8723199/2145103",
     "toggle state function BACKUP": ["http://stackoverflow.com/questions/36370772/how-can-i-use-toggleclass-to-switch-between-fahrenheit-and-celsius-on-my-p","https://proto.io/freebies/onoff/"],
-    "weather app design inspiration": "https://www.google.com/search?tbm=isch&q=weather%20app%20ui&tbs=imgo:1#imgrc=_"
+    "weather app design inspiration": "https://www.google.com/search?tbm=isch&q=weather%20app%20ui&tbs=imgo:1#imgrc=_",
+    "transparency, opacity, and inheritance": [
+      "https://developer.mozilla.org/en-US/docs/Web/CSS/opacity",
+      "http://stackoverflow.com/a/13509036/2145103"
+    ]
   }
 }
 */
