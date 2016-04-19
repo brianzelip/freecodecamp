@@ -82,17 +82,38 @@ appButton.onclick = function() {
       "http://stackoverflow.com/questions/847185/convert-a-unix-timestamp-to-time-in-javascript#847196",
       "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleTimeString"
     ],
-    "weather_icons": "https://erikflowers.github.io/weather-icons/",
     "compare current local unix time to sunrise and sunset unix times": [
       "http://www.epochconverter.com/", "http://stackoverflow.com/a/847196/2145103"
     ],
     "toggle state function MAIN SOLUTION": "http://stackoverflow.com/a/8723199/2145103",
-    "toggle state function BACKUP": ["http://stackoverflow.com/questions/36370772/how-can-i-use-toggleclass-to-switch-between-fahrenheit-and-celsius-on-my-p","https://proto.io/freebies/onoff/"],
+    "toggle state function BACKUP OF OTHER USEFUL INFO": ["http://stackoverflow.com/questions/36370772/how-can-i-use-toggleclass-to-switch-between-fahrenheit-and-celsius-on-my-p","https://proto.io/freebies/onoff/"],
     "weather app design inspiration": "https://www.google.com/search?tbm=isch&q=weather%20app%20ui&tbs=imgo:1#imgrc=_",
     "transparency, opacity, and inheritance": [
       "https://developer.mozilla.org/en-US/docs/Web/CSS/opacity",
       "http://stackoverflow.com/a/13509036/2145103"
-    ]
+    ],
+    "Geolocation": {
+      "the big one that provided the code and my understanding for the `success` and `error` arguments": "https://developer.mozilla.org/en-US/docs/Web/API/Geolocation/Using_geolocation",
+      "more notable references": [
+        "https://developer.mozilla.org/en-US/docs/Web/API/Geolocation/getCurrentPosition",
+        "http://stackoverflow.com/questions/3452217/get-current-latitude-and-longitude-from-gps-enabled-device",
+        "https://www.youtube.com/results?search_query=using%20geolocation%20html5"
+      ]
+    },
+    "weather data and icons": {
+      "data": [
+        "http://openweathermap.org/current#geo",
+        "https://github.com/mateodelnorte/forecast.io",
+        "https://developer.forecast.io/docs/v2",
+        "http://www.programmableweb.com/api/forecast",
+        "http://www.programmableweb.com/news/top-10-weather-apis/analysis/2014/11/13",
+        "http://stackoverflow.com/questions/27639668/open-weather-api"
+      ],
+      "weather_icons": [
+        "https://erikflowers.github.io/weather-icons/",
+        "http://adamwhitcroft.com/climacons/"
+      ]
+    }
   }
 }
 */

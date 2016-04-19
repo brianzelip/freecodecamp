@@ -44,6 +44,9 @@
           padding-left: .5rem;
         }
       }
+      @media(min-width: 52em) {
+        .md-mt4 { margin-top: 3rem; }
+      }
       .justify-center { justify-content: center; }
       .space-around { justify-content: space-around; }
       .space-between { justify-content: space-between; }
@@ -54,6 +57,8 @@
       }
       .pt3 { padding-top: 2rem; }
       .pb1 { padding-bottom: .5rem; }
+      .pb2 { padding-bottom: 1rem; }
+      .pb3 { padding-bottom: 2rem; }
       .dotted { border-style: dotted; }
       .bg-image {
         /*background-image: url(img/lorangerie-2.jpg);*/
@@ -78,7 +83,7 @@
 
     <div class="bg-image">
 
-      <div class="container clearfix mt4">
+      <div class="container clearfix md-mt4">
         <div class="md-col-6 mx-auto">
           <div class="p2 rounded dim">
 
@@ -91,7 +96,7 @@
 
               <!--<p id="weather" class="h1 mb2 line-height-1">&nbsp;</p>-->
 
-              <div class="flex flex-center justify-center mb2 sm-mb3 pt3 pb1">
+              <div class="flex flex-center justify-center mb2 sm-mb3 py3">
 
                 <p id="icon" class="m0 line-height-1 px1">&nbsp;</p>
 
@@ -116,21 +121,3 @@
   </body>
 
 </html>
-
-<!--
-Refereces to get back to:
-  :: the big one that provided the code and my understanding for the `success` and `error` arguments
-  https://developer.mozilla.org/en-US/docs/Web/API/Geolocation/Using_geolocation
-  https://developer.mozilla.org/en-US/docs/Web/API/Geolocation/getCurrentPosition
-  http://stackoverflow.com/questions/3452217/get-current-latitude-and-longitude-from-gps-enabled-device
-  https://www.youtube.com/results?search_query=using%20geolocation%20html5
-  http://adamwhitcroft.com/climacons/
-
-  https://github.com/mateodelnorte/forecast.io
-  https://developer.forecast.io/docs/v2
-  http://www.programmableweb.com/api/forecast
-  http://www.programmableweb.com/news/top-10-weather-apis/analysis/2014/11/13
-  http://stackoverflow.com/questions/27639668/open-weather-api
-  http://openweathermap.org/current#geo
-
--->
