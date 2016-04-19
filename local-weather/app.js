@@ -10,10 +10,9 @@ appButton.onclick = function() {
     // get data from OpenWeatherMap's API
     var weatherKey = '27beec18e172ad70ec7ca74b22e31896';
     var weatherAPI = 'http://api.openweathermap.org/data/2.5/weather?lat=' + position.coords.latitude + '&lon=' + position.coords.longitude + '&APPID=' + weatherKey;
-    //console.log(weatherAPI);
 
     function Get(URL){
-      var Httpreq = new XMLHttpRequest(); // a new request
+      var Httpreq = new XMLHttpRequest();
       Httpreq.open("GET",URL,false);
       Httpreq.send(null);
       return Httpreq.responseText;
@@ -27,7 +26,6 @@ appButton.onclick = function() {
 
     // Populate the DOM
     city.innerHTML = openWeatherData.name;
-    //need an if statement here or something to allow toggle between F and C
     temp.innerHTML = fahrenheit + "&deg;<sup class='h3'>F</sup>";
     tempToggleButton.innerHTML = "as Celsius";
 
@@ -47,10 +45,7 @@ appButton.onclick = function() {
       }
     };
 
-    // SEE https://www.google.com/search?tbm=isch&q=weather%20app%20ui&tbs=imgo:1#imgrc=_
-    // SEE ALSO http://stackoverflow.com/questions/36370772/how-can-i-use-toggleclass-to-switch-between-fahrenheit-and-celsius-on-my-p
-    // SEE ALSO https://proto.io/freebies/onoff/
-
+    // deciding to comment out displaying the weather description info (ie: "clear sky")
     //weather.innerHTML = openWeatherData.weather[0].description;
 
     // compare local time with weather data for proper icon (day or night)
@@ -64,7 +59,6 @@ appButton.onclick = function() {
     }
 
     time.innerHTML = currentTime.toLocaleTimeString();
-
   };
 
   function geo_error() {
@@ -74,61 +68,27 @@ appButton.onclick = function() {
   var geo_options = { enableHighAccuracy: true };
 
   navigator.geolocation.getCurrentPosition(geo_success, geo_error, geo_options);
-
 };
 
 /*
-REFERENCES
-
-"EventHandlers.onclick": "https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onclick",
-"XMLHttpRequest": "http://stackoverflow.com/a/22790025/2145103",
-"parseFloat": "http://stackoverflow.com/a/6134070/2145103",
-"kelvin_conversions": "http://www.metric-conversions.org/temperature/kelvin-to-celsius.htm?val=200",
-"JSON.stringify()": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify",
-"time": [
-  "http://stackoverflow.com/questions/847185/convert-a-unix-timestamp-to-time-in-javascript#847196",
-  "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleTimeString"
-],
-"weather_icons": "https://erikflowers.github.io/weather-icons/",
-"compare current local unix time to sunrise and sunset unix times": [
-  "http://www.epochconverter.com/", "http://stackoverflow.com/a/847196/2145103"
-],
-"toggle state function": "http://stackoverflow.com/a/8723199/2145103",
-
-
-
-
-*/
-
-
-/*
-switch statement code
-case 'clear sky':
-  icon.innerHTML = '<i class="wi wi-night-sleet"></i>';
-  break;
-case 'few clouds':
-  icon.innerHTML = '<i class="wi wi-night-sleet"></i>';
-  break;
-case 'scattered clouds':
-  icon.innerHTML = '<i class="wi wi-night-sleet"></i>';
-  break;
-case 'broken clouds':
-  icon.innerHTML = '<i class="wi wi-night-sleet"></i>';
-  break;
-case 'shower rain':
-  icon.innerHTML = '<i class="wi wi-night-sleet"></i>';
-  break;
-case 'rain':
-  icon.innerHTML = '<i class="wi wi-night-sleet"></i>';
-  break;
-case 'thunderstorm':
-  icon.innerHTML = '<i class="wi wi-night-sleet"></i>';
-  break;
-case 'snow':
-  icon.innerHTML = '<i class="wi wi-night-sleet"></i>';
-  break;
-case 'mist':
-  icon.innerHTML = '<i class="wi wi-night-sleet"></i>';
-  break;
-
+{
+  "REFERENCES": {
+    "EventHandlers.onclick": "https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onclick",
+    "XMLHttpRequest": "http://stackoverflow.com/a/22790025/2145103",
+    "parseFloat": "http://stackoverflow.com/a/6134070/2145103",
+    "kelvin_conversions": "http://www.metric-conversions.org/temperature/kelvin-to-celsius.htm?val=200",
+    "JSON.stringify()": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify",
+    "time": [
+      "http://stackoverflow.com/questions/847185/convert-a-unix-timestamp-to-time-in-javascript#847196",
+      "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleTimeString"
+    ],
+    "weather_icons": "https://erikflowers.github.io/weather-icons/",
+    "compare current local unix time to sunrise and sunset unix times": [
+      "http://www.epochconverter.com/", "http://stackoverflow.com/a/847196/2145103"
+    ],
+    "toggle state function MAIN SOLUTION": "http://stackoverflow.com/a/8723199/2145103",
+    "toggle state function BACKUP": ["http://stackoverflow.com/questions/36370772/how-can-i-use-toggleclass-to-switch-between-fahrenheit-and-celsius-on-my-p","https://proto.io/freebies/onoff/"],
+    "weather app design inspiration": "https://www.google.com/search?tbm=isch&q=weather%20app%20ui&tbs=imgo:1#imgrc=_"
+  }
+}
 */
