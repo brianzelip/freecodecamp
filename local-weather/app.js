@@ -51,7 +51,7 @@ appButton.onclick = function() {
     // SEE ALSO http://stackoverflow.com/questions/36370772/how-can-i-use-toggleclass-to-switch-between-fahrenheit-and-celsius-on-my-p
     // SEE ALSO https://proto.io/freebies/onoff/
 
-    weather.innerHTML = openWeatherData.weather[0].description;
+    //weather.innerHTML = openWeatherData.weather[0].description;
 
     // compare local time with weather data for proper icon (day or night)
     var currentLocalTime = Math.round(new Date().getTime()/1000.0);
