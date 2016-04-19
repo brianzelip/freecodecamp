@@ -28,7 +28,24 @@ appButton.onclick = function() {
     // Populate the DOM
     city.innerHTML = openWeatherData.name;
     //need an if statement here or something to allow toggle between F and C
-    temp.innerHTML = fahrenheit + "&deg;<sup class='h3'>F</sup><sup class='h4 inline-block p1 border'>get Celsius</sup>";
+    temp.innerHTML = fahrenheit + "&deg;<sup class='h3'>F</sup>";
+    tempToggleButton.innerHTML = "as Celsius";
+
+    // set up the toggle F/C functionality
+    var currentlyFahrenheit = true;
+    // implement the toggle
+    tempToggleButton.onclick = function() {
+      if (currentlyFahrenheit) {
+        currentlyFahrenheit = false;
+        temp.innerHTML = celsius + "&deg;<sup class='h3'>C</sup>";
+        tempToggleButton.innerHTML = "as Fahrenheit";
+      }
+      else {
+        currentlyFahrenheit = true;
+        temp.innerHTML = fahrenheit + "&deg;<sup class='h3'>F</sup>";
+        tempToggleButton.innerHTML = "as Celsius";
+      }
+    };
 
     // SEE https://www.google.com/search?tbm=isch&q=weather%20app%20ui&tbs=imgo:1#imgrc=_
     // SEE ALSO http://stackoverflow.com/questions/36370772/how-can-i-use-toggleclass-to-switch-between-fahrenheit-and-celsius-on-my-p
@@ -60,7 +77,6 @@ appButton.onclick = function() {
 
 };
 
-
 /*
 REFERENCES
 
@@ -77,6 +93,7 @@ REFERENCES
 "compare current local unix time to sunrise and sunset unix times": [
   "http://www.epochconverter.com/", "http://stackoverflow.com/a/847196/2145103"
 ],
+"toggle state function": "http://stackoverflow.com/a/8723199/2145103",
 
 
 

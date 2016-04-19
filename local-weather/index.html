@@ -15,7 +15,12 @@
       .vh100 { min-height: 100vh; }
       .mh600 { min-height: 600px; }
       .h0 { font-size: 4rem; }
-      }
+      #icon { font-size: 10rem; }
+      .justify-center { justify-content: center; }
+      .space-around { justify-content: space-around; }
+      .space-between { justify-content: space-between; }
+      .pxxs { padding: 0.25rem; }
+      .dotted { border-style: dotted; }
     </style>
   </head>
 
@@ -30,18 +35,16 @@
           </section>
 
           <section class="clearfix center">
-            <p id="city" class="h1 bold">&nbsp;</p>
-            <p id="temp" class="h1">&nbsp;</p>
-            <p id="weather" class="h1">&nbsp;</p>
-            <p id="icon" class="h0">&nbsp;</p>
-            <p id="time" class="h1">&nbsp;</p>
-          </section>
-
-          <section>
-            <form>
-              <input id="fahrenheit" type="radio" name="temp" checked="true" value="F">
-              <input id="celsius" type="radio" name="temp" value="C">
-            </form>
+            <p id="city" class="h0 bold mb2 line-height-1">&nbsp;</p>
+            <p id="weather" class="h1 mb2 line-height-1">&nbsp;</p>
+            <div class="flex flex-center justify-center mb2">
+              <p id="icon" class="m0 line-height-1 px1">&nbsp;</p>
+              <div class="flex flex-column flex-start justify-center space-around px1">
+                <p id="temp" class="h0 m0 line-height-1 px1" style="border: 1px solid transparent;">&nbsp;</p>
+                <a id="tempToggleButton" class="gray btn px1"></a>
+              </div>
+            </div>
+            <p id="time" class="h1 mb2 line-height-1">&nbsp;</p>
           </section>
 
         </div>
