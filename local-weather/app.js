@@ -46,7 +46,7 @@ appButton.onclick = function() {
     };
 
     // deciding to comment out displaying the weather description info (ie: "clear sky")
-    //weather.innerHTML = openWeatherData.weather[0].description;
+    weather.innerHTML = openWeatherData.weather[0].description;
 
     // compare local time with weather data for proper icon (day or night)
     var currentLocalTime = Math.round(new Date().getTime()/1000.0);

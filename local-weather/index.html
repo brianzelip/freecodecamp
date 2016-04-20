@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="weather-icons.min.css">
     <link rel="stylesheet" href="https://npmcdn.com/basscss@7.1.1/css/basscss.min.css">
     <title>getLocalWeather</title>
-    <meta name="description" content="">
+    <meta name="description" content="Web app that displays local weather. Built to solve a FreeCodeCamp.com challenge.">
     <meta name="author" content="Brian Zelip">
     <meta name="keywords" content="sandbox, FreeCodeCamp, geolocation, javascript">
     <style>
@@ -55,6 +55,7 @@
         padding-left: 0;
         padding-right: 0;
       }
+      .pt2 { padding-top: 1rem; }
       .pt3 { padding-top: 2rem; }
       .pb1 { padding-bottom: .5rem; }
       .pb2 { padding-bottom: 1rem; }
@@ -94,9 +95,9 @@
             <section class="clearfix center white">
               <p id="city" class="h0 bold mb2 sm-mb3 line-height-1 overflow-hidden">&nbsp;</p>
 
-              <!--<p id="weather" class="h1 mb2 line-height-1">&nbsp;</p>-->
+              <p id="weather" class="h1 mb2 sm-mb3 line-height-1">&nbsp;</p>
 
-              <div class="flex flex-center justify-center mb2 sm-mb3 py3">
+              <div class="flex flex-center justify-center mb2 sm-mb3">
 
                 <p id="icon" class="m0 line-height-1 px1">&nbsp;</p>
 
@@ -111,6 +112,7 @@
             </section>
 
           </div>
+          <footer class="pt2 center white">Crafted by <a class="white" href="https://twitter.com/bzelip">bzelip</a> during <a class="white" href="https://www.freecodecamp.com">FreeCodeCamp</a></footer>
         </div>
       </div>
 
