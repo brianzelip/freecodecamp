@@ -21,8 +21,11 @@
         margin-left: .5rem;
       }
       .h0 { font-size: 3rem; }
-      @media(min-width: 36em) {
+      @media(min-width: 40em) {
         .sm-mt3 { margin-top: 2rem; }
+        .sm-flex-row { flex-direction: row; }
+        .sm-flex-first { order: -1; }
+        .sm-flex-last { order: 2; }
       }
       .border-purple { border-color: #b10dc9; }
       .monospace { font-family: "PT Mono", "Consolas", monospace; }
@@ -43,18 +46,18 @@
 
     <main class="container clearfix sm-mt3">
       <div class="col-10 mx-auto">
-        <div class="p2">
+        <div class="p2 border">
           <p class="center muted">
             <span class="inline-block p1 mx-auto bg-purple white monospace ">[work in progress]</span>
           </p>
           <h1 class="h0 my2-5 center purple">Wikipedia Access Point</h1>
-          <div class="flex flex-center justify-center">
-            <div class="flex p1 border border-purple flex-4">
+          <div class="flex flex-column sm-flex-row flex-center justify-center border">
+            <div class="flex flex-3 flex-last sm-flex-first p1 border border-purple">
               <input type="text" class="flex-4 border-none" placeholder="Search for content">
               <a href="" class="btn btn-primary center bg-purple white">Search</a>
             </div>
-            <p class="h1 my2-5 purple bold flex-1 center">OR</p>
-            <a href="https://en.wikipedia.org/wiki/Special:Random" class="btn btn-primary bg-purple white">Go to random page</a>
+            <p class="flex-2 h1 my2-5 px2 center purple bold">OR</p>
+            <a href="https://en.wikipedia.org/wiki/Special:Random" class="flex-first sm-flex-last btn btn-primary bg-purple center white">View random page</a>
           </div>
         </div>
       </div>
