@@ -23,6 +23,7 @@
       .h0 { font-size: 3rem; }
       @media(min-width: 40em) {
         .sm-mt3 { margin-top: 2rem; }
+        .sm-mb2 { margin-bottom: 1rem; }
         .sm-p2 { padding: 1rem; }
         .sm-flex-row { flex-direction: row; }
         .sm-flex-first { order: -1; }
@@ -46,6 +47,8 @@
       .height3 { height: 2rem; }
       .height4 { height: 4rem; }
       .hv-purple:hover { background-color: rgba(177,13,201,.15); }
+      .dark-gray { color: rgb(119,119,119); }
+      .light-purple { color: rgba(177,13,201,.6)}
     </style>
   </head>
 
@@ -60,7 +63,7 @@
           <h1 class="h0 my2-5 center purple">Wikipedia Access Point</h1>
           <div class="flex flex-column sm-flex-row flex-center justify-center">
             <div class="flex flex-3 flex-last sm-flex-first p1 border border-purple">
-              <input type="text" id="userInput" class="flex-4 border-none" placeholder="Search for content">
+              <input type="text" autofocus="true" id="userInput" class="flex-4 border-none" placeholder="Search for content">
               <input type="submit" id="submit" class="btn btn-primary center bg-purple white" value="Search">
             </div>
             <p class="flex-2 h1 my2-5 px2 center purple bold">OR</p>
@@ -73,6 +76,7 @@
     <section class="container clearfix">
       <div class="sm-col-10 mx-auto">
         <div class="p1 sm-p2">
+          <div id="searchConfirm" class="px2"></div>
           <ul id="results" class="list-reset"></ul>
         </div>
       </div>
@@ -81,6 +85,7 @@
     <!--<section class="container clearfix">
       <div class="col-10 mx-auto">
         <div class="p2">
+          <h2 class="h1">Searched for: </h2>
           <ul class="list-reset">
             <li>
               <div class="p2 purple hv-purple">
