@@ -9,7 +9,7 @@
     <title>WikipediaViewer</title>
     <meta name="description" content="Third-party web app that retrieves and displays Wikipedia content. Built in response to a FreeCodeCamp challenge.">
     <meta name="author" content="Brian Zelip">
-    <meta name="keywords" content="sandbox, API, Wikipedia, javascript, FreeCodeCamp, 'Feeling lucky'">
+    <meta name="keywords" content="sandbox, API, Wikipedia, 'MediaWiki API', javascript, jQuery, FreeCodeCamp">
     <style>
       .justify-center { justify-content: center; }
       .mx2 {
@@ -24,6 +24,7 @@
       @media(min-width: 40em) {
         .sm-mt3 { margin-top: 2rem; }
         .sm-mb2 { margin-bottom: 1rem; }
+        .sm-mb2-5 { margin-bottom: 1.5rem; }
         .sm-p2 { padding: 1rem; }
         .sm-flex-row { flex-direction: row; }
         .sm-flex-first { order: -1; }
@@ -49,6 +50,7 @@
       .hv-purple:hover { background-color: rgba(177,13,201,.15); }
       .dark-gray { color: rgb(119,119,119); }
       .light-purple { color: rgba(177,13,201,.6)}
+      .text-decoration-none:hover { text-decoration: none; }
     </style>
   </head>
 
@@ -57,10 +59,11 @@
     <main class="container clearfix sm-mt3">
       <div class="sm-col-10 mx-auto">
         <div class="p1 sm-p2">
-          <p class="center muted">
+          <!--<p class="center muted">
             <span class="inline-block p1 mx-auto bg-purple white monospace ">[work in progress]</span>
-          </p>
+          </p>-->
           <h1 class="h0 my2-5 center purple">Wikipedia Access Point</h1>
+          <p class="mb3 sm-mb2 center purple">[Crafted by <a href="https://twitter.com/bzelip" class="purple">@bzelip</a> for <a href="https://freecodecamp.com" class="purple">FreeCodeCamp</a>]</p>
           <div class="flex flex-column sm-flex-row flex-center justify-center">
             <div class="flex flex-3 flex-last sm-flex-first p1 border border-purple">
               <input type="text" autofocus="true" id="userInput" class="flex-4 border-none" placeholder="Search for content">
@@ -81,22 +84,6 @@
         </div>
       </div>
     </section>
-
-    <!--<section class="container clearfix">
-      <div class="col-10 mx-auto">
-        <div class="p2">
-          <h2 class="h1">Searched for: </h2>
-          <ul class="list-reset">
-            <li>
-              <div class="p2 purple hv-purple">
-                <h2 class="h1 mt0">Albert Einstein</h2>
-                <p class="mb0">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque recusandae sunt cum distinctio blanditiis eum inventore eaque commodi. Numquam impedit unde tempora iure velit est reiciendis ullam officia, accusantium aliquid!</p>
-              </div>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </section>-->
 
     <script src="https://cdn.jsdelivr.net/jquery/2.2.3/jquery.min.js"></script>
     <script src="app.js"></script>
