@@ -39,6 +39,11 @@
       }
       .mt2-5 { margin-top: 1.5rem; }
       .mb2-5 { margin-bottom: 1.5rem; }
+      .height1 { height: .5rem; }
+      .height2 { height: 1rem; }
+      .height3 { height: 2rem; }
+      .height4 { height: 4rem; }
+      .hv-purple:hover { background-color: rgba(177,13,201,.15); }
     </style>
   </head>
 
@@ -53,8 +58,8 @@
           <h1 class="h0 my2-5 center purple">Wikipedia Access Point</h1>
           <div class="flex flex-column sm-flex-row flex-center justify-center">
             <div class="flex flex-3 flex-last sm-flex-first p1 border border-purple">
-              <input type="text" class="flex-4 border-none" placeholder="Search for content">
-              <a href="" class="btn btn-primary center bg-purple white">Search</a>
+              <input type="text" id="userInput" class="flex-4 border-none" placeholder="Search for content">
+              <input type="submit" id="submit" class="btn btn-primary center bg-purple white" value="Search">
             </div>
             <p class="flex-2 h1 my2-5 px2 center purple bold">OR</p>
             <a href="https://en.wikipedia.org/wiki/Special:Random" class="flex-first sm-flex-last btn btn-primary bg-purple center white">View random page</a>
@@ -63,10 +68,25 @@
       </div>
     </main>
 
-    <section class="container clearfix sm-mt3">
+    <!--<section class="container clearfix">
       <div class="col-10 mx-auto">
         <div class="p2">
-          <div id="results" class="list-reset"></div>
+          <ul class="list-reset">
+            <li>
+              <div class="p2 purple hv-purple">
+                <h2 class="h1 mt0">Albert Einstein</h2>
+                <p class="mb0">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque recusandae sunt cum distinctio blanditiis eum inventore eaque commodi. Numquam impedit unde tempora iure velit est reiciendis ullam officia, accusantium aliquid!</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>-->
+
+    <section class="container clearfix">
+      <div class="col-10 mx-auto">
+        <div class="p2">
+          <ul id="results" class="list-reset"></ul>
         </div>
       </div>
     </section>
