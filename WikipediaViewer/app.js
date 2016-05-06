@@ -14,3 +14,6 @@ submit.onclick = function() {
     }
   })// adapted from http://stackoverflow.com/a/33460622/2145103
 }
+
+// Next i want to clear the textarea after search, and inject html that confirms to the user what they searched for
+// start with this resource: https://duckduckgo.com/?q=clear+html+text+area+after+submit&t=ffab&ia=qa

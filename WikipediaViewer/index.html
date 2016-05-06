@@ -23,9 +23,11 @@
       .h0 { font-size: 3rem; }
       @media(min-width: 40em) {
         .sm-mt3 { margin-top: 2rem; }
+        .sm-p2 { padding: 1rem; }
         .sm-flex-row { flex-direction: row; }
         .sm-flex-first { order: -1; }
         .sm-flex-last { order: 2; }
+        .sm-col-10 { width: 83.33333%; }
       }
       .border-purple { border-color: #b10dc9; }
       .monospace { font-family: "PT Mono", "Consolas", monospace; }
@@ -50,8 +52,8 @@
   <body class="p2">
 
     <main class="container clearfix sm-mt3">
-      <div class="col-10 mx-auto">
-        <div class="p2">
+      <div class="sm-col-10 mx-auto">
+        <div class="p1 sm-p2">
           <p class="center muted">
             <span class="inline-block p1 mx-auto bg-purple white monospace ">[work in progress]</span>
           </p>
@@ -68,6 +70,14 @@
       </div>
     </main>
 
+    <section class="container clearfix">
+      <div class="sm-col-10 mx-auto">
+        <div class="p1 sm-p2">
+          <ul id="results" class="list-reset"></ul>
+        </div>
+      </div>
+    </section>
+
     <!--<section class="container clearfix">
       <div class="col-10 mx-auto">
         <div class="p2">
@@ -82,14 +92,6 @@
         </div>
       </div>
     </section>-->
-
-    <section class="container clearfix">
-      <div class="col-10 mx-auto">
-        <div class="p2">
-          <ul id="results" class="list-reset"></ul>
-        </div>
-      </div>
-    </section>
 
     <script src="https://cdn.jsdelivr.net/jquery/2.2.3/jquery.min.js"></script>
     <script src="app.js"></script>
