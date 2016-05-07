@@ -37,12 +37,12 @@ function app() {
   userInput = document.getElementById('userInput').value;
   $.ajax({
     dataType: 'jsonp',
-    url: 'https://en.wikipedia.org/w/api.php?action=query&format=json&list=search&utf8=1&srlimit=25&srinfo=totalhits&srsearch=' + userInput,
+    url: 'https://en.wikipedia.org/w/api.php?action=query&format=json&list=search&utf8=1&srlimit=50&srinfo=totalhits&srsearch=' + userInput,
     success : function(json) {
       console.log("Yo, the ajax worked");
       console.log(json);
       results.innerHTML = '';//clears display space if previous results are there
-      searchConfirm.innerHTML = '<h2 class="h3 m0 sm-mb2 regular light-purple">Showing ' + json.query.search.length + ' of ' + json.query.searchinfo.totalhits + ' results for ' + userInput + '</h2>';
+      searchConfirm.innerHTML = '<h2 class="h3 m0 sm-mb2 regular light-purple">Showing ' + json.query.search.length + ' results for ' + userInput + '</h2>';
       for (i=0; i<json.query.search.length; i++) {
         results.innerHTML = results.innerHTML + '<li><div class="p2 purple hv-purple"><a href="https://en.wikipedia.org/wiki/' + json.query.search[i].title + '" class="purple text-decoration-none"><h2 class="h1 mt0">' + json.query.search[i].title + '</h2><p class="mb0">' + json.query.search[i].snippet + '</p></a></div></li>'
       }//populates the DOM @ `#results` with the Wikipedia search results
