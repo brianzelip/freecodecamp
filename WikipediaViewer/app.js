@@ -44,7 +44,7 @@ function app() {
       results.innerHTML = '';//clears display space if previous results are there
       searchConfirm.innerHTML = '<h2 class="h3 m0 sm-mb2 regular light-purple">Showing ' + json.query.search.length + ' results for ' + userInput + '</h2>';
       for (i=0; i<json.query.search.length; i++) {
-        results.innerHTML = results.innerHTML + '<li><div class="p2 purple hv-purple"><a href="https://en.wikipedia.org/wiki/' + json.query.search[i].title + '" class="purple text-decoration-none"><h2 class="h1 mt0">' + json.query.search[i].title + '</h2><p class="mb0">' + json.query.search[i].snippet + '</p></a></div></li>'
+        results.innerHTML = results.innerHTML + '<li><a href="https://en.wikipedia.org/wiki/' + json.query.search[i].title + '" class="purple text-decoration-none"><div class="p2 purple hv-purple"><h2 class="h1 mt0">' + json.query.search[i].title + '</h2><p class="mb0">' + json.query.search[i].snippet + '</p></div></a></li>'
       }//populates the DOM @ `#results` with the Wikipedia search results
       document.getElementById('userInput').value = '';//clears the textarea input after submission
     }
