@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <link rel="stylesheet" href="https://npmcdn.com/basscss@7.1.1/css/basscss.min.css">
+    <title>TwitchTV API sandbox</title>
+    <meta name="description" content="buffer space for quick tries">
+    <meta name="author" content="Brian Zelip">
+    <meta name="keywords" content="sandbox, TwitchTV, api, FreeCodeCamp">
+  </head>
+
+  <body>
+
+    <div id="Data"></div>
+
+
+    <script src="https://cdn.jsdelivr.net/jquery/2.2.4/jquery.min.js"></script>
+    <script>
+      $.getJSON('https://api.twitch.tv/kraken/streams/freecodecamp?callback=?', function(data) {
+        console.log(data);
+        Data.innerHTML = '<img src="' + data.stream.preview.small + '" class="block mx-auto"><p>check me out yo!</p>';
+      });
+    </script>
+
+  </body>
+
+</html>
