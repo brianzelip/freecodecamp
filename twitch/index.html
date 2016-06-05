@@ -11,21 +11,42 @@
     <meta name="author" content="Brian Zelip">
     <meta name="keywords" content="TwitchTV, api, FreeCodeCamp, javascript">
     <script src="https://cdn.jsdelivr.net/jquery/2.2.4/jquery.min.js"></script>
-    <script>
-      $.getJSON('https://api.twitch.tv/kraken/streams/freecodecamp?callback=?', function(data) {
-        console.log(data);
-        Data.innerHTML = '<img src="' + data.stream.preview.large + '" class="block mx-auto"><p>check me out yo!</p>';
-      });
-    </script>
     <style>
       .h0 { font-size: 3rem; }
+      .no-underline,
+      .no-underline:hover { text-decoration: none; }
+      .hover-bg-gray:hover { background-color: #eee; }
+      .pointer { cursor: pointer; }
+      .hunnid {
+        width: 100px;
+        height: 100px;
+      }
+      .align-self--end { align-self: flex-end; }
+      .justify-end { justify-content: flex-end; }
+      .break-word { word-break: break-all; }
       @media(min-width: 40em) {
         .h0 { font-size: 4rem; }
         .sm-mt3 { margin-top: 2rem; }
         .sm-p2 { padding: 1rem; }
         .sm-flex-center { align-items: center; }
+        .sm-justify-end { justify-content: flex-end; }
+        .sm-justify-between { justify-content: space-between; }
         .sm-flex-grow { flex: 1 0 auto; }
+        .sm-flex-auto { flex: 1 1 auto; }
+        .sm-flex-none { flex: none; }
         .sm-center { text-align: center; }
+      }
+      @media(min-width: 52em) {
+        .md-flex-top { align-items: flex-start; }
+        .md-center { text-align: center; }
+        .md-h1 { font-size: 2rem; }
+        .md-h2 { font-size: 1.5rem; }
+      }
+      @media(min-width: 64em) {
+        .lg-left { text-align: left; }
+        .lg-h1 { font-size: 2rem; }
+        .lg-h2 { font-size: 1.5rem; }
+        .lg-flex-center { align-items: center; }
       }
     </style>
   </head>
@@ -36,9 +57,9 @@
       <h1 class="h0 m0 center">Select Twitch Streams</h1>
     </header>
 
-    <div class="container p2 clearfix mx-auto">
+    <!--<div class="container p2 clearfix mx-auto">
 
-      <a class="block col-9 mx-auto">
+      <a class="block col-9 mx-auto no-underline pointer hover-bg-gray">
         <div class="border-top border-right border-left p2">
           <div class="sm-flex sm-flex-center">
             <div class="sm-flex-grow">
@@ -54,7 +75,76 @@
         </div>
       </a>
 
-    </div>
+      <a class="block col-9 mx-auto no-underline pointer hover-bg-gray">
+        <div class="border-top border-right border-left p2">
+          <div class="sm-flex sm-flex-center">
+            <div class="sm-flex-grow">
+              <img src="http://placehold.it/100x100" class="circle">
+              <p class="h5 m0 sm-center">70 viewers</p>
+            </div>
+            <div class="px2">
+              <h1 class="m0">User Name</h1>
+              <h2 class="m0">StarCraft II: RERUN: StarCraft 2 - GunGFuBanDa vs. DnS (PvP)</h2>
+            </div>
+            <img width="214" class="sm-flex-grow" src="https://static-cdn.jtvnw.net/previews-ttv/live_user_freecodecamp-320x180.jpg">
+          </div>
+        </div>
+      </a>
+
+    </div>-->
+
+    <div id="Data_StreamingNow" class="container p2 clearfix mx-auto"></div>
+
+
+    <script>
+      var streamers = ["ESL_SC2", "OgamingSC2", "cretetion", "freecodecamp", "storbeck", "habathcx", "RobotCaleb", "noobs2ninjas", "whiteboy7thst", "zrozilacx", "sandyravage", "blametruthtwitch", "streamerhouse"];
+
+      var apiURL = 'https://api.twitch.tv/kraken/streams';
+      var onlineUsers = [];
+      var offlineUsers = [];
+
+      function getOnlineUsers() {
+        for (i=0; i<streamers.length; i++) {
+          injectOnlineUserData(streamers[i]);
+        }
+        function injectOnlineUserData(name) {
+          $.getJSON(apiURL + '?channel=' + name, function(data) {
+            if (data.streams[0] != undefined) {
+              console.log(data);
+              Data_StreamingNow.innerHTML += '<a class="block md-col-11 lg-col-9 mx-auto no-underline pointer hover-bg-gray" href="' + data.streams[0]._links.self + '"><div class="border-top border-right border-left p2"><div class="sm-flex lg-flex-center lg-left sm-justify-between"><div class="flex-none"><img src="' + data.streams[0].channel.logo + '" class="circle hunnid"><p class="h5 m0 sm-center">' + data.streams[0].viewers + ' viewers</p></div><div class="px2 sm-flex-auto"><h1 class="h2 md-h1 m0 break-word">' + data.streams[0].channel.display_name + '</h1><h2 class="h4 md-h2 m0 break-word">' + data.streams[0].game + '</h2></div><img width="214" class="sm-flex-none" src="'  + data.streams[0].preview.medium + '"></div></div></a>';
+              onlineUsers.push(name);
+              //console.log("The online users are: " + onlineUsers);
+            }
+          });
+        }
+      }
+      function getOfflineUsers() {
+        for (i=0; i<streamers.length; i++) {
+          injectOfflineUserData(streamers[i]);
+        }
+        function injectOfflineUserData(name) {
+          $.getJSON(apiURL + '/' + name, function(data) {
+            if (data.streams[0] != undefined) {
+              console.log(data);
+              Data_StreamingNow.innerHTML += '<a class="block md-col-11 lg-col-9 mx-auto no-underline pointer hover-bg-gray" href="' + data.streams[0]._links.self + '"><div class="border-top border-right border-left p2"><div class="sm-flex lg-flex-center lg-left sm-justify-between"><div class="flex-none"><img src="' + data.streams[0].channel.logo + '" class="circle hunnid"><p class="h5 m0 sm-center">' + data.streams[0].viewers + ' viewers</p></div><div class="px2 sm-flex-auto"><h1 class="h2 md-h1 m0 break-word">' + data.streams[0].channel.display_name + '</h1><h2 class="h4 md-h2 m0 break-word">' + data.streams[0].game + '</h2></div><img width="214" class="sm-flex-none" src="'  + data.streams[0].preview.medium + '"></div></div></a>';
+              onlineUsers.push(name);
+              //console.log("The online users are: " + onlineUsers);
+            }
+          });
+        }
+      }
+      getOnlineUsers();
+      /*function getOnline(name) {
+        $.getJSON(apiOnlineURL + name, function(data) {
+          if (data.message != undefined) {
+            Data_StreamingNow.innerHTML = data.message;
+          } else {
+            console.log(data);
+            Data_StreamingNow.innerHTML += '<a class="block lg-col-9 mx-auto no-underline pointer hover-bg-gray" href="' + data._links.channel + '"><div class="border-top border-right border-left p2"><div class="sm-flex lg-flex-center lg-left sm-justify-between"><div class="flex-none"><img src="' + data.stream.channel.logo + '" class="circle hunnid"><p class="h5 m0 sm-center">' + data.stream.viewers + ' viewers</p></div><div class="px2 sm-flex-auto"><h1 class="h2 lg-h1 m0 break-word">' + data.stream.channel.display_name + '</h1><h2 class="h4 lg-h2 m0 break-word">' + data.stream.game + '</h2></div><img width="214" class="sm-flex-none" src="' + data.stream.preview.medium + '"></div></div></a>';
+          }
+        });
+      }*/
+    </script>
 
   </body>
 
