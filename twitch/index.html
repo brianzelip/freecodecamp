@@ -93,47 +93,49 @@
 
     </div>-->
 
-    <div id="Data_StreamingNow" class="container p2 clearfix mx-auto"></div>
-
+    <div id="Data" class="container p2 clearfix mx-auto"></div>
 
     <script>
-      var streamers = ["ESL_SC2", "OgamingSC2", "cretetion", "freecodecamp", "storbeck", "habathcx", "RobotCaleb", "noobs2ninjas", "whiteboy7thst", "zrozilacx", "sandyravage", "blametruthtwitch", "streamerhouse"];
+      var streamers = ["ESL_SC2", "OgamingSC2", "cretetion", "freecodecamp", "storbeck", "habathcx", "RobotCaleb", "noobs2ninjas", "whiteboy7thst", "zrozilacx", "sandyravage", "blametruthtwitch", "streamerhouse", "bzelip"];
 
-      var apiURL = 'https://api.twitch.tv/kraken/streams';
+      var apiURL = 'https://api.twitch.tv/kraken/';
       var onlineUsers = [];
       var offlineUsers = [];
 
       function getOnlineUsers() {
         for (i=0; i<streamers.length; i++) {
-          injectOnlineUserData(streamers[i]);
+          onlineUserData(streamers[i]);
         }
-        function injectOnlineUserData(name) {
-          $.getJSON(apiURL + '?channel=' + name, function(data) {
+        function onlineUserData(name) {
+          $.getJSON(apiURL + 'streams?channel=' + name, function(data) {
             if (data.streams[0] != undefined) {
               console.log(data);
-              Data_StreamingNow.innerHTML += '<a class="block md-col-11 lg-col-9 mx-auto no-underline pointer hover-bg-gray" href="' + data.streams[0]._links.self + '"><div class="border-top border-right border-left p2"><div class="sm-flex lg-flex-center lg-left sm-justify-between"><div class="flex-none"><img src="' + data.streams[0].channel.logo + '" class="circle hunnid"><p class="h5 m0 sm-center">' + data.streams[0].viewers + ' viewers</p></div><div class="px2 sm-flex-auto"><h1 class="h2 md-h1 m0 break-word">' + data.streams[0].channel.display_name + '</h1><h2 class="h4 md-h2 m0 break-word">' + data.streams[0].game + '</h2></div><img width="214" class="sm-flex-none" src="'  + data.streams[0].preview.medium + '"></div></div></a>';
+              Data.innerHTML += '<a class="block md-col-11 lg-col-9 mx-auto no-underline pointer hover-bg-gray" href="' + data.streams[0].channel.url + '"><div class="border-top border-right border-left p2"><div class="sm-flex lg-flex-center lg-left sm-justify-between"><div class="flex-none"><img src="' + data.streams[0].channel.logo + '" class="circle hunnid"><p class="h5 m0 sm-center">' + data.streams[0].viewers + ' viewers</p></div><div class="px2 sm-flex-auto"><h1 class="h2 md-h1 m0 break-word">' + data.streams[0].channel.display_name + '</h1><h2 class="h4 md-h2 m0 break-word">' + data.streams[0].game + '</h2></div><img width="214" class="sm-flex-none" src="'  + data.streams[0].preview.medium + '"></div></div></a>';
               onlineUsers.push(name);
               //console.log("The online users are: " + onlineUsers);
             }
           });
         }
       }
+
       function getOfflineUsers() {
-        for (i=0; i<streamers.length; i++) {
-          injectOfflineUserData(streamers[i]);
+        for (x=0; x<streamers.length; x++) {
+          offlineUserData(streamers[x]);
         }
-        function injectOfflineUserData(name) {
-          $.getJSON(apiURL + '/' + name, function(data) {
-            if (data.streams[0] != undefined) {
-              console.log(data);
-              Data_StreamingNow.innerHTML += '<a class="block md-col-11 lg-col-9 mx-auto no-underline pointer hover-bg-gray" href="' + data.streams[0]._links.self + '"><div class="border-top border-right border-left p2"><div class="sm-flex lg-flex-center lg-left sm-justify-between"><div class="flex-none"><img src="' + data.streams[0].channel.logo + '" class="circle hunnid"><p class="h5 m0 sm-center">' + data.streams[0].viewers + ' viewers</p></div><div class="px2 sm-flex-auto"><h1 class="h2 md-h1 m0 break-word">' + data.streams[0].channel.display_name + '</h1><h2 class="h4 md-h2 m0 break-word">' + data.streams[0].game + '</h2></div><img width="214" class="sm-flex-none" src="'  + data.streams[0].preview.medium + '"></div></div></a>';
-              onlineUsers.push(name);
-              //console.log("The online users are: " + onlineUsers);
+        function offlineUserData(name) {
+          console.log("fuck you");
+          $.getJSON(apiURL + 'users/' + name, function(offlineData) {
+            if (offlineData.message != undefined) {
+              Data.innerHTML += '<h1>' + name + '</h1>';
             }
           });
+
         }
       }
+
       getOnlineUsers();
+      getOfflineUsers();
+
       /*function getOnline(name) {
         $.getJSON(apiOnlineURL + name, function(data) {
           if (data.message != undefined) {
