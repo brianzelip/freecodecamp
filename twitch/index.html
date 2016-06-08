@@ -113,7 +113,14 @@
               console.log(data);
               Data.innerHTML += '<a class="block md-col-11 lg-col-9 mx-auto no-underline pointer hover-bg-gray" href="' + data.streams[0].channel.url + '"><div class="border-top border-right border-left p2"><div class="sm-flex lg-flex-center lg-left sm-justify-between"><div class="flex-none"><img src="' + data.streams[0].channel.logo + '" class="circle hunnid"><p class="h5 m0 sm-center">' + data.streams[0].viewers + ' viewers</p></div><div class="px2 sm-flex-auto"><h1 class="h2 md-h1 m0 break-word">' + data.streams[0].channel.display_name + '</h1><h2 class="h4 md-h2 m0 break-word">' + data.streams[0].game + '</h2></div><img width="214" class="sm-flex-none" src="'  + data.streams[0].preview.medium + '"></div></div></a>';
               onlineUsers.push(name);
-              //console.log("The online users are: " + onlineUsers);
+              console.log("The online users are: " + onlineUsers);
+              var idx = streamers.indexOf(name);
+              if (idx > -1) {
+                streamers.splice(idx, 1);
+                offlineUsers = streamers;
+              }
+              console.log("the new streamers array.length is :" + streamers.length);
+              console.log("the offline users are: " + offlineUsers);
             }
           });
         }
@@ -125,10 +132,10 @@
         }
         function offlineUserData(name) {
           console.log("fuck you");
-          $.getJSON('https://api.twitch.tv/kraken/users/' + name, function(data) {
-            if (data.display_name != undefined) {
+          $.getJSON('https://api.twitch.tv/kraken/users/' + name + '?callback=?', function(data) {
+            if (data.display_name != null) {
               offline.innerHTML += '<h1>' + data.display_name + '</h1>';
-            } else if (data.error === "Not Found") {
+            } else if (data.display_name == undefined) {
               offline.innerHTML += '<h2>' + data.message + '</h2>';
             }
           });
