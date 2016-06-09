@@ -97,24 +97,51 @@
     <div id="offline" class="container p2 clearfix mx-auto"></div>
 
     <script>
-      var streamers = ["ESL_SC2", "OgamingSC2", "cretetion", "freecodecamp", "storbeck", "habathcx", "RobotCaleb", "noobs2ninjas", "whiteboy7thst", "zrozilacx", "sandyravage", "blametruthtwitch", "streamerhouse", "bzelip"];
+      var users = ["ESL_SC2", "OgamingSC2", "cretetion", "freecodecamp", "storbeck", "habathcx", "RobotCaleb", "noobs2ninjas", "whiteboy7thst", "zrozilacx", "sandyravage", "blametruthtwitch", "streamerhouse", "bzelip"];
+
+      var usersCopy = [];
 
       var onlineUsers = [];
       var offlineUsers = [];
       var neverUsers = [];
       var noMoreUsers = [];
 
+      var count = 0;
+
       var apiURL = 'https://api.twitch.tv/kraken/';
 
-
       /*
-      function checkForOnlineUsers(name) {
-        $.getJSON(apiURL + 'streams?channel=' + name, function(data) {
-          if (data.streams[0] != undefined) {
-            onlineUsers.push(name);
-            console.log("The online users are: " + onlineUsers);
-          }
+      //finds which Twitch users are currently streaming, and creates an array of those names
+      function getOnlineUsers2() {
+        for (i=0; i<users.length; i++) {
+          var userName = users[i];
+          $.getJSON(apiURL + 'streams?channel=' + userName, function(data) {
+            if (data.streams[0] != undefined) {
+              onlineUsers.push(userName);
+              console.log("The online users are: " + onlineUsers);
+            }
+          });
         }
+      }
+
+      //gets user data for all users who are not currently streaming
+      function getOfflineUsers2() {
+        offlineUsers = users;
+        for (x=0; x<onlineUsers.length; x++) {
+          var idx = users.indexOf(onfflineUsers[x]);
+          if (idx > -1) {
+            offlineUsers.splice(idx, 1);
+          }
+          console.log('The offline users are: ' + offlineUsers);
+          return offlineUsers;
+        }
+      }
+
+
+      function createUserArrays() {
+        getOnlineUsers2().then(function() {
+          getOfflineUsers2();
+        });
       }
 
       function checkForOfflineUsers(name) {
@@ -134,22 +161,24 @@
 
 
       function getOnlineUsers() {
-        for (i=0; i<streamers.length; i++) {
-          onlineUserData(streamers[i]);
+        for (i=0; i<users.length; i++) {
+          onlineUserData(users[i]);
+          count++;
+          console.log('the count is: ' + count);
         }
         function onlineUserData(name) {
-          $.getJSON(apiURL + 'streams?channel=' + name, function(data) {
+            $.getJSON(apiURL + 'streams?channel=' + name, function(data) {
             if (data.streams[0] != undefined) {
               console.log(data);
               Data.innerHTML += '<a class="block md-col-11 lg-col-9 mx-auto no-underline pointer hover-bg-gray" href="' + data.streams[0].channel.url + '"><div class="border-top border-right border-left p2"><div class="sm-flex lg-flex-center lg-left sm-justify-between"><div class="flex-none"><img src="' + data.streams[0].channel.logo + '" class="circle hunnid"><p class="h5 m0 sm-center">' + data.streams[0].viewers + ' viewers</p></div><div class="px2 sm-flex-auto"><h1 class="h2 md-h1 m0 break-word">' + data.streams[0].channel.display_name + '</h1><h2 class="h4 md-h2 m0 break-word">' + data.streams[0].game + '</h2></div><img width="214" class="sm-flex-none" src="'  + data.streams[0].preview.medium + '"></div></div></a>';
               onlineUsers.push(name);
               console.log("The online users are: " + onlineUsers);
-              var idx = streamers.indexOf(name);
+              var idx = users.indexOf(name);
               if (idx > -1) {
-                streamers.splice(idx, 1);
-                offlineUsers = streamers;
+                users.splice(idx, 1);
+                offlineUsers = users;
               }
-              console.log("the new streamers array.length is :" + streamers.length);
+              console.log("the new users array.length is :" + users.length);
               console.log("the offline users are: " + offlineUsers);
             }
           });
@@ -157,8 +186,8 @@
       }
 
       function getOfflineUsers() {
-        for (x=0; x<streamers.length; x++) {
-          offlineUserData(streamers[x]);
+        for (x=0; x<offlineUsers.length; x++) {
+          offlineUserData(offlineUsers[x]);
         }
         function offlineUserData(name) {
           console.log("fuck you");
@@ -173,7 +202,8 @@
       }
 
       getOnlineUsers();
-      getOfflineUsers();
+
+      //$.when(getOnlineUsers()).then(getOfflineUsers());
 
       /*function getOnline(name) {
         $.getJSON(apiOnlineURL + name, function(data) {
