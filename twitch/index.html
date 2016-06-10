@@ -106,7 +106,7 @@
       var neverUsers = [];
       var noMoreUsers = [];
 
-      var count = 0;
+      var count = users.length;
 
       var apiURL = 'https://api.twitch.tv/kraken/';
 
@@ -161,10 +161,9 @@
 
 
       function getOnlineUsers() {
+        usersCopy = users;
         for (i=0; i<users.length; i++) {
           onlineUserData(users[i]);
-          count++;
-          console.log('the count is: ' + count);
         }
         function onlineUserData(name) {
             $.getJSON(apiURL + 'streams?channel=' + name, function(data) {
@@ -173,14 +172,16 @@
               Data.innerHTML += '<a class="block md-col-11 lg-col-9 mx-auto no-underline pointer hover-bg-gray" href="' + data.streams[0].channel.url + '"><div class="border-top border-right border-left p2"><div class="sm-flex lg-flex-center lg-left sm-justify-between"><div class="flex-none"><img src="' + data.streams[0].channel.logo + '" class="circle hunnid"><p class="h5 m0 sm-center">' + data.streams[0].viewers + ' viewers</p></div><div class="px2 sm-flex-auto"><h1 class="h2 md-h1 m0 break-word">' + data.streams[0].channel.display_name + '</h1><h2 class="h4 md-h2 m0 break-word">' + data.streams[0].game + '</h2></div><img width="214" class="sm-flex-none" src="'  + data.streams[0].preview.medium + '"></div></div></a>';
               onlineUsers.push(name);
               console.log("The online users are: " + onlineUsers);
-              var idx = users.indexOf(name);
+              var idx = usersCopy.indexOf(name);
               if (idx > -1) {
-                users.splice(idx, 1);
+                usersCopy.splice(idx, 1);
                 offlineUsers = users;
               }
               console.log("the new users array.length is :" + users.length);
               console.log("the offline users are: " + offlineUsers);
             }
+            count--;
+            console.log('the count is: ' + count);
           });
         }
       }
