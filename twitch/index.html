@@ -22,10 +22,16 @@
         width: 100px;
         height: 100px;
       }
+      .is-active {
+        box-shadow: inset 0 0 0 20rem rgba(0,0,0,.125),inset 0 3px 4px 0 rgba(0,0,0,.25),0 0 1px rgba(0,0,0,.125);
+      }
       .flex-center { align-items: center; }
       .align-self--end { align-self: flex-end; }
       .justify-end { justify-content: flex-end; }
       .break-word { word-break: break-all; }
+      .btn-primary:active { box-shadow: none; }
+      .is-active::before { content: "Showing "; }
+      .btn-primary:not(.is-active)::before { content: "Show "; }
       @media(min-width: 40em) {
         .h0 { font-size: 4rem; }
         .sm-mt3 { margin-top: 2rem; }
@@ -68,6 +74,11 @@
 
     <header class="sm-mt3 container p2 clearfix mx-auto">
       <h1 class="h0 m0 center">Select Twitch Streams</h1>
+      <section class="mt2 center">
+        <button class="btn btn-primary" id="all">all</button>
+        <button class="btn btn-primary" id="online">online</button>
+        <button class="btn btn-primary" id="offline">offline</button>
+      </section>
     </header>
 
     <div id="Data" class="container p2 clearfix mx-auto"></div>
@@ -77,3 +88,15 @@
   </body>
 
 </html>
+
+<!--
+
+Non-javascript function object method references:
+
+- child selectors: https://developer.mozilla.org/en-US/docs/Web/CSS/Child_selectors
+- last-of-type: https://developer.mozilla.org/en-US/docs/Web/CSS/:last-of-type
+- ::before: https://developer.mozilla.org/en-US/docs/Web/CSS/::before
+- :not(): https://developer.mozilla.org/en-US/docs/Web/CSS/:not
+- valid js variable checker: https://mothereff.in/js-variables
+
+-->

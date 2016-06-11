@@ -1,4 +1,4 @@
-var twitch = (function() {
+var twitch = function() {
   var users = ["ESL_SC2", "OgamingSC2", "cretetion", "freecodecamp", "storbeck", "habathcx", "RobotCaleb", "noobs2ninjas", "whiteboy7thst", "zrozilacx", "sandyravage", "blametruthtwitch", "streamerhouse", "bzelip"];
   var onlineUsers = [];
   var offlineUsers = [];
@@ -7,6 +7,7 @@ var twitch = (function() {
 
   return {
     online: function() {
+      Data.innerHTML = '';
       for (i=0; i<users.length; i++) {
         getOnlineUsers(users[i]);
       }
@@ -20,10 +21,11 @@ var twitch = (function() {
           }//if
         });//getJSON
       }//onlineUserData
-      return this;
+      return this;//this line is necessary for the object dot notation method chaining to work
     },//online
 
     offline: function() {
+      Data.innerHTML = '';
       for (i=0; i<users.length; i++) {
         getOfflineUsers(users[i]);
       }
@@ -51,17 +53,38 @@ var twitch = (function() {
 
     all: function() {
       console.log(this);
+      Data.innerHTML = '';
       this.online();
       this.offline();
       return this;
     }//all
   };
-})();
+}();
 
 //twitch.online();
 //twitch.offline();
 //twitch.online().offline();
-twitch.all();
+
+window.onload = function() {
+  twitch.all();
+  $('#all').addClass('is-active');
+}
+
+$('#all').click(function() {
+  twitch.all();
+});
+$('#online').click(function() {
+  twitch.online();
+});
+$('#offline').click(function() {
+  twitch.offline();
+});
+
+$('.btn-primary').click(function() {
+  $('.btn-primary').not(this).removeClass('is-active'); // remove buttonactive from the others
+  $(this).addClass('is-active'); // toggle current clicked element
+  console.log('button active state just changed!');
+});
 
 /*
 
