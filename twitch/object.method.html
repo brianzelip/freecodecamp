@@ -15,6 +15,7 @@
       .no-underline,
       .no-underline:hover { text-decoration: none; }
       .hover-bg-gray:hover { background-color: #eee; }
+      .hover-default:hover { cursor: default; }
       .pointer { cursor: pointer; }
       .hunnid {
         width: 100px;
@@ -57,6 +58,12 @@
   </head>
 
   <body>
+
+    <header class="sm-mt3 container p2 clearfix mx-auto">
+      <h1 class="h0 m0 center">Select Twitch Streams</h1>
+    </header>
+
+    <div id="Data" class="container p2 clearfix mx-auto"></div>
 
     <script src="jquery.min.js" charset="utf-8"></script>
     <script src="object.method.js" charset="utf-8"></script>
