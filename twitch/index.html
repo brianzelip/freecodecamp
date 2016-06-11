@@ -16,6 +16,7 @@
       .no-underline,
       .no-underline:hover { text-decoration: none; }
       .hover-bg-gray:hover { background-color: #eee; }
+      .hover-default:hover { cursor: default; }
       .pointer { cursor: pointer; }
       .hunnid {
         width: 100px;
@@ -63,166 +64,9 @@
       <h1 class="h0 m0 center">Select Twitch Streams</h1>
     </header>
 
-    <!--<div class="container p2 clearfix mx-auto">
-
-      <a class="block col-9 mx-auto no-underline pointer hover-bg-gray">
-        <div class="border-top border-right border-left p2">
-          <div class="sm-flex sm-flex-center">
-            <div class="sm-flex-grow">
-              <img src="http://placehold.it/100x100" class="circle">
-              <p class="h5 m0 sm-center">70 viewers</p>
-            </div>
-            <div class="px2">
-              <h1 class="m0">User Name</h1>
-              <h2 class="m0">StarCraft II: RERUN: StarCraft 2 - GunGFuBanDa vs. DnS (PvP)</h2>
-            </div>
-            <img width="214" class="sm-flex-grow" src="https://static-cdn.jtvnw.net/previews-ttv/live_user_freecodecamp-320x180.jpg">
-          </div>
-        </div>
-      </a>
-
-      <a class="block col-9 mx-auto no-underline pointer hover-bg-gray">
-        <div class="border-top border-right border-left p2">
-          <div class="sm-flex sm-flex-center">
-            <div class="sm-flex-grow">
-              <img src="http://placehold.it/100x100" class="circle">
-              <p class="h5 m0 sm-center">70 viewers</p>
-            </div>
-            <div class="px2">
-              <h1 class="m0">User Name</h1>
-              <h2 class="m0">StarCraft II: RERUN: StarCraft 2 - GunGFuBanDa vs. DnS (PvP)</h2>
-            </div>
-            <img width="214" class="sm-flex-grow" src="https://static-cdn.jtvnw.net/previews-ttv/live_user_freecodecamp-320x180.jpg">
-          </div>
-        </div>
-      </a>
-
-    </div>-->
-
     <div id="Data" class="container p2 clearfix mx-auto"></div>
-    <div id="offline" class="container p2 clearfix mx-auto"></div>
 
-    <script>
-      var users = ["ESL_SC2", "OgamingSC2", "cretetion", "freecodecamp", "storbeck", "habathcx", "RobotCaleb", "noobs2ninjas", "whiteboy7thst", "zrozilacx", "sandyravage", "blametruthtwitch", "streamerhouse", "bzelip"];
-
-      var usersCopy = [];
-
-      var onlineUsers = [];
-      var offlineUsers = [];
-      var neverUsers = [];
-      var noMoreUsers = [];
-
-      var count = users.length;
-
-      var apiURL = 'https://api.twitch.tv/kraken/';
-
-      /*
-      //finds which Twitch users are currently streaming, and creates an array of those names
-      function getOnlineUsers2() {
-        for (i=0; i<users.length; i++) {
-          var userName = users[i];
-          $.getJSON(apiURL + 'streams?channel=' + userName, function(data) {
-            if (data.streams[0] != undefined) {
-              onlineUsers.push(userName);
-              console.log("The online users are: " + onlineUsers);
-            }
-          });
-        }
-      }
-
-      //gets user data for all users who are not currently streaming
-      function getOfflineUsers2() {
-        offlineUsers = users;
-        for (x=0; x<onlineUsers.length; x++) {
-          var idx = users.indexOf(onfflineUsers[x]);
-          if (idx > -1) {
-            offlineUsers.splice(idx, 1);
-          }
-          console.log('The offline users are: ' + offlineUsers);
-          return offlineUsers;
-        }
-      }
-
-
-      function createUserArrays() {
-        getOnlineUsers2().then(function() {
-          getOfflineUsers2();
-        });
-      }
-
-      function checkForOfflineUsers(name) {
-        $.getJSON('https://api.twitch.tv/kraken/users/' + name + '?callback=?', function(data) {
-          if (data.display_name != null) {
-            offlineUsers.push(name);
-          } else if (data.status == 404) {
-            neverUsers.push(name);
-          } else if (data.display_name == null) {
-            noMoreUsers.push(name);
-          }
-        });
-      }
-      */
-
-
-
-
-      function getOnlineUsers() {
-        usersCopy = users;
-        for (i=0; i<users.length; i++) {
-          onlineUserData(users[i]);
-        }
-        function onlineUserData(name) {
-            $.getJSON(apiURL + 'streams?channel=' + name, function(data) {
-            if (data.streams[0] !== undefined) {
-              console.log(data);
-              Data.innerHTML += '<a class="block md-col-11 lg-col-9 mx-auto no-underline pointer hover-bg-gray" href="' + data.streams[0].channel.url + '"><div class="border-top border-right border-left p2"><div class="sm-flex lg-flex-center lg-left sm-justify-between"><div class="flex-none"><img src="' + data.streams[0].channel.logo + '" class="circle hunnid"><p class="h5 m0 sm-center">' + data.streams[0].viewers + ' viewers</p></div><div class="px2 sm-flex-auto"><h1 class="h2 md-h1 m0 break-word">' + data.streams[0].channel.display_name + '</h1><h2 class="h4 md-h2 m0 break-word">' + data.streams[0].game + '</h2></div><img width="214" class="sm-flex-none" src="'  + data.streams[0].preview.medium + '"></div></div></a>';
-              onlineUsers.push(name);
-              console.log("The online users are: " + onlineUsers);
-              var idx = usersCopy.indexOf(name);
-              if (idx > -1) {
-                usersCopy.splice(idx, 1);
-                offlineUsers = users;
-              }
-              console.log("the new users array.length is :" + users.length);
-              console.log("the offline users are: " + offlineUsers);
-            }
-            count--;
-            console.log('the count is: ' + count);
-          });
-        }
-      }
-
-      function getOfflineUsers() {
-        for (x=0; x<offlineUsers.length; x++) {
-          offlineUserData(offlineUsers[x]);
-        }
-        function offlineUserData(name) {
-          console.log("fuck you");
-          $.getJSON('https://api.twitch.tv/kraken/users/' + name + '?callback=?', function(data) {
-            if (data.display_name != null) {
-              offline.innerHTML += '<h1>' + data.display_name + '</h1>';
-            } else if (data.status == 404) {
-              offline.innerHTML += '<h2>' + data.message + '</h2>';
-            }
-          });
-        }
-      }
-
-      getOnlineUsers();
-
-      //$.when(getOnlineUsers()).then(getOfflineUsers());
-
-      /*function getOnline(name) {
-        $.getJSON(apiOnlineURL + name, function(data) {
-          if (data.message != undefined) {
-            Data_StreamingNow.innerHTML = data.message;
-          } else {
-            console.log(data);
-            Data_StreamingNow.innerHTML += '<a class="block lg-col-9 mx-auto no-underline pointer hover-bg-gray" href="' + data._links.channel + '"><div class="border-top border-right border-left p2"><div class="sm-flex lg-flex-center lg-left sm-justify-between"><div class="flex-none"><img src="' + data.stream.channel.logo + '" class="circle hunnid"><p class="h5 m0 sm-center">' + data.stream.viewers + ' viewers</p></div><div class="px2 sm-flex-auto"><h1 class="h2 lg-h1 m0 break-word">' + data.stream.channel.display_name + '</h1><h2 class="h4 lg-h2 m0 break-word">' + data.stream.game + '</h2></div><img width="214" class="sm-flex-none" src="' + data.stream.preview.medium + '"></div></div></a>';
-          }
-        });
-      }*/
-    </script>
+    <script src="index.js"></script>
 
   </body>
 
