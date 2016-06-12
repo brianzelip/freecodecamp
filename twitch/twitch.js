@@ -1,4 +1,5 @@
 var twitch = function() {
+  
   var users = ["ESL_SC2", "OgamingSC2", "cretetion", "freecodecamp", "storbeck", "habathcx", "RobotCaleb", "noobs2ninjas", "whiteboy7thst", "zrozilacx", "sandyravage", "blametruthtwitch", "streamerhouse", "bzelip", "Pomp_and_Circumstance", "atomic_CSS"];
   var onlineUsers = [];
   var offlineUsers = [];
@@ -7,7 +8,8 @@ var twitch = function() {
 
   return {
     online: function() {
-      Data.innerHTML = '';
+      Data.innerHTML = '';//clear any lingering html
+      //iterate per user to find and display data in html for any online user
       for (i=0; i<users.length; i++) {
         getOnlineUsers(users[i]);
       }
@@ -52,7 +54,7 @@ var twitch = function() {
     },//offline
 
     all: function() {
-      console.log(this);
+      //console.log(this);
       Data.innerHTML = '';
       this.online();
       this.offline();
@@ -63,13 +65,16 @@ var twitch = function() {
 
 //twitch.online();
 //twitch.offline();
+//twitch.all();
 //twitch.online().offline();
 
+//on page load, show all user data and make the appropriate button active
 window.onload = function() {
   twitch.all();
   $('#all').addClass('is-active');
 }
 
+//run the appropriate function per button click
 $('#all').click(function() {
   twitch.all();
 });
@@ -80,11 +85,13 @@ $('#offline').click(function() {
   twitch.offline();
 });
 
+//toggle the is-active class for the appropriate button
 $('.btn-primary').click(function() {
   $('.btn-primary').not(this).removeClass('is-active'); // remove buttonactive from the others
   $(this).addClass('is-active'); // toggle current clicked element
   console.log('button active state just changed!');
-});
+});/*this is an awesome block of code, very easy and useful for many projects,
+code comes from http://stackoverflow.com/a/14482645/2145103*/
 
 /*
 
