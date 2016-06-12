@@ -1,5 +1,5 @@
 var twitch = function() {
-  var users = ["ESL_SC2", "OgamingSC2", "cretetion", "freecodecamp", "storbeck", "habathcx", "RobotCaleb", "noobs2ninjas", "whiteboy7thst", "zrozilacx", "sandyravage", "blametruthtwitch", "streamerhouse", "bzelip"];
+  var users = ["ESL_SC2", "OgamingSC2", "cretetion", "freecodecamp", "storbeck", "habathcx", "RobotCaleb", "noobs2ninjas", "whiteboy7thst", "zrozilacx", "sandyravage", "blametruthtwitch", "streamerhouse", "bzelip", "Pomp_and_Circumstance", "atomic_CSS"];
   var onlineUsers = [];
   var offlineUsers = [];
   var apiOnlinePrefix = 'https://api.twitch.tv/kraken/streams?channel=';

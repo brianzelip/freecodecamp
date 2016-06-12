@@ -34,6 +34,8 @@
       .btn-primary:not(.is-active)::before { content: "Show "; }
       @media(min-width: 40em) {
         .h0 { font-size: 4rem; }
+        .sm-mb0 { margin-bottom: 0; }
+        .sm-mr1 { margin-right: .5rem; }
         .sm-mt3 { margin-top: 2rem; }
         .sm-py0 {
           padding-top: 0;
@@ -43,6 +45,7 @@
         .sm-flex-row { flex-direction: row; }
         .sm-flex-center { align-items: center; }
         .sm-justify-end { justify-content: flex-end; }
+        .sm-justify-around { justify-content: space-around; }
         .sm-justify-between { justify-content: space-between; }
         .sm-flex-grow { flex: 1 0 auto; }
         .sm-flex-auto { flex: 1 1 auto; }
@@ -74,14 +77,18 @@
 
     <header class="sm-mt3 container p2 clearfix mx-auto">
       <h1 class="h0 m0 center">Select Twitch Streams</h1>
-      <section class="mt2 center">
-        <button class="btn btn-primary" id="all">all</button>
-        <button class="btn btn-primary" id="online">online</button>
-        <button class="btn btn-primary" id="offline">offline</button>
+      <section class="flex flex-column sm-flex-row sm-justify-around mt2 lg-col-9 md-col-11 mx-auto">
+        <button class="btn btn-primary flex-auto mb1 sm-mb0 sm-mr1" id="all">all</button>
+        <button class="btn btn-primary flex-auto mb1 sm-mb0 sm-mr1" id="online">online</button>
+        <button class="btn btn-primary flex-auto" id="offline">offline</button>
       </section>
     </header>
 
     <div id="Data" class="container p2 clearfix mx-auto"></div>
+
+    <footer class="container p2 clearfix mx-auto">
+      <p class="center">Struggled with thru completion by <a href="https://twitter.com/bzelip">@bzelip</a> for <a href="https://freecodecamp.com">FreeCodeCamp</a> using <a href="http://basscss.com">Basscss</a>.</p>
+    </footer>
 
     <script src="index.js"></script>
 
