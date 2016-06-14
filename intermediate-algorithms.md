@@ -65,13 +65,12 @@ diffArray(["diorite", "andesite", "grass", "dirt", "pink wool", "dead shrub"], [
 ```
 
 
-**Convert a number <= 3999 to Roman Numerals**
+**Convert a number <= 3999 to all-caps Roman Numerals**
 
 ``` js
-// convert to (all-caps) roman numerals.
-
 var dict = {
   'ones' : {
+    '0' : '',
     '1' : 'I',
     '2' : 'II',
     '3' : 'III',
@@ -83,6 +82,7 @@ var dict = {
     '9' : 'IX'
   },
   'tens' : {
+    '0' : '',
     '1' : 'X',
     '2' : 'XX',
     '3' : 'XXX',
@@ -94,6 +94,7 @@ var dict = {
     '9' : 'XC'
   },
   'hunnids' : {
+    '0' : '',
     '1' : 'C',
     '2' : 'CC',
     '3' : 'CCC',
@@ -114,28 +115,65 @@ var dict = {
 function convertToRoman(num) {
   var response = '';
   if (typeof(num) !== 'number') {
-    console.log('fuck that ain\'t a number!');
-    return;
+    // the input has to be a number
+    response = 'fuck that ain\'t a number bro!';
   } else if (num > 3999) {
-    console.log('fuck that\'s too bigga number hombre!');
+    // the input has to be less than 3999, there's a website that my work laptop has in history that explains why this is the case. tldr; from 4000+ they put a horizontal line over the letter to show that number x 1000.
+    response = 'fuck that\'s too bigga number hombre!';
   } else {
     var numString = num.toString();
-    //console.log(dict[num]);
-    console.log('The input is ' + numString.length + ' decimal places long.');
-    if (numString > 999) {
-      console.log('ur number is greater than 999');
-      // THIS IS WHERE THE PICK UP AT //response = dict[]
-    } else if (numString > 99) {
-      console.log('ur number is greater than 99');
-    } else if (numString > 9) {
-      console.log('ur number is greater than 9');
+    // now we convert the valid input number to a string so that we can access each string character (or decimal place) to convert the input number to R.N. Roman Numerals are concerned with the left-side of the number first, as opposed to ours which always begins with the ones place. The dictionary above provides the translations, in addition with divvying up each string character or decimal place given the four-level logic below.
+    if (num > 999) {
+      //console.log('ur number is greater than 999');
+      response = dict.thou[numString[0]] + dict.hunnids[numString[1]] + dict.tens[numString[2]] + dict.ones[numString[3]];
+    } else if (num > 99 && num <= 999) {
+      //console.log('ur number is greater than 99');
+      response = dict.hunnids[numString[0]] + dict.tens[numString[1]] + dict.ones[numString[2]];
+    } else if (num > 9 && num <= 99) {
+      //console.log('ur number is greater than 9');
+      response = dict.tens[numString[0]] + dict.ones[numString[1]];
     } else {
-      console.log('ur number is 9 or less');
+      //console.log('ur number is 9 or less');
+      response = dict.ones[numString[0]];
     }
   }
-  return;
+  console.log('The response from your input is: ' + response);
+  return response;
 }
 
-convertToRoman(36);
+convertToRoman(500);
+```
+
+
+**Where art thou**
+Make a function that looks through an array of objects (first argument) and returns an array of all objects that have matching property and value pairs (second argument). Each property and value pair of the source object has to be present in the object from the collection if it is to be included in the returned array.
+
+```js
+
+function whereAreYou(collection, source) {
+  var arr = [];
+  // Only change code below this line
+
+  var srcProp = Object.keys(source);
+  var srcPropStr = srcProp.toString();
+  var srcVal = '';
+  console.log(srcProp);
+  console.log(srcPropStr);
+
+  console.log(collection[0].srcPropStr);
+
+  /*for (i=0; i<collection.length; i++) {
+    if (collection[i].hasOwnProperty(srcProp)) {
+      console.log('The property that they share is: ' + collection[i].srcPropStr);
+    } else {
+      console.log('shit :(');
+    }
+  }*/
+
+  // Only change code above this line
+  return arr;
+}
+
+whereAreYou([{ first: "Romeo", last: "Montague" }, { first: "Mercutio", last: null }, { first: "Tybalt", last: "Capulet" }], { last: "Capulet" });
 
 ```
