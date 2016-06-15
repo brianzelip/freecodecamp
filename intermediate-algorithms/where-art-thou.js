@@ -95,3 +95,16 @@ var sourcePropArray = Object.getOwnPropertyNames(dict);
 for (z=0; z<sourcePropArray.length; z++){
   console.log('dict contains the property: ' + sourcePropArray[z]);
 }
+
+
+/*
+
+I think the solution I'm after lies somewhere in the following link and code below:
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...in
+*/
+
+var obj = {a:1, b:2, c:3};
+
+for (var prop in obj) {
+  console.log("obj." + prop + " = " + obj[prop]);
+}
