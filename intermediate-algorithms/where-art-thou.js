@@ -5,6 +5,55 @@
 Make a function that looks through an array of objects (first argument) and returns an array of all objects that have matching property and value pairs (second argument). Each property and value pair of the source object has to be present in the object from the collection if it is to be included in the returned array.
 */
 
+
+//** The for...in solution (which doesn't satisfy the need for accounting for more than one keyvalue pair in source)**
+
+function whereAreYou(collection, source) {
+  // What's in a name?
+  var arr = [];
+  // Only change code below this line
+  for (i=0; i<collection.length; i++) {
+    for (var prop in source) {
+      if (collection[i].hasOwnProperty(prop) && collection[i][prop] == source[prop]) {
+        console.log('Collection\'s object ' + [i] + ' contains the source\'s key:value pair(s)!');
+        arr.push(collection[i]);
+      } else {
+        console.log('shit fuck');
+      }
+    }
+  }
+  console.log('The array `arr` is: ' + arr);
+  // Only change code above this line
+  return arr;
+}
+
+whereAreYou([{ "a": 1, "b": 2 }, { "a": 1 }, { "a": 1, "b": 2, "c": 2 }], { "a": 1, "b": 2 });
+
+//end keyvalue pair limited solution
+/*my !SO question post about this algorithm: http://stackoverflow.com/questions/37845249/check-if-any-object-in-an-array-of-objects-contains-all-of-the-key-value-pairs-i
+
+  and see other useful links:
+    - http://bob.yexley.net/iterating-over-javascript-objects/
+    -
+*/
+
+/*
+My first solution did too much unneccesary shit, and also only served the use case that the source that is passed contains only one key:value pair. The challenge requires handling one or more key:value pairs in the source. So I had to figure out a way to identify each key:value pair in the source, and iterate over each pair.
+
+The solution came in the form of [the documentation for the for...in loop](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...in), and specifically, this provided code exmaple:
+
+  ```js
+  var obj = {a:1, b:2, c:3};
+
+  for (var prop in obj) {
+    console.log("obj." + prop + " = " + obj[prop]);
+  }
+  ```
+
+The earlier, and wrong, solution is archived below for posterity's sake, and to be able to later see what I did as something in there may be of use.
+
+**BEGIN PREVIOUS SOLUTION**
+
 function whereAreYou(collection, source) {
   var arr = [];
   // Only change code below this line
@@ -42,69 +91,4 @@ function whereAreYou(collection, source) {
   return arr;
 }
 
-whereAreYou([{ first: "Romeo", last: "Montague" }, { first: "Mercutio", last: null }, { first: "Tybalt", last: "Capulet" }], { last: "Capulet" });
-
-
-var dict = {
-  'ones' : {
-    '0' : '',
-    '1' : 'I',
-    '2' : 'II',
-    '3' : 'III',
-    '4' : 'IV',
-    '5' : 'V',
-    '6' : 'VI',
-    '7' : 'VII',
-    '8' : 'VIII',
-    '9' : 'IX'
-  },
-  'tens' : {
-    '0' : '',
-    '1' : 'X',
-    '2' : 'XX',
-    '3' : 'XXX',
-    '4' : 'XL',
-    '5' : 'L',
-    '6' : 'LX',
-    '7' : 'LXX',
-    '8' : 'LXXX',
-    '9' : 'XC'
-  },
-  'hunnids' : {
-    '0' : '',
-    '1' : 'C',
-    '2' : 'CC',
-    '3' : 'CCC',
-    '4' : 'CD',
-    '5' : 'D',
-    '6' : 'DC',
-    '7' : 'DCC',
-    '8' : 'DCCC',
-    '9' : 'CM'
-  },
-  'thou' : {
-    '1' : 'M',
-    '2' : 'MM',
-    '3' : 'MMM'
-  }
-};
-
-
-var sourcePropArray = Object.getOwnPropertyNames(dict);
-
-for (z=0; z<sourcePropArray.length; z++){
-  console.log('dict contains the property: ' + sourcePropArray[z]);
-}
-
-
-/*
-
-I think the solution I'm after lies somewhere in the following link and code below:
-https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...in
 */
-
-var obj = {a:1, b:2, c:3};
-
-for (var prop in obj) {
-  console.log("obj." + prop + " = " + obj[prop]);
-}
