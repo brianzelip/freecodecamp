@@ -10,6 +10,54 @@ Remember to use Read-Search-Ask if you get stuck. Try to pair program. Write you
 
 function fearNotLetter(str) {
 
+  if (typeof(str) !== 'string') {//make sure input is valid
+    console.log('Please input a valid string.');
+    return;
+  }
+
+  str = str.toLowerCase();//homogenize input
+  arrCode = [];//get ready to hold the character codes of each character in str
+
+  for (i=0; i<str.length; i++) {//create array of str character codes
+    arrCode.push(str[i].charCodeAt());
+    //console.log('arrCode is: ' + arrCode);
+  }
+
+  arrCode.sort(compareNumbers);
+
+  function compareNumbers(a, b) {
+    return a - b;
+  }
+
+  //now arrCode is sorted from least to greatest
+
+  var missing = [];
+  var isUndefined = true;
+  for (x=0; x<(arrCode.length-1); x++) {
+    if ((arrCode[x] + 1) !== arrCode[x+1]) {//find missing values between lowest and highest values
+      missing.push((arrCode[x] + 1));
+      console.log('missing now contains: ' + missing);
+      isUndefined = false;
+    }
+  }
+
+  if (isUndefined) {//if true, return undefined
+    str = undefined;//this is the method for making a variable return undefined
+  } else if (!isUndefined) {//if not true return the character from the missing char code
+    str = String.fromCharCode(missing[0]);
+  }
+
+  console.log(str);
+  return str;
+}
+
+fearNotLetter("yz");
+
+/*
+//THUS BEGINS THE SECOND WRONG SOLUTION
+
+function fearNotLetter(str) {
+
   if (typeof(str) !== 'string') {
     console.log('Please input a valid string.');
     return;
@@ -45,6 +93,10 @@ function fearNotLetter(str) {
 }
 
 fearNotLetter("az");
+
+//THUS ENDS THE SECOND WRONG SOLUTION TO THE CHALLENGE, HOWEVER SOME OF THE CODE MAY BE FUTURE RELEVANT
+*/
+
 
 /*
 THIS CODE PRESERVED HERE TO DOCUMENT A MISTAKE I MADE.
@@ -126,6 +178,7 @@ REFERENCES
   - function compareNumbers(): https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort#Creating_displaying_and_sorting_an_array
   - str.charCodeAt(): https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/charCodeAt
   - str.fromCharCode(): https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/fromCharCode
+  - undefined: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined
   - Math.max(): https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/max
   - Math.min(): https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/min
   - array.concat(): https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/concat
