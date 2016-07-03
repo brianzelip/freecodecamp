@@ -48,9 +48,9 @@ function checkIfNumExistsInFibSequence(num, arr) {
   }
 }
 
-checkIfNumExistsInFibSequence(2880067194370816300, createFibSequence(90));
+checkIfNumExistsInFibSequence(14472334024676219, createFibSequence(79));
 
-
+//The largest integer value JS deals with natively, 9007199254740991, is found between the 78th and 79th fib seq numbers
 
 /*
 WTF?!?!?!?!?!?!?!?!?!?
@@ -83,5 +83,5 @@ REFERENCES
     - http://stackoverflow.com/questions/8331492/javascript-fibonacci
   - JS math max integer value: http://stackoverflow.com/questions/307179/what-is-javascripts-highest-integer-value-that-a-number-can-go-to-without-losin
   - Math.max: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/max
-  
+
 */
