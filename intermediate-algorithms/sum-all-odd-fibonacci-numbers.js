@@ -9,13 +9,52 @@ As an example, passing 4 to the function should return 5 because all the odd Fib
 */
 
 
+//create an array of the first num Fib numbers
+function createFibArr(num) {
+  var fibArr = [0,1];
+  if (num < 2) {
+    return;
+  } else if (num > 1) {
+    for (i=2; i<=num; i++) {
+      fibArr.push(fibArr[i-1]+fibArr[i-2])
+    }
+  }
+  console.log(fibArr);
+}
+
+createFibArr(100);
+
+
+
+/*
+via https://medium.com/developers-writing/fibonacci-sequence-algorithm-in-javascript-b253dc7e320e#.s0wyw04md
+
+function fibonacci(num) {
+  if (num <= 1) return 1;
+  //console.log(num);//THESE THROW BROWSWER CRASH
+  //console.log(fibonacci(num));//THESE THROW BROWSWER CRASH
+  return fibonacci(num - 1) + fibonacci(num - 2);
+}
+console.log(fibonacci(5));
+*/
+
+/*
+function
+if (num === 0) {
+  return 0;
+} else if (num === 1) {
+  return 1;
+} else if (num > 1) {
+
+}
+*/
+
 function sumFibs(num) {
+
   return num;
 }
 
 sumFibs(4);
-
-
 
 /*
 REFERENCES
