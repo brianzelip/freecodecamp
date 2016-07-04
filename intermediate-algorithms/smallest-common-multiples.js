@@ -42,19 +42,22 @@ function normalize(arr) {
 function multiplesFor(arr) {
   var arrOfArrs = [];
   const ARR_MIN = Math.min(...arr);
+  console.log('ARR_MIN is: ' + ARR_MIN);
   const ARR_MAX = Math.max(...arr);
+  console.log('ARR_MAX is: ' + ARR_MAX);
 
-  for (i=ARR_MIN; i<=ARR_MAX; i+=i) {
-    arrOfArrs.push([i]);
-    console.log('arrOfArrs is: ' + arrOfArrs);
+  for (i=ARR_MIN; i<=ARR_MAX; i+=ARR_MIN) {
+    console.log(i);
+    arrOfArrs.push(i);
   }
+  console.log(arrOfArrs);
 }
 
 
 function smallestCommons(arr) {
   multiplesFor(normalize(arr));
 }
-smallestCommons([1,10]);
+smallestCommons([1,3]);
 
 /*
 REFERENCES
