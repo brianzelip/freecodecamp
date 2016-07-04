@@ -19,21 +19,21 @@ As an example, passing 4 to the function should return 5 because all the odd Fib
 
 
 //1. create an array of the Fibonacci sequence of numbers up to maxIndex
-function createFibSequence(maxIndex) {
+//Because I now know about the limit of JS integer precision, I'm just going to make a static array of
+// Fibonacci sequence numbers instead of dynamically making it based on the user's input.
+const FIB = function() {
   var fibSeq = [0,1];
-  if (maxIndex < 2) {
-    return fibSeq;
-  } else if (maxIndex > 1) {
-    for (i=2; i<=maxIndex; i++) {
-      fibSeq.push(fibSeq[i-1]+fibSeq[i-2])
-    }
+  const FIB_MAX_INDEX = 79;
+  for (i=2; i<=FIB_MAX_INDEX; i++) {
+    fibSeq.push(fibSeq[i-1]+fibSeq[i-2])
   }
-  console.log(fibSeq);
   return fibSeq;
 }
 
-//console.log(createFibSequence(100));
+console.log(FIB());
 
+//console.log(createFibSequence(100));
+/*
 //2. check if number is contained in the first sequence
 function checkIfNumExistsInFibSequence(num, arr) {
   if (num === Math.max(...arr)) {
@@ -47,8 +47,9 @@ function checkIfNumExistsInFibSequence(num, arr) {
     return 'Fuck, ' + num + ' is greater than ' + Math.max(...arr) + '!';
   }
 }
+*/
 
-checkIfNumExistsInFibSequence(14472334024676219, createFibSequence(79));
+//checkIfNumExistsInFibSequence(14472334024676219, createFibSequence(79));
 
 //The largest integer value JS deals with natively, 9007199254740991, is found between the 78th and 79th fib seq numbers
 
