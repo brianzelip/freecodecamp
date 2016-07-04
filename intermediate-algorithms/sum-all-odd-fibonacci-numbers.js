@@ -48,7 +48,7 @@ function checkIfNumExistsInFIB(num) {
 checkIfNumExistsInFIB(4);
 
 //2. return the index of the first Fibonacci number that is greater than or equal to the passed number
-function ceilingIndex(num) {
+function ceilingIndexOf(num) {
   for (i=0; i<fibArray.length; i++) {
     if (fibArray[i] >= num) {
       console.log('The input number `' + num + '` is found between indexes `' + (i-1) + '` and `' + i + '`, the values of which are `'+ fibArray[i-1] + '` and `' + fibArray[i] + '`.\nOf course, the highest index to consider for adding all the odd numbers less than ' + num + ' together is index `' + i + '`.');
@@ -56,12 +56,12 @@ function ceilingIndex(num) {
     }
   }
 }
-ceilingIndex(100);
+ceilingIndexOf(100);
 
 //3. sum all odd values leading up the the ceilingIndex value
 function sumOddValues(index) {
   var sum = 0;
-  for (i=0; i<index; i++) {
+  for (i=0; i<=index; i++) {
     if (fibArray[i] % 2) {
       sum += fibArray[i];
       console.log('[' + i + ']: ' + fibArray[i]);
@@ -74,7 +74,10 @@ sumOddValues(12);
 
 //ALL TOGETHER NOW
 function app(num) {
-
+  if (checkIfNumExistsInFIB(num)) {
+    console.log('sumOddValues(ceilingIndexOf(num)) is: ' + sumOddValues(ceilingIndexOf(num)));
+    return sumOddValues(ceilingIndexOf(num));
+  }
 }
 
 app(2600);
