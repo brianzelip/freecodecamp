@@ -11,8 +11,7 @@ As an example, passing 4 to the function should return 5 because all the odd Fib
 /*
 1. validate input
 2. get the index of the first Fibonacci number that is greater than or equal to the number passed to sumOddFibs
-3. determine which index value leading up to the Fibonacci number in step 3 is odd and push it to an array
-4. sum all the odd fib numbers and return for the solution!
+3. sum all odd values leading up the the ceilingIndex value
 */
 
 
@@ -48,8 +47,7 @@ function checkIfNumExistsInFIB(num) {
 }
 checkIfNumExistsInFIB(4);
 
-//2. get the index of the first Fibonacci number that is greater than or equal
-//to the number passed to sumOddFibs
+//2. return the index of the first Fibonacci number that is greater than or equal to the passed number
 function ceilingIndex(num) {
   for (i=0; i<fibArray.length; i++) {
     if (fibArray[i] >= num) {
@@ -60,21 +58,26 @@ function ceilingIndex(num) {
 }
 ceilingIndex(100);
 
-//3. determine which values leading up to ceilingIndex is odd and push them to an array
-function oddValues(index) {
-  var arr = [];
+//3. sum all odd values leading up the the ceilingIndex value
+function sumOddValues(index) {
+  var sum = 0;
   for (i=0; i<index; i++) {
     if (fibArray[i] % 2) {
-      arr.push(fibArray[i]);
+      sum += fibArray[i];
       console.log('[' + i + ']: ' + fibArray[i]);
     }
   }
-  console.log(arr);
-  return arr;
+  console.log('The sum is: ' + sum);
+  return sum;
 }
-oddValues(12);
+sumOddValues(12);
 
+//ALL TOGETHER NOW
+function app(num) {
 
+}
+
+app(2600);
 
 /*
 WTF?!?!?!?!?!?!?!?!?!?
@@ -92,12 +95,33 @@ console.log(fibonacci(5));
 */
 
 
+/*
+Just for a hoot, here's a recursion trip that I created by mistake, and is very interesting
+
+function oddValues(index) {
+  var arr = [];
+  for (i=0; i<index; i++) {
+    if (fibArray[i] % 2) {
+      arr.push(fibArray[i]);
+      console.log('[' + i + ']: ' + fibArray[i]);
+    }
+  }
+  console.log('oddValues is: ' + oddValues);
+  return oddValues;
+}
+oddValues(12);
+
+
+
+*/
+
 
 /*
 REFERENCES
   - remainder: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Arithmetic_Operators#Remainder
   - Number.MAX_SAFE_INTEGER(): https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/MAX_SAFE_INTEGER
   - Number.isSafeInteger(): https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/isSafeInteger
+  - find if num is odd: http://stackoverflow.com/a/5016327/2145103
   - fibonacci links:
     - https://www.mathsisfun.com/numbers/fibonacci-sequence.html
     - https://medium.com/developers-writing/fibonacci-sequence-algorithm-in-javascript-b253dc7e320e
@@ -108,6 +132,7 @@ REFERENCES
     - http://sarathsaleem.github.io/JavaScriptTasks/
     - http://stackoverflow.com/questions/8331492/javascript-fibonacci
   - JS math max integer value: http://stackoverflow.com/questions/307179/what-is-javascripts-highest-integer-value-that-a-number-can-go-to-without-losin
+  - ECMA script Number Type: http://ecma262-5.com/ELS5_HTML.htm#Section_8.5
   - Math.max: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/max
 
 */
