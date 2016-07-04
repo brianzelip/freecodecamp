@@ -13,12 +13,17 @@ APPROACH
 1. normalize input (validate and sort values in ascending order)
 2. create arrays of multiples for each number within the input range
 3. return the lowest value that each array contains
-
 */
 
+//1. normalize input (validate and sort values in ascending order)
 function normalize(arr) {
+  if (arr === undefined || arr.length !== 2) {
+    console.log('Please enter an array of two positive integers!');
+    return undefined;
+  }
+
   for (i=0; i<arr.length; i++) {
-    if (typeof(arr[i]) !== 'number') {
+    if (typeof(arr[i]) !== 'number' || arr[i] < 0) {
       console.log('Please enter an array of two positive integers!');
       return undefined;
     }
@@ -33,12 +38,23 @@ function normalize(arr) {
   return arr;
 }
 
+//2. create arrays of multiples for each number within the input range
+function multiplesFor(arr) {
+  var arrOfArrs = [];
+  const ARR_MIN = Math.min(...arr);
+  const ARR_MAX = Math.max(...arr);
+
+  for (i=ARR_MIN; i<=ARR_MAX; i+=i) {
+    arrOfArrs.push([i]);
+    console.log('arrOfArrs is: ' + arrOfArrs);
+  }
+}
 
 
 function smallestCommons(arr) {
-  normalize(arr);
+  multiplesFor(normalize(arr));
 }
-smallestCommons([5,1]);
+smallestCommons([1,10]);
 
 /*
 REFERENCES
