@@ -11,7 +11,7 @@ As an example, passing 4 to the function should return 5 because all the odd Fib
 /*
 1. validate input
 2. get the index of the first Fibonacci number that is greater than or equal to the number passed to sumOddFibs
-3. sum all odd values leading up the the ceilingIndex value
+3. sum all odd values leading up the the ceilingIndexOf value
 */
 
 
@@ -22,10 +22,10 @@ const FIB = function() {
   var fibSeq = [0,1];
   const FIB_MAX_INDEX = 79;
   for (i=2; i<=FIB_MAX_INDEX; i++) {
-    fibSeq.push(fibSeq[i-1]+fibSeq[i-2])
+    fibSeq.push(fibSeq[i-1]+fibSeq[i-2]);
   }
   return fibSeq;
-}
+};
 
 //create fibArray. for some reason iterating through FIB()[i] returns undefineds, fibArray doesn't have a problem.
 var fibArray = FIB();
@@ -45,7 +45,7 @@ function checkIfNumExistsInFIB(num) {
     return true;
   }
 }
-checkIfNumExistsInFIB(4);
+//checkIfNumExistsInFIB(4);
 
 //2. return the index of the first Fibonacci number that is greater than or equal to the passed number
 function ceilingIndexOf(num) {
@@ -56,31 +56,41 @@ function ceilingIndexOf(num) {
     }
   }
 }
-ceilingIndexOf(100);
+//ceilingIndexOf(100);
 
-//3. sum all odd values leading up the the ceilingIndex value
-function sumOddValues(index) {
+//3. sum all odd values leading up or including the the ceilingIndexOf value
+//TAKES ceilingIndexOf and the passed number, RETURNS the sum number
+function sumOddValues(index, num) {
   var sum = 0;
-  for (i=0; i<=index; i++) {
-    if (fibArray[i] % 2) {
-      sum += fibArray[i];
-      console.log('[' + i + ']: ' + fibArray[i]);
+  if (fibArray.indexOf(num) > -1) {//if num is a Fibonacci number
+    for (i=0; i<=index; i++) {
+      if (fibArray[i] % 2) {
+        sum += fibArray[i];
+        //console.log('[' + i + ']: ' + fibArray[i]);
+      }
+    }
+  } else if (fibArray.indexOf(num) === -1){
+    for (i=0; i<index; i++) {
+      if (fibArray[i] % 2) {
+        sum += fibArray[i];
+        //console.log('[' + i + ']: ' + fibArray[i]);
+      }
     }
   }
-  console.log('The sum is: ' + sum);
+  //console.log('The sum is: ' + sum);
   return sum;
 }
-sumOddValues(12);
+//sumOddValues(ceilingIndexOf(num), 987);
 
 //ALL TOGETHER NOW
-function app(num) {
+function sumFibs(num) {
   if (checkIfNumExistsInFIB(num)) {
-    console.log('sumOddValues(ceilingIndexOf(num)) is: ' + sumOddValues(ceilingIndexOf(num)));
-    return sumOddValues(ceilingIndexOf(num));
+    //console.log('sumOddValues(ceilingIndexOf(num), num) is: ' + sumOddValues(ceilingIndexOf(num), num));
+    return sumOddValues(ceilingIndexOf(num), num);
   }
 }
 
-app(2600);
+sumFibs(986);
 
 /*
 WTF?!?!?!?!?!?!?!?!?!?
@@ -125,6 +135,8 @@ REFERENCES
   - Number.MAX_SAFE_INTEGER(): https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/MAX_SAFE_INTEGER
   - Number.isSafeInteger(): https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/isSafeInteger
   - find if num is odd: http://stackoverflow.com/a/5016327/2145103
+  - sum values in array: http://stackoverflow.com/a/16057760/2145103
+  - arr.indexOf(): https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/indexOf
   - fibonacci links:
     - https://www.mathsisfun.com/numbers/fibonacci-sequence.html
     - https://medium.com/developers-writing/fibonacci-sequence-algorithm-in-javascript-b253dc7e320e
