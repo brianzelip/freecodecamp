@@ -59,6 +59,5 @@ smallestCommons([1,10]);
 /*
 REFERENCES
   - least common multiples: https://www.mathsisfun.com/least-common-multiple.html
-  - function compareNumbers(a, b): https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort#Creating_displaying_and_sorting_an_array
-  -
+  - arr.sort() && function compareNumbers(a, b): https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort#Creating_displaying_and_sorting_an_array
 */
