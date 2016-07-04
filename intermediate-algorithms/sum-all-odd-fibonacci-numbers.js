@@ -9,18 +9,16 @@ As an example, passing 4 to the function should return 5 because all the odd Fib
 */
 
 /*
-1. create first sequence
-2. check if the number passed to sumOddFibs is contained in the first sequence
-2.1. If the number passed to sumOddFibs is larger than max value in first squence, create a larger sequence, then check for the number passed to sumOddFibs, and if not, create larger sequence, then check...
-3. get the index of the first Fibonacci number that is greater than or equal to the number passed to sumOddFibs
-4. determine which index value leading up to the Fibonacci number in step 3 is odd and push it to an array
-5. sum all the odd fib numbers and return for the solution!
+1. validate input
+2. get the index of the first Fibonacci number that is greater than or equal to the number passed to sumOddFibs
+3. determine which index value leading up to the Fibonacci number in step 3 is odd and push it to an array
+4. sum all the odd fib numbers and return for the solution!
 */
 
 
-//1. create an array of the Fibonacci sequence of numbers up to maxIndex
-//Because I now know about the limit of JS integer precision, I'm just going to make a static array of
-// Fibonacci sequence numbers instead of dynamically making it based on the user's input.
+//Global FIB object - create an array of the Fibonacci sequence of numbers up to MAX_SAFE_INTEGER()
+  //Due to the limit of JS integer precision, we're not going to dynamically
+  //accept anything over a certain value, so this value can be constant.
 const FIB = function() {
   var fibSeq = [0,1];
   const FIB_MAX_INDEX = 79;
@@ -30,28 +28,40 @@ const FIB = function() {
   return fibSeq;
 }
 
-console.log(FIB());
+//create fibArray. for some reason iterating through FIB()[i] returns undefineds, fibArray doesn't have a problem.
+var fibArray = FIB();
 
-//console.log(createFibSequence(100));
-/*
-//2. check if number is contained in the first sequence
-function checkIfNumExistsInFibSequence(num, arr) {
-  if (num === Math.max(...arr)) {
-    console.log(num + ' is equal to ' + Math.max(...arr) + '.');
-    return num + ' is equal to ' + Math.max(...arr) + '.';
-  } else if (num < Math.max(...arr)) {
-    console.log(num + ' is less than ' + Math.max(...arr) + '.');
-    return num + ' is less than ' + Math.max(...arr) + '.';
-  } else if (num > Math.max(...arr)) {
-    console.log('Fuck, ' + num + ' is greater than ' + Math.max(...arr) + '!');
-    return 'Fuck, ' + num + ' is greater than ' + Math.max(...arr) + '!';
+//console.log(FIB());
+//console.log(fibArray);
+//console.log('FIB.length is: ' + FIB().length);
+//console.log('FIB()[5] is: ' + FIB()[5]);
+
+//1. validate the user's passed number, returns true || false
+function checkIfNumExistsInFIB(num) {
+  if (!Number.isSafeInteger(num) || num < 0) {
+    console.log('Please enter a number between and including 0 and 9007199254740991.');
+    return false;
+  } else {
+    console.log(true);
+    return true;
   }
 }
-*/
+checkIfNumExistsInFIB(4);
 
-//checkIfNumExistsInFibSequence(14472334024676219, createFibSequence(79));
+//2. get the index of the first Fibonacci number that is greater than or equal
+//to the number passed to sumOddFibs
+function getGreaterIndex(num) {
+  for (i=0; i<fibArray.length; i++) {
+    if (fibArray[i] >= num) {
+      console.log('The input number `' + num + '` is found between indexes `' + (i-1) + '` and `' + i + '`, the values of which are `'+ fibArray[i-1] + '` and `' + fibArray[i] + '`.\nOf course, the highest index to consider for adding all the odd numbers less than ' + num + ' together is index `' + i + '`.');
+      return i;
+    }
+  }
+}
+getGreaterIndex(100);
 
-//The largest integer value JS deals with natively, 9007199254740991, is found between the 78th and 79th fib seq numbers
+
+//console.log('FIBL is: ' + FIBL);
 
 /*
 WTF?!?!?!?!?!?!?!?!?!?
@@ -73,6 +83,8 @@ console.log(fibonacci(5));
 /*
 REFERENCES
   - remainder: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Arithmetic_Operators#Remainder
+  - Number.MAX_SAFE_INTEGER(): https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/MAX_SAFE_INTEGER
+  - Number.isSafeInteger(): https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/isSafeInteger
   - fibonacci links:
     - https://www.mathsisfun.com/numbers/fibonacci-sequence.html
     - https://medium.com/developers-writing/fibonacci-sequence-algorithm-in-javascript-b253dc7e320e
