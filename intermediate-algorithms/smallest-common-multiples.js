@@ -72,9 +72,12 @@ function makeMultiplesArr(arr) {
   console.log('ceilingMultiple is: ' + ceilingMultiple);
 
   //for every number in the array, push to another array all the multiples of that number leading up to and including the ceilingMultiple
+  console.log('arr is: ' + arr);
 
   for (a=0;a<arr.length;a++) {
-    for (b=arr[a];b<=(ceilingMultiple/b);b+=b) {
+    console.log('arr[' + a + '] is: ' + arr[a]);
+    for (b=arr[a];b<=(ceilingMultiple/arr[a]);arr[a]+=arr[a]) {
+      console.log('b: ' + b);
       multiplesArr.push(b);
     }
   }
