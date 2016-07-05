@@ -46,7 +46,7 @@ APPROACH
 for every number from MIN to MAX, push to an arry the sequence of multiples for that number leading up to the ceilingMultiple
 */
 
-//take the normalized input array and return an array containing
+//take the normalized input array and return rangeArr which contains
 //the sequence of numbers in the range of the passed array values
 function makeRangeArr(arr) {
   var rangeArr = [];
@@ -60,10 +60,33 @@ var range = makeRangeArr(normalize([8,5]));
 console.log('range is : ' + range);
 
 
-function smallestCommons(arr) {
-  makeRangeArr(normalize(arr));
+//take rangeArr array and return the array of all multiples (up to the ceiling)
+//of each number in rangeArr
+function makeMultiplesArr(arr) {
+  //set up vars and get ceiling multiple
+  var multiplesArr = [];
+  var ceilingMultiple = 1;
+  for (i=0;i<arr.length;i++) {
+    ceilingMultiple = ceilingMultiple * arr[i];
+  }
+  console.log('ceilingMultiple is: ' + ceilingMultiple);
+
+  //for every number in the array, push to another array all the multiples of that number leading up to and including the ceilingMultiple
+
+  for (a=0;a<arr.length;a++) {
+    for (b=arr[a];b<=(ceilingMultiple/b);b+=b) {
+      multiplesArr.push(b);
+    }
+  }
+  console.log('multiplesArr is: ' + multiplesArr);
+  return multiplesArr;
 }
-smallestCommons([1,3]);
+
+
+function smallestCommons(arr) {
+  makeMultiplesArr(makeRangeArr(normalize(arr)));
+}
+smallestCommons([2,4]);
 
 /*
 REFERENCES
