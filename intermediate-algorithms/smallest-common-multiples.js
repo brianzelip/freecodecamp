@@ -40,39 +40,28 @@ function normalize(arr) {
   return arr;
 }
 
-//2. create arrays of multiples for each number within the input range
+//2. create an array of multiples for each number up to ceilingMultiple
+/*
+APPROACH
+for every number from MIN to MAX, push to an arry the sequence of multiples for that number leading up to the ceilingMultiple
+*/
 
-
-
-
-function multiplesFor(arr) {
-
-  var arrOfArrs = [];
-  const ARR_MIN = Math.min(...arr);
-  console.log('ARR_MIN is: ' + ARR_MIN);
-  const ARR_MAX = Math.max(...arr);
-  console.log('ARR_MAX is: ' + ARR_MAX);
-
-  for (i=ARR_MIN; i<=ARR_MAX; i++) {
-    console.log(i);
+//take the normalized input array and return an array containing
+//the sequence of numbers in the range of the passed array values
+function makeRangeArr(arr) {
+  var rangeArr = [];
+  for (a=Math.min(...arr); a<=Math.max(...arr); a++) {
+    rangeArr.push(a);
   }
+  console.log('rangeArr is: ' + rangeArr);
+  return rangeArr;
 }
-
-function getMultipleCeiling(arr) {
-  var quotient = 1;
-  for (i=ARR_MIN, i<=ARR_MAX; i++;) {
-    console.log(i*1);
-  }
-  console.log(quotient);
-  //return quotient;
-}
-getMultipleCeiling(arr);
-
-//const MULTIPLE_CEILING = ;
+var range = makeRangeArr(normalize([8,5]));
+console.log('range is : ' + range);
 
 
 function smallestCommons(arr) {
-  multiplesFor(normalize(arr));
+  makeRangeArr(normalize(arr));
 }
 smallestCommons([1,3]);
 
