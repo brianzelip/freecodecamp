@@ -13,6 +13,8 @@ APPROACH
 1. normalize input (validate and sort values in ascending order)
 2. create arrays of multiples for each number within the input range
 3. return the lowest value that each array contains
+
+for every number in the range, push to an array it's multiples leading up to all the numbers in the range multiplied together
 */
 
 //1. normalize input (validate and sort values in ascending order)
@@ -39,19 +41,34 @@ function normalize(arr) {
 }
 
 //2. create arrays of multiples for each number within the input range
+
+
+
+
 function multiplesFor(arr) {
+
   var arrOfArrs = [];
   const ARR_MIN = Math.min(...arr);
   console.log('ARR_MIN is: ' + ARR_MIN);
   const ARR_MAX = Math.max(...arr);
   console.log('ARR_MAX is: ' + ARR_MAX);
 
-  for (i=ARR_MIN; i<=ARR_MAX; i+=ARR_MIN) {
+  for (i=ARR_MIN; i<=ARR_MAX; i++) {
     console.log(i);
-    arrOfArrs.push(i);
   }
-  console.log(arrOfArrs);
 }
+
+function getMultipleCeiling(arr) {
+  var quotient = 1;
+  for (i=ARR_MIN, i<=ARR_MAX; i++;) {
+    console.log(i*1);
+  }
+  console.log(quotient);
+  //return quotient;
+}
+getMultipleCeiling(arr);
+
+//const MULTIPLE_CEILING = ;
 
 
 function smallestCommons(arr) {
