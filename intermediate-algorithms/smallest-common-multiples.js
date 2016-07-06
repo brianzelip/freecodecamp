@@ -11,11 +11,14 @@ e.g. for 1 and 3 - find the smallest common multiple of both 1 and 3 that is eve
 /*
 APPROACH
 1. normalize input (validate and sort values in ascending order)
-2. create arrays of multiples for each number within the input range
-3. return the lowest value that each array contains
-
-for every number in the range, push to an array it's multiples leading up to all the numbers in the range multiplied together
+2. take the normalized input array and return rangeArr which contains the sequence of numbers in the range of the passed array values
+3. take rangeArr array, create the sorted array of all multiples up to the ceiling for each number in rangeArr, and return the first multiple to be found rangeArr.length times
 */
+
+//utility - globally accessible sort function
+function compareNumbers(a, b) {
+  return a - b;
+}
 
 //1. normalize input (validate and sort values in ascending order)
 function normalize(arr) {
@@ -32,31 +35,22 @@ function normalize(arr) {
   }
 
   arr = arr.sort(compareNumbers);
-  console.log('normalized arr is: [' + arr + ']');
+  //console.log('normalized arr is: [' + arr + ']');
   return arr;
 }
 
-//2. create an array of multiples for each number up to ceilingMultiple
-/*
-APPROACH
-for every number from MIN to MAX, push to an arry the sequence of multiples for that number leading up to the ceilingMultiple
-*/
-
-//take the normalized input array and return rangeArr which contains
+//2. take the normalized input array and return rangeArr which contains
 //the sequence of numbers in the range of the passed array values
 function makeRangeArr(arr) {
   var rangeArr = [];
   for (a=Math.min(...arr); a<=Math.max(...arr); a++) {
     rangeArr.push(a);
   }
-  console.log('rangeArr is: ' + rangeArr);
+  //console.log('rangeArr is: ' + rangeArr);
   return rangeArr;
 }
-var range = makeRangeArr(normalize([8,5]));
-console.log('range is : ' + range);
 
-
-//take rangeArr array, create the sorted array of all multiples up to the ceiling
+//3. take rangeArr array, create the sorted array of all multiples up to the ceiling
 //for each number in rangeArr, and return the first multiple to be found rangeArr.length times
 function getSCM(arr) {
   //set up vars and get ceiling multiple
@@ -69,9 +63,9 @@ function getSCM(arr) {
 
   //for every number in the array, push to another array all the multiples of that number thru ceilingMultiple
   for (a=0; a<arr.length; a++) {
-    console.log('a is: ' + a + ' and arr[a] is: ' + arr[a]);
+    //console.log('a is: ' + a + ' and arr[a] is: ' + arr[a]);
     for (z = arr[a]; z<=ceilingMultiple; z+=arr[a]) {
-     console.log('z is: ' + z);
+     //console.log('z is: ' + z);
      multiplesArr.push(z);
     }
   }
@@ -79,26 +73,30 @@ function getSCM(arr) {
 
   //sort all multiples in ascending order
   multiplesArr = multiplesArr.sort(compareNumbers);
-  console.log('multiplesArr sorted is: ' + multiplesArr);
+  //console.log('multiplesArr sorted is: ' + multiplesArr);
 
-  //get SCM
-  
+  //get scm
+  var scm;
 
-  return multiplesArr;
-}
+  for (y=0; y<multiplesArr.length; y++) {
+    if (multiplesArr[y] === multiplesArr[y+arr.length-1]) {
+      scm = multiplesArr[y];
+      break;
+    }
+  }//this is the trick to my solution - it returns the first number that is found in the array of sorted multiples rangeArr.length times!
 
-//globally accessible sort function
-function compareNumbers(a, b) {
-  return a - b;
+  console.log('scm is: ' + scm);
+  return scm;
 }
 
 function smallestCommons(arr) {
   getSCM(makeRangeArr(normalize(arr)));
 }
-smallestCommons([2,4]);
+smallestCommons([1,10]);
 
 /*
 REFERENCES
   - least common multiples: https://www.mathsisfun.com/least-common-multiple.html
   - arr.sort() && function compareNumbers(a, b): https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort#Creating_displaying_and_sorting_an_array
+  - solution to finding duplicates that i didn't use but worked for me during iteration: http://stackoverflow.com/a/2440343/2145103
 */
