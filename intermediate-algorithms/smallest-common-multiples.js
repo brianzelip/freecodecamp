@@ -31,10 +31,6 @@ function normalize(arr) {
     }
   }
 
-  function compareNumbers(a, b) {
-    return a - b;
-  }
-
   arr = arr.sort(compareNumbers);
   console.log('normalized arr is: [' + arr + ']');
   return arr;
@@ -60,34 +56,44 @@ var range = makeRangeArr(normalize([8,5]));
 console.log('range is : ' + range);
 
 
-//take rangeArr array and return the array of all multiples (up to the ceiling)
-//of each number in rangeArr
-function makeMultiplesArr(arr) {
+//take rangeArr array, create the sorted array of all multiples up to the ceiling
+//for each number in rangeArr, and return the first multiple to be found rangeArr.length times
+function getSCM(arr) {
   //set up vars and get ceiling multiple
   var multiplesArr = [];
   var ceilingMultiple = 1;
   for (i=0;i<arr.length;i++) {
     ceilingMultiple = ceilingMultiple * arr[i];
   }
-  console.log('ceilingMultiple is: ' + ceilingMultiple);
+  //console.log('ceilingMultiple is: ' + ceilingMultiple);
 
-  //for every number in the array, push to another array all the multiples of that number leading up to and including the ceilingMultiple
-  console.log('arr is: ' + arr);
-
-  for (a=0;a<arr.length;a++) {
-    console.log('arr[' + a + '] is: ' + arr[a]);
-    for (b=arr[a];b<=(ceilingMultiple/arr[a]);arr[a]+=arr[a]) {
-      console.log('b: ' + b);
-      multiplesArr.push(b);
+  //for every number in the array, push to another array all the multiples of that number thru ceilingMultiple
+  for (a=0; a<arr.length; a++) {
+    console.log('a is: ' + a + ' and arr[a] is: ' + arr[a]);
+    for (z = arr[a]; z<=ceilingMultiple; z+=arr[a]) {
+     console.log('z is: ' + z);
+     multiplesArr.push(z);
     }
   }
-  console.log('multiplesArr is: ' + multiplesArr);
+  //console.log('multiplesArr unsorted is: ' + multiplesArr);
+
+  //sort all multiples in ascending order
+  multiplesArr = multiplesArr.sort(compareNumbers);
+  console.log('multiplesArr sorted is: ' + multiplesArr);
+
+  //get SCM
+  
+
   return multiplesArr;
 }
 
+//globally accessible sort function
+function compareNumbers(a, b) {
+  return a - b;
+}
 
 function smallestCommons(arr) {
-  makeMultiplesArr(makeRangeArr(normalize(arr)));
+  getSCM(makeRangeArr(normalize(arr)));
 }
 smallestCommons([2,4]);
 
