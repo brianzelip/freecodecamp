@@ -57,7 +57,7 @@ function makeRangeArr(arr) {
 function getSCM(arr) {
   //set up vars and get ceiling multiple
   var multiplesArr = [];
-  var ceilingMultiple = 1;
+  var ceilingMultiple = 1;//if 0, the quotient will always remain 0 instead of reach the ceiling
   for (let i=0;i<arr.length;i++) {
     ceilingMultiple = ceilingMultiple * arr[i];
   }
@@ -92,9 +92,21 @@ function getSCM(arr) {
 }
 
 function smallestCommons(arr) {
-  getSCM(makeRangeArr(normalize(arr)));
+  return getSCM(makeRangeArr(normalize(arr)));
 }
-smallestCommons([6,13]);
+smallestCommons([7,13]);
+
+/*
+
+          HOLY SHIT!
+
+          CHECK OUT https://github.com/FreeCodeCamp/FreeCodeCamp/issues/7098 
+
+
+
+*/
+
+
 
 /*
 REFERENCES
