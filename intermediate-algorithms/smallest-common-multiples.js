@@ -15,6 +15,8 @@ APPROACH
 3. take rangeArr array, create the sorted array of all multiples up to the ceiling for each number in rangeArr, and return the first multiple to be found rangeArr.length times
 */
 
+"use strict";
+
 //utility - globally accessible sort function
 function compareNumbers(a, b) {
   return a - b;
@@ -27,7 +29,7 @@ function normalize(arr) {
     return undefined;
   }
 
-  for (i=0; i<arr.length; i++) {
+  for (let i=0; i<arr.length; i++) {
     if (typeof(arr[i]) !== 'number' || arr[i] < 0) {
       console.log('Please enter an array of two positive integers!');
       return undefined;
@@ -43,7 +45,7 @@ function normalize(arr) {
 //the sequence of numbers in the range of the passed array values
 function makeRangeArr(arr) {
   var rangeArr = [];
-  for (a=Math.min(...arr); a<=Math.max(...arr); a++) {
+  for (let a=Math.min(...arr); a<=Math.max(...arr); a++) {
     rangeArr.push(a);
   }
   //console.log('rangeArr is: ' + rangeArr);
@@ -56,15 +58,15 @@ function getSCM(arr) {
   //set up vars and get ceiling multiple
   var multiplesArr = [];
   var ceilingMultiple = 1;
-  for (i=0;i<arr.length;i++) {
+  for (let i=0;i<arr.length;i++) {
     ceilingMultiple = ceilingMultiple * arr[i];
   }
   //console.log('ceilingMultiple is: ' + ceilingMultiple);
 
   //for every number in the array, push to another array all the multiples of that number thru ceilingMultiple
-  for (a=0; a<arr.length; a++) {
+  for (let a=0; a<arr.length; a++) {
     //console.log('a is: ' + a + ' and arr[a] is: ' + arr[a]);
-    for (z = arr[a]; z<=ceilingMultiple; z+=arr[a]) {
+    for (let z = arr[a]; z<=ceilingMultiple; z+=arr[a]) {
      //console.log('z is: ' + z);
      multiplesArr.push(z);
     }
@@ -78,7 +80,7 @@ function getSCM(arr) {
   //get scm
   var scm;
 
-  for (y=0; y<multiplesArr.length; y++) {
+  for (let y=0; y<multiplesArr.length; y++) {
     if (multiplesArr[y] === multiplesArr[y+arr.length-1]) {
       scm = multiplesArr[y];
       break;
@@ -92,7 +94,7 @@ function getSCM(arr) {
 function smallestCommons(arr) {
   getSCM(makeRangeArr(normalize(arr)));
 }
-smallestCommons([1,10]);
+smallestCommons([6,13]);
 
 /*
 REFERENCES
