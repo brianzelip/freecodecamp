@@ -100,7 +100,7 @@ smallestCommons([7,13]);
 
           HOLY SHIT!
 
-          CHECK OUT https://github.com/FreeCodeCamp/FreeCodeCamp/issues/7098 
+          CHECK OUT https://github.com/FreeCodeCamp/FreeCodeCamp/issues/7098
 
 
 
