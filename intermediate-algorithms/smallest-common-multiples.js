@@ -16,7 +16,7 @@ APPROACH
 */
 
 "use strict";
-
+/*
 //utility - globally accessible sort function
 function compareNumbers(a, b) {
   return a - b;
@@ -94,7 +94,7 @@ function getSCM(arr) {
 function smallestCommons(arr) {
   return getSCM(makeRangeArr(normalize(arr)));
 }
-smallestCommons([7,13]);
+smallestCommons([7,13]);*/
 
 /*
 
@@ -112,48 +112,52 @@ smallestCommons([7,13]);
 Here's my investigation of the above solution to the same FCC challenge I found on github
 
 WORK IN PROGRESS
-
+*/
+var whileLoopIteration = 0;
 function smallestCommons(arr) {
   arr.sort();
   console.log('arr.sort() is: ' + arr);
-  var count = 1;
+  var count = arr[0];
 
   var keepGoing = true;
 
   while (keepGoing) {
-    console.log('For this iteration, count began as: ' + count);
+    whileLoopIteration ++;
+    //console.log('For this iteration, count began as: ' + count);
     count += 1;
-    console.log('and during this iteration count became: ' + count);
+    //console.log('and during this iteration count became: ' + count);
     var calcArr = [];
-    console.log('For this iteration calcArr began as: ' + calcArr);
+    //console.log('For this iteration calcArr began as: ' + calcArr);
 
-    for (var i = 1; i <= arr[1]; i++) {
+    for (var i = arr[0]; i <= arr[1]; i++) {
       calcArr.push(count % i);
+      //console.log('i is: ' + i + '\ncount('+count+')%i('+i+') is: '+count%i+'\ncalcArr became: [' + calcArr + ']');
     }
-    console.log('and during this iteration calcArr became: ' + calcArr);
-    console.log('\n');
+    //console.log('and during this iteration calcArr became: ' + calcArr);
+    //console.log('\n');
     if (checkArray(calcArr)) {
       keepGoing = false;
       // break;
     }
   }
 
-  console.log("count: " + count);
+  console.log('The smallest common multiple between ' + arr[0] + ' and ' + arr[1] + ' is: ' + count);
   return count;
 }
 
 function checkArray(arr2) {
+  //console.log('checkArray FIRED!');
   for (var i = 1; i < arr2.length; i++) {
     if (arr2[i - 1] !== arr2[i]) {
       return false;
     }
   }
+  console.log('The while loop iterated ' + whileLoopIteration + ' times.');
   return true;
 }
 
-smallestCommons([6,1]);
+smallestCommons([10,2]);
 
-*/
 
 
 
