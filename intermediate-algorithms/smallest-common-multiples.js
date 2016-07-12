@@ -113,13 +113,18 @@ Here's my investigation of the above solution to the same FCC challenge I found 
 
 WORK IN PROGRESS
 */
-var whileLoopIteration = 0;
+function compareNumbers(a, b) {
+  return a - b;
+}
+
 function smallestCommons(arr) {
-  arr.sort();
-  console.log('arr.sort() is: ' + arr);
+  arr.sort(compareNumbers);
+  console.log('arr.sort(compareNumbers) is: ' + arr);
   var count = arr[0];
 
   var keepGoing = true;
+
+  var whileLoopIteration = 0;
 
   while (keepGoing) {
     whileLoopIteration ++;
@@ -141,25 +146,25 @@ function smallestCommons(arr) {
     }
   }
 
+  console.log('The while loop iterated ' + whileLoopIteration + ' times.');
   console.log('The smallest common multiple between ' + arr[0] + ' and ' + arr[1] + ' is: ' + count);
   return count;
 }
 
+var iterations = 0;
 function checkArray(arr2) {
+  iterations ++;
+  console.log(iterations);
   //console.log('checkArray FIRED!');
   for (var i = 1; i < arr2.length; i++) {
     if (arr2[i - 1] !== arr2[i]) {
       return false;
     }
   }
-  console.log('The while loop iterated ' + whileLoopIteration + ' times.');
   return true;
 }
 
-smallestCommons([10,2]);
-
-
-
+smallestCommons([5,2]);
 
 
 /*
