@@ -118,12 +118,30 @@ function compareNumbers(a, b) {
 }
 
 function smallestCommons(arr) {
-  arr.sort(compareNumbers);
-  console.log('arr.sort(compareNumbers) is: ' + arr);
+
+  function normalize(arr) {
+    if (arr === undefined || arr.length !== 2) {
+      console.log('Please enter an array of two positive integers!');
+      return undefined;
+    }
+
+    for (let i=0; i<arr.length; i++) {
+      if (typeof(arr[i]) !== 'number' || arr[i] < 0) {
+        console.log('Please enter an array of two positive integers!');
+        return undefined;
+      }
+    }
+
+    arr = arr.sort(compareNumbers);
+    //console.log('normalized arr is: [' + arr + ']');
+    return arr;
+  }
+
+  normalize(arr);
+  console.log('normalize(arr) is: ' + arr);
+
   var count = arr[0];
-
   var keepGoing = true;
-
   var whileLoopIteration = 0;
 
   while (keepGoing) {
@@ -148,13 +166,14 @@ function smallestCommons(arr) {
 
   console.log('The while loop iterated ' + whileLoopIteration + ' times.');
   console.log('The smallest common multiple between ' + arr[0] + ' and ' + arr[1] + ' is: ' + count);
+
   return count;
 }
 
 var iterations = 0;
 function checkArray(arr2) {
   iterations ++;
-  console.log(iterations);
+  //console.log(iterations);
   //console.log('checkArray FIRED!');
   for (var i = 1; i < arr2.length; i++) {
     if (arr2[i - 1] !== arr2[i]) {
@@ -164,8 +183,7 @@ function checkArray(arr2) {
   return true;
 }
 
-smallestCommons([5,2]);
-
+smallestCommons([23,18]);
 
 /*
 REFERENCES
