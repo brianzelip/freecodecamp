@@ -17,8 +17,4 @@ function smallestCommons(arr) {
   console.log(arr);
 }
 
-var arr = [1.2];
-
-console.log(typeof(arr));
-
 smallestCommons([22,6]);
