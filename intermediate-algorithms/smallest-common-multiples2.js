@@ -204,10 +204,15 @@ function findSmallestCommonMultiple(rangeArr) {
 
 
 function smallestCommons(arr) {
-  return findSmallestCommonMultiple(createRangeArray(verifyInput(arr)));
+  let verifiedArr = verifyInput(arr);
+  let rangeArr = createRangeArray(verifiedArr);
+  let scm = findSmallestCommonMultiple(rangeArr);
+
+  console.log('scm', scm);
+  return scm;
 }
 
-console.log(smallestCommons([1, 5]));
+smallestCommons([2, 8]);
 
 
 // function smallestCommons(arr) {
