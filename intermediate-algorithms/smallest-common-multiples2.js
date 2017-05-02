@@ -141,20 +141,17 @@ function verifyInput(arr) {
 };
 
 function createRangeArray(verifiedArr) {
-  let start = Math.min(...verifiedArr);
-  let end = Math.max(...verifiedArr);
+  let rangeStart = Math.min(...verifiedArr);
+  let rangeEnd = Math.max(...verifiedArr);
   rangeArr = [];
-  for (let i = start; i <= end; i++) {
+  for (let i = rangeStart; i <= rangeEnd; i++) {
     rangeArr.push(i);
   };
   return rangeArr;
 };
 
 function productOfArr(arr) {
-  let product = 1;
-  for (let i=0; i<arr.length; i++) {
-    product = product * arr[i];
-  };
+  let product = arr.reduce( (a, b) => a * b, 1 );
   return product;
 };
 
@@ -175,7 +172,7 @@ function isEvenlyDivisible(dividend, divisor) {
 
 function findSmallestCommonMultiple(rangeArr) {
   let possibleSCM = createPossibleSCMPool(rangeArr);
-  console.log('possibleSCM', possibleSCM);
+  // console.log('possibleSCM', possibleSCM);
   let isEvenlyDivisibleByAll = false;
 
   let scm = 0;
@@ -186,7 +183,7 @@ function findSmallestCommonMultiple(rangeArr) {
 
     loop2:
     for (let x = 0; x < rangeArr.length; x++) {
-      console.log('is ' + possibleSCM[i] + ' evenly divisible by ' + rangeArr[x] + '?', isEvenlyDivisible(possibleSCM[i], rangeArr[x]));
+      // console.log('is ' + possibleSCM[i] + ' evenly divisible by ' + rangeArr[x] + '?', isEvenlyDivisible(possibleSCM[i], rangeArr[x]));
       if (!isEvenlyDivisible(possibleSCM[i], rangeArr[x])) {
         isEvenlyDivisibleByAll = false;
         continue loop1;
@@ -212,7 +209,7 @@ function smallestCommons(arr) {
   return scm;
 }
 
-smallestCommons([2, 8]);
+smallestCommons([8, 6]);
 
 
 // function smallestCommons(arr) {
