@@ -220,3 +220,11 @@ smallestCommons([2, 8]);
 //   createRangeArray(verifiedArr);
 //   findSmallestCommonMultiple(rangeArr);
 // }
+
+
+/*
+  REFERENCES
+    - js labels, used in findSmallestCommonMultiple(), http://stackoverflow.com/a/183197/2145103
+    - js labels docs, https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/label
+
+*/
