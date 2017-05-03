@@ -155,11 +155,52 @@ function productOfArr(arr) {
   return product;
 };
 
+function productOfArrLast5(arr) {
+  let product = arr[arr.length-1] * arr[arr.length-2] * arr[arr.length-3] * arr[arr.length-4] * arr[arr.length-5];
+  return product;
+};
+
 function createPossibleSCMPool(rangeArr) {
   let possibleSCM = [];
-  let startingNum = Math.max(...rangeArr);
-  for (let i = startingNum; i <= productOfArr(rangeArr); i++) {
-    possibleSCM.push(i)
+  let startingNum;
+
+  /*
+    approach:
+      - if Math.max(...rangeArr) =< 4, startingNum = Math.max(...rangeArr)
+      - if Math.max(...rangeArr) => 5, startingNum = Math.max(...rangeArr)^2,
+      - if Math.max(...rangeArr) =< 10,
+      - if rangeArr.length() > 4
+      -
+  */
+
+  if (Math.max(...rangeArr) >= 10 && rangeArr.length >= 7) {
+    startingNum = Math.max(...rangeArr)**4;
+    console.log('if startingNum is', startingNum, 'Math.max(...rangeArr)**4', Math.max(...rangeArr)**4);
+    for (let i = startingNum; i <= productOfArrLast5(rangeArr); i++) {
+      possibleSCM.push(i)
+    }
+    // console.log('productOfArrLast5', productOfArrLast5(rangeArr));
+  }
+  else if (Math.max(...rangeArr) >= 10 && rangeArr.length >= 4)  {
+    startingNum = Math.max(...rangeArr)**3;
+    console.log('else if startingNum is', startingNum, 'Math.max(...rangeArr)**3', Math.max(...rangeArr)**3);
+    for (let i = startingNum; i <= productOfArr(rangeArr); i++) {
+      possibleSCM.push(i)
+    }
+  }
+  else if (Math.max(...rangeArr) >= 5) {
+    startingNum = Math.max(...rangeArr)**2;
+    console.log('else if2 startingNum is', startingNum, 'Math.max(...rangeArr)**2', Math.max(...rangeArr)**2);
+    for (let i = startingNum; i <= productOfArr(rangeArr); i++) {
+      possibleSCM.push(i)
+    }
+  }
+  else {
+    startingNum = Math.max(...rangeArr);
+    console.log('else startingNum is', startingNum, 'Math.max(...rangeArr)', Math.max(...rangeArr));
+    for (let i = startingNum; i <= productOfArr(rangeArr); i++) {
+      possibleSCM.push(i)
+    }
   }
   // console.log('possibleSCM', possibleSCM);
   return possibleSCM;
@@ -172,7 +213,7 @@ function isEvenlyDivisible(dividend, divisor) {
 
 function findSmallestCommonMultiple(rangeArr) {
   let possibleSCM = createPossibleSCMPool(rangeArr);
-  // console.log('possibleSCM', possibleSCM);
+  console.log('possibleSCM', possibleSCM);
   let isEvenlyDivisibleByAll = false;
 
   let scm = 0;
@@ -194,6 +235,7 @@ function findSmallestCommonMultiple(rangeArr) {
       return possibleSCM[i];
     };
   };
+  return 'smallest common multiple was not found';
 };
 
 // console.log(findSmallestCommonMultiple([1,2,3,4,5]));
@@ -209,8 +251,8 @@ function smallestCommons(arr) {
   return scm;
 }
 
-smallestCommons([8, 6]);
-
+smallestCommons([2, 15]);
+// this doesnot work - smallestCommons([2, 16]); -- scm not found
 
 // function smallestCommons(arr) {
 //   verifyInput(arr);
